@@ -24,8 +24,12 @@ public class BattleArena {
                     RAT.Defence();
                 }
                 if (action == 3) {
-                    System.out.println("крыса лечится");
-                    RAT.Heal(5);
+                    if (RAT.wastingMana(3)){
+                        System.out.println("крыса лечится");
+                        RAT.Heal(5);
+                    }else{
+                        System.out.println("крыса не смогла вылечится, из-за не хватки маны");
+                    }
                 }
                 flag = false;
             }
@@ -49,7 +53,11 @@ public class BattleArena {
                         break;
                     }
                     case "лечение" -> {
-                        her.Heal(10);
+                        if (her.wastingMana(5)){
+                            her.Heal(10);
+                        }else {
+                            System.out.println("Маны не хватило, а ход потрачен");
+                        }
                         break;
                     }
                     case "пропуск" -> {

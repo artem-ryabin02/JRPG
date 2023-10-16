@@ -104,6 +104,14 @@ public  abstract class Character {
             health += heal;
         }
     }
+    public boolean wastingMana(int amountOfMana){
+        if (amountOfMana <= mana){
+            mana -= amountOfMana;
+            return true;
+        }
+        else return false;
+
+    }
     public boolean getAlive (){
         return alive;
     }
