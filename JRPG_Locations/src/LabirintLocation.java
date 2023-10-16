@@ -1,53 +1,107 @@
+import java.util.LinkedList;
+import java.util.Random;
 import java.util.Vector;
 public class LabirintLocation extends Location{
-
-    final String idField[] = {"0001", "0010", "0011", "0100", "0101", "0110", "0111",
-            "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111"};
-
-    final String idNorth[] = {"1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111"};
-
-    final String idSouth[] = {"0100", "0101", "0110", "0111", "1100", "1101", "1110", "1111"};
-
-    final String idEast[] = {"0010", "0011", "0110", "0111", "1010", "1011", "1110", "1111"};
-
-    final String idWest[] = {"0001", "0011", "0101", "0111", "1001", "1011", "1101", "1111"};
-
+    LinkedList<String> idField = new LinkedList<>();
+    LinkedList<String> idNorth = new LinkedList<>();
+    LinkedList<String> idSouth = new LinkedList<>();
+    LinkedList<String> idEast = new LinkedList<>();
+    LinkedList<String> idWest = new LinkedList<>();
     final String idWall = "0000";
-
-    final String events[] = {"Wall", "Empt", "Ches", "Enem", "Entr", "Exit"};
-
+    LinkedList<String> events = new LinkedList<>();
     final int SIZE_ID = 4;
-
     boolean existExit = false;
-
     LabirintField[][] labirint;
-
     LabirintLocation(int row, int col){
         super(row, col);
+
+        createId();
 
         this.labirint = new LabirintField[this.row][this.col];
 
         for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
-                //this.labirint[i][j].setId(idWall);
-                //this.labirint[i][j].setEvent_(events[0]);
-                this.labirint[i][j] = new LabirintField(idWall, events[0]);
+                this.labirint[i][j] = new LabirintField(idWall, events.get(0));
             }
         }
     }
 
-    public void generateLabirint(){
-        int randX = (int) Math.random() * (this.col - 0) + 0;
-        int randY = (int) Math.random() * (this.row - 0) + 0;
+    private void createId(){
+        idField.add("0001");
+        idField.add("0010");
+        idField.add("0011");
+        idField.add("0100");
+        idField.add("0101");
+        idField.add("0110");
+        idField.add("0111");
+        idField.add("1000");
+        idField.add("1001");
+        idField.add("1010");
+        idField.add("1011");
+        idField.add("1100");
+        idField.add("1101");
+        idField.add("1110");
+        idField.add("1111");
 
-        String randId = idField[(int) Math.random() * ((idField.length - 1) - 0) + 0];
+        idNorth.add("1000");
+        idNorth.add("1001");
+        idNorth.add("1010");
+        idNorth.add("1011");
+        idNorth.add("1100");
+        idNorth.add("1101");
+        idNorth.add("1110");
+        idNorth.add("1111");
+
+        idSouth.add("0100");
+        idSouth.add("0101");
+        idSouth.add("0110");
+        idSouth.add("0111");
+        idSouth.add("1100");
+        idSouth.add("1101");
+        idSouth.add("1110");
+        idSouth.add("1111");
+
+        idEast.add("0010");
+        idEast.add("0011");
+        idEast.add("0110");
+        idEast.add("0111");
+        idEast.add("1010");
+        idEast.add("1011");
+        idEast.add("1110");
+        idEast.add("1111");
+
+        idWest.add("0001");
+        idWest.add("0011");
+        idWest.add("0101");
+        idWest.add("0111");
+        idWest.add("1001");
+        idWest.add("1011");
+        idWest.add("1101");
+        idWest.add("1111");
+
+        events.add("Wall");
+        events.add("Empt");
+        events.add("Ches");
+        events.add("Enem");
+        events.add("Entr");
+        events.add("Exit");
+
+    }
+    public void generateLabirint(){
+        Random randomGenerator = new Random();
+        int randX = randomGenerator.nextInt(col);
+        int randY = randomGenerator.nextInt(row);
+        int len = idField.size();
+        int randomInt = randomGenerator.nextInt(len);
+        String randId = idField.get(randomInt);
 
         labirint[randX][randY].setId(randId);
-        labirint[randX][randY].setEvent_(events[4]);
+        labirint[randX][randY].setEvent_(events.get(4));
 
         for(int i = 0; i < row * col; i++){
             allGenerateLabirint();
         }
+
     }
 
     private boolean checkPass(String idField, int direction) {
@@ -76,38 +130,41 @@ public class LabirintLocation extends Location{
     }
 
     private String randomizeEvent(){
-        int cube = (int) Math.random() * (100 - 1 + 1) + 1;
+        Random randomGenerator = new Random();
+        int cube = randomGenerator.nextInt(100);
         if(existExit == false){
             if (cube <= 80){
-                return events[1];
+                return events.get(1);
             } else if(cube <= 90){
-                return events[3];
+                return events.get(3);
             } else if(cube <= 95){
-                return events[2];
+                return events.get(2);
             } else {
                 existExit = true;
-                return events[5];
+                return events.get(5);
             }
         } else {
             if (cube <= 80) {
-                return events[1];
+                return events.get(1);
             } else if (cube <= 90) {
-                return events[3];
-            } else return events[2];
+                return events.get(3);
+            } else return events.get(2);
         }
     }
 
     private void generatingPassageWays(int x, int y){
+        Random randomGenerator = new Random();
         for(int i = 0; i < SIZE_ID; i++){
             if(checkPass(labirint[x][y].getId(), i)){
                 int direction = 0;
-
+                int size = 0;
                 switch(i){
                     case 0:
                         direction = -1;
+                        size = idSouth.size();
                         if(checkBorderX(direction, x)){
                             if(checkWall(labirint[x + direction][y].getId())){
-                                String randId = idSouth[(int) Math.random() * ((idSouth.length - 1) - 0) + 0];
+                                String randId = idSouth.get(randomGenerator.nextInt(size));
                                 labirint[x + direction][y].setId(randId);
                                 labirint[x + direction][y].setEvent_(randomizeEvent());
                             }
@@ -115,9 +172,10 @@ public class LabirintLocation extends Location{
                         break;
                     case 1:
                         direction = 1;
+                        size = idNorth.size();
                         if(checkBorderX(direction, x)){
                             if(checkWall(labirint[x + direction][y].getId())){
-                                String randId = idNorth[(int) Math.random() * ((idNorth.length - 1) - 0) + 0];
+                                String randId = idNorth.get(randomGenerator.nextInt(size));
                                 labirint[x + direction][y].setId(randId);
                                 labirint[x + direction][y].setEvent_(randomizeEvent());
                             }
@@ -125,9 +183,10 @@ public class LabirintLocation extends Location{
                         break;
                     case 2:
                         direction = 1;
+                        size = idWest.size();
                         if(checkBorderY(direction, y)){
                             if(checkWall(labirint[x][y = direction].getId())){
-                                String randId = idWest[(int) Math.random() * ((idWest.length - 1) - 0) + 0];
+                                String randId = idWest.get(randomGenerator.nextInt(size));
                                 labirint[x][y + direction].setId(randId);
                                 labirint[x][y + direction].setEvent_(randomizeEvent());
                             }
@@ -135,9 +194,10 @@ public class LabirintLocation extends Location{
                         break;
                     case 3:
                         direction = -1;
+                        size = idEast.size();
                         if(checkBorderX(direction, y)){
                             if(checkWall(labirint[x][y + direction].getId())){
-                                String randId = idEast[(int) Math.random() * ((idEast.length - 1) - 0) + 0];
+                                String randId = idEast.get(randomGenerator.nextInt(size));
                                 labirint[x][y + direction].setId(randId);
                                 labirint[x][y + direction].setEvent_(randomizeEvent());
                             }
