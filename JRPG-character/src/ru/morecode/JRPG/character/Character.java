@@ -11,6 +11,7 @@ public  abstract class Character {
     protected int health;
     protected int maxMana;
     protected int mana;
+    protected int manaRegen;
     private int attack;
     protected int protection;
     private int critChance;
@@ -30,6 +31,7 @@ public  abstract class Character {
         this.health = maxHealth;
         this.maxMana = (int) ((intelligence + wisdom) * 0.5);
         this.mana = maxMana;
+        this.manaRegen = (int) (wisdom * 0.3);
         this.attack = (int) (strength + agility * 0.25);
         this.protection = (int) (vitality * 1.25);
         this.critChance = (int) ((agility * 0.05 + perception * 0.07) * 10);
@@ -108,9 +110,14 @@ public  abstract class Character {
         if (amountOfMana <= mana){
             mana -= amountOfMana;
             return true;
+        } else return false;
+    }
+    public void manaRegeneration(){
+        if (mana + manaRegen >= maxMana){
+            mana = maxMana;
+        } else {
+            mana+=manaRegen;
         }
-        else return false;
-
     }
     public boolean getAlive (){
         return alive;
