@@ -15,6 +15,7 @@ public class BattleArena {
             if (flag) {
                 RAT.removeDefence();
                 RAT.manaRegeneration();
+                RAT.displayShortStatus();
                 int action = RAT.randAction();
                 if (action == 1) {
                     System.out.println("крыса атакует");
@@ -37,6 +38,7 @@ public class BattleArena {
             else {
                 her.removeDefence();
                 her.manaRegeneration();
+                her.displayShortStatus();
                 Scanner in = new Scanner(System.in);
                 System.out.println("что делаем?");
                 System.out.println("атака");

@@ -47,10 +47,16 @@ public  abstract class Character {
         System.out.println("perception: "+perception);
         System.out.println("health/maxHealth:"+health+"/"+maxHealth);
         System.out.println("mana/maxMana: "+mana+"/"+maxMana);
+        System.out.println("manaRegen: "+manaRegen);
         System.out.println("attack: "+attack);
         System.out.println("protection: "+protection);
         System.out.println("critChance: "+critChance);
         System.out.println("dodge: "+dodge);
+    }
+    public void displayShortStatus(){
+        System.out.println("name: "+name);
+        System.out.println("health/maxHealth:"+health+"/"+maxHealth);
+        System.out.println("mana/maxMana: "+mana+"/"+maxMana);
     }
 
     public String getName() {
