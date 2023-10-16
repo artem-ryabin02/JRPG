@@ -19,7 +19,7 @@ public  abstract class Character {
     private int tempDefence = 10;
     private boolean defenceFlag = false;
     private boolean alive = true;
-    public Character(String name, int vitality, int strength, int wisdom, int intelligence, int agility, int perception) {
+    Character(String name, int vitality, int strength, int wisdom, int intelligence, int agility, int perception) {
         this.name = name;
         this.vitality = vitality;
         this.strength = strength;
@@ -27,6 +27,9 @@ public  abstract class Character {
         this.intelligence = intelligence;
         this.agility = agility;
         this.perception = perception;
+        calculationOfSecondaryParametrs(this.vitality, this.strength, this.wisdom, this.intelligence, this.agility, this.perception);
+    }
+    private void calculationOfSecondaryParametrs(int vitality, int strength, int wisdom, int intelligence, int agility, int perception) {
         this.maxHealth = vitality * 10;
         this.health = maxHealth;
         this.maxMana = (int) ((intelligence + wisdom) * 0.5);
@@ -136,4 +139,6 @@ public  abstract class Character {
     public int getDodge() {
         return dodge;
     }
+
+
 }
