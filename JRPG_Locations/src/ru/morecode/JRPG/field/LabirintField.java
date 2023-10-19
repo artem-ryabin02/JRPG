@@ -1,8 +1,11 @@
-public class LabirintField {
+package ru.morecode.JRPG.field;
+
+public class LabirintField extends Field{
 
     private String id, event_;
 
-    LabirintField(String id, String event_){
+    public LabirintField(int size, String id, String event_){
+        super(size);
         this.id = id;
         this.event_ = event_;
     }

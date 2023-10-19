@@ -1,7 +1,11 @@
+package ru.morecode.JRPG.location;
+
+import ru.morecode.JRPG.field.LabirintField;
+
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.Vector;
-public class LabirintLocation extends Location{
+
+public class LabyrinthLocation extends Location{
     LinkedList<String> idField = new LinkedList<>();
     LinkedList<String> idNorth = new LinkedList<>();
     LinkedList<String> idSouth = new LinkedList<>();
@@ -11,17 +15,17 @@ public class LabirintLocation extends Location{
     LinkedList<String> events = new LinkedList<>();
     final int SIZE_ID = 4;
     boolean existExit = false;
-    LabirintField[][] labirint;
-    LabirintLocation(int row, int col){
+    LabirintField[][] labyrinth;
+    public LabyrinthLocation(int row, int col){
         super(row, col);
 
         createId();
 
-        this.labirint = new LabirintField[this.row][this.col];
+        this.labyrinth = new LabirintField[this.row][this.col];
 
         for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
-                this.labirint[i][j] = new LabirintField(idWall, events.get(0));
+                this.labyrinth[i][j] = new LabirintField(10, idWall, events.get(0));
             }
         }
     }
@@ -87,7 +91,7 @@ public class LabirintLocation extends Location{
         events.add("Exit");
 
     }
-    public void generateLabirint(){
+    public void generateLabyrinth(){
         Random randomGenerator = new Random();
         int randX = randomGenerator.nextInt(col);
         int randY = randomGenerator.nextInt(row);
@@ -95,11 +99,11 @@ public class LabirintLocation extends Location{
         int randomInt = randomGenerator.nextInt(len);
         String randId = idField.get(randomInt);
 
-        labirint[randX][randY].setId(randId);
-        labirint[randX][randY].setEvent_(events.get(4));
+        labyrinth[randX][randY].setId(randId);
+        labyrinth[randX][randY].setEvent_(events.get(4));
 
-        for(int i = 0; i < row * col; i++){
-            allGenerateLabirint();
+        for(int i = 0; i < 100; i++){
+            allGenerateLabyrinth();
         }
 
     }
@@ -155,7 +159,7 @@ public class LabirintLocation extends Location{
     private void generatingPassageWays(int x, int y){
         Random randomGenerator = new Random();
         for(int i = 0; i < SIZE_ID; i++){
-            if(checkPass(labirint[x][y].getId(), i)){
+            if(checkPass(labyrinth[x][y].getId(), i)){
                 int direction = 0;
                 int size = 0;
                 switch(i){
@@ -163,10 +167,10 @@ public class LabirintLocation extends Location{
                         direction = -1;
                         size = idSouth.size();
                         if(checkBorderX(direction, x)){
-                            if(checkWall(labirint[x + direction][y].getId())){
+                            if(checkWall(labyrinth[x + direction][y].getId())){
                                 String randId = idSouth.get(randomGenerator.nextInt(size));
-                                labirint[x + direction][y].setId(randId);
-                                labirint[x + direction][y].setEvent_(randomizeEvent());
+                                labyrinth[x + direction][y].setId(randId);
+                                labyrinth[x + direction][y].setEvent_(randomizeEvent());
                             }
                         }
                         break;
@@ -174,10 +178,10 @@ public class LabirintLocation extends Location{
                         direction = 1;
                         size = idNorth.size();
                         if(checkBorderX(direction, x)){
-                            if(checkWall(labirint[x + direction][y].getId())){
+                            if(checkWall(labyrinth[x + direction][y].getId())){
                                 String randId = idNorth.get(randomGenerator.nextInt(size));
-                                labirint[x + direction][y].setId(randId);
-                                labirint[x + direction][y].setEvent_(randomizeEvent());
+                                labyrinth[x + direction][y].setId(randId);
+                                labyrinth[x + direction][y].setEvent_(randomizeEvent());
                             }
                         }
                         break;
@@ -185,10 +189,10 @@ public class LabirintLocation extends Location{
                         direction = 1;
                         size = idWest.size();
                         if(checkBorderY(direction, y)){
-                            if(checkWall(labirint[x][y = direction].getId())){
+                            if(checkWall(labyrinth[x][y + direction].getId())){
                                 String randId = idWest.get(randomGenerator.nextInt(size));
-                                labirint[x][y + direction].setId(randId);
-                                labirint[x][y + direction].setEvent_(randomizeEvent());
+                                labyrinth[x][y + direction].setId(randId);
+                                labyrinth[x][y + direction].setEvent_(randomizeEvent());
                             }
                         }
                         break;
@@ -196,10 +200,10 @@ public class LabirintLocation extends Location{
                         direction = -1;
                         size = idEast.size();
                         if(checkBorderX(direction, y)){
-                            if(checkWall(labirint[x][y + direction].getId())){
+                            if(checkWall(labyrinth[x][y + direction].getId())){
                                 String randId = idEast.get(randomGenerator.nextInt(size));
-                                labirint[x][y + direction].setId(randId);
-                                labirint[x][y + direction].setEvent_(randomizeEvent());
+                                labyrinth[x][y + direction].setId(randId);
+                                labyrinth[x][y + direction].setEvent_(randomizeEvent());
                             }
                         }
                         break;
@@ -208,29 +212,56 @@ public class LabirintLocation extends Location{
         }
     }
 
-    private void allGenerateLabirint(){
+    private void allGenerateLabyrinth(){
         for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
-                if(!checkWall(labirint[i][j].getId())){
+                if(!checkWall(labyrinth[i][j].getId())){
                     generatingPassageWays(i, j);
                 }
             }
         }
     }
 
-    public void printLabirint(){
+    @Override
+    public void printLocation(){
         for(int i = 0; i < this.row; i++){
             System.out.println(" ");
             for(int j = 0; j < this.col; j++){
-                System.out.print(labirint[i][j].getId() + " ");
+                System.out.print(labyrinth[i][j].getId() + " ");
             }
             System.out.println(" ");
             for(int j = 0; j < this.col; j++){
-                System.out.print(labirint[i][j].getEvent_() + " ");
+                System.out.print(labyrinth[i][j].getEvent_() + " ");
             }
             System.out.println(" ");
         }
         System.out.println(" ");
         System.out.println(" ");
+    }
+
+    public boolean qualityControl(){
+        int countWall = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (labyrinth[i][j].getId() == idWall){
+                    countWall++;
+                }
+            }
+        }
+        if (countWall <= (int) ((row*col)*0.5) && existExit){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void labyrinthCleaner(){
+        existExit = false;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                labyrinth[i][j].setId(idWall);
+                labyrinth[i][j].setEvent_(events.get(0));
+            }
+        }
     }
 }

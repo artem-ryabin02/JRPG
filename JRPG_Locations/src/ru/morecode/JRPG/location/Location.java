@@ -1,3 +1,5 @@
+package ru.morecode.JRPG.location;
+
 public class Location {
 
     protected int row, col;
@@ -14,4 +16,6 @@ public class Location {
     public int getCol() {
         return col;
     }
+
+    public void printLocation(){    }
 }
