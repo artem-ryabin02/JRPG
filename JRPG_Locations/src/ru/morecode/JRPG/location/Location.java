@@ -1,6 +1,6 @@
 package ru.morecode.JRPG.location;
 
-public class Location {
+public abstract class Location {
 
     protected int row, col;
 

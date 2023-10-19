@@ -1,6 +1,6 @@
 package ru.morecode.JRPG.location;
 
-import ru.morecode.JRPG.field.LabirintField;
+import ru.morecode.JRPG.field.LabyrinthField;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -15,17 +15,17 @@ public class LabyrinthLocation extends Location{
     LinkedList<String> events = new LinkedList<>();
     final int SIZE_ID = 4;
     boolean existExit = false;
-    LabirintField[][] labyrinth;
+    LabyrinthField[][] labyrinth;
     public LabyrinthLocation(int row, int col){
         super(row, col);
 
         createId();
 
-        this.labyrinth = new LabirintField[this.row][this.col];
+        this.labyrinth = new LabyrinthField[this.row][this.col];
 
         for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
-                this.labyrinth[i][j] = new LabirintField(10, idWall, events.get(0));
+                this.labyrinth[i][j] = new LabyrinthField(10, idWall, events.get(0));
             }
         }
     }
@@ -95,8 +95,8 @@ public class LabyrinthLocation extends Location{
         Random randomGenerator = new Random();
         int randX = randomGenerator.nextInt(col);
         int randY = randomGenerator.nextInt(row);
-        int len = idField.size();
-        int randomInt = randomGenerator.nextInt(len);
+        int size = idField.size();
+        int randomInt = randomGenerator.nextInt(size);
         String randId = idField.get(randomInt);
 
         labyrinth[randX][randY].setId(randId);
