@@ -110,33 +110,25 @@ public class LabyrinthLocation extends Location{
 
     private boolean checkPass(String idField, int direction) {
         char ch = idField.charAt(direction);
-        if (ch == '1') {
-            return true;
-        } else return false;
+        return ch == '1';
     }
 
     private boolean checkBorderX(int direction, int x){
-        if((x + direction) < 0 || (x + direction) >= this.col){
-            return false;
-        } else return true;
+        return (x + direction) >= 0 && (x + direction) < this.col;
     }
 
     private boolean checkBorderY(int direction, int y){
-        if((y + direction) < 0 || (y + direction) >= this.row){
-            return false;
-        } else return true;
+        return (y + direction) >= 0 && (y + direction) < this.row;
     }
 
     private boolean checkWall(String idField){
-        if(idField == idWall){
-            return true;
-        } else return false;
+        return idField.equals(idWall);
     }
 
     private String randomizeEvent(){
         Random randomGenerator = new Random();
         int cube = randomGenerator.nextInt(100);
-        if(existExit == false){
+        if(!existExit){
             if (cube <= 80){
                 return events.get(1);
             } else if(cube <= 90){
@@ -160,8 +152,8 @@ public class LabyrinthLocation extends Location{
         Random randomGenerator = new Random();
         for(int i = 0; i < SIZE_ID; i++){
             if(checkPass(labyrinth[x][y].getId(), i)){
-                int direction = 0;
-                int size = 0;
+                int direction;
+                int size;
                 switch(i){
                     case 0:
                         direction = -1;
@@ -199,7 +191,7 @@ public class LabyrinthLocation extends Location{
                     case 3:
                         direction = -1;
                         size = idEast.size();
-                        if(checkBorderX(direction, y)){
+                        if(checkBorderY(direction, y)){
                             if(checkWall(labyrinth[x][y + direction].getId())){
                                 String randId = idEast.get(randomGenerator.nextInt(size));
                                 labyrinth[x][y + direction].setId(randId);
@@ -243,16 +235,12 @@ public class LabyrinthLocation extends Location{
         int countWall = 0;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                if (labyrinth[i][j].getId() == idWall){
+                if (labyrinth[i][j].getId().equals(idWall)){
                     countWall++;
                 }
             }
         }
-        if (countWall <= (int) ((row*col)*0.5) && existExit){
-            return true;
-        } else {
-            return false;
-        }
+        return countWall <= (int) ((row * col) * 0.5) && existExit;
     }
 
     public void labyrinthCleaner(){
