@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="335.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.morecode.jrpg.MainMenuController">
+   <children>
+      <ImageView cache="true" fitHeight="350.0" fitWidth="600.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/menu_demo.png" />
+         </image>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <Button fx:id="buttonExit" layoutX="530.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Выход" />
+      <Button fx:id="buttonLoad" layoutX="520.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Загрузить" />
+      <Button fx:id="buttonNewGame" layoutX="500.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Новая Игра" />
+   </children>
+</AnchorPane>
