@@ -6,10 +6,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="335.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.morecode.jrpg.MainMenuController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.morecode.jrpg.MainMenuController">
    <children>
-      <ImageView cache="true" fitHeight="350.0" fitWidth="600.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+      <ImageView cache="true" fitHeight="720.0" fitWidth="1720.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/menu_demo.png" />
          </image>
@@ -20,8 +21,24 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <Button fx:id="buttonExit" layoutX="530.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Выход" />
-      <Button fx:id="buttonLoad" layoutX="520.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Загрузить" />
-      <Button fx:id="buttonNewGame" layoutX="500.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Новая Игра" />
+      <VBox layoutX="1077.0" layoutY="360.0" prefHeight="180.0" prefWidth="180.0">
+         <children>
+            <VBox alignment="TOP_RIGHT" prefHeight="60.0" prefWidth="180.0">
+               <children>
+                  <Button fx:id="buttonNewGame" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Новая Игра" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_RIGHT" prefHeight="60.0" prefWidth="180.0">
+               <children>
+                  <Button fx:id="buttonLoad" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Загрузить" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_RIGHT" prefHeight="60.0" prefWidth="180.0">
+               <children>
+                  <Button fx:id="buttonExit" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Выход" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
