@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class StartScene {
 
-    FXMLLoader fxmlLoader = new FXMLLoader();;
+    FXMLLoader fxmlLoader;
     Pane root;
     Scene scene;
     Stage stage;
@@ -29,7 +29,8 @@ public class StartScene {
         scene.heightProperty().addListener(sizeListener);
     }
     public StartScene(Stage stage, String nameFXML){
-        fxmlLoader = new FXMLLoader(getClass().getResource(nameFXML));
+        fxmlLoader = new FXMLLoader();
+        this.stage = stage;
         //Вероятно проблема здесь так как при выводе location выводится null
         fxmlLoader.setLocation(getClass().getResource(nameFXML));
         System.out.println(fxmlLoader.getLocation());
