@@ -5,28 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaef9d2d-26de-4ae9-8889-a74217dd2f56" name="Changes" comment="New Final Project">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sample.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/morecode/JRPG/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/morecode/JRPG/VillageFile.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/morecode/JRPG/field/Field.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/morecode/JRPG/field/LabyrinthField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/morecode/JRPG/field/VillageField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/morecode/JRPG/location/LabyrinthLocation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/morecode/JRPG/location/Location.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/morecode/JRPG/location/VillageLocation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +21,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "IKycTI"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="369c7858-6c80-4bbd-9264-25ad925611c2" />
+        <option name="url" value="git@github.com:artem-ryabin02/JRPG.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -91,6 +84,15 @@
       <option name="presentableId" value="Default" />
       <updated>1698772043067</updated>
     </task>
+    <task id="LOCAL-00001" summary="New Final Project">
+      <option name="closed" value="true" />
+      <created>1698773798326</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698773798326</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

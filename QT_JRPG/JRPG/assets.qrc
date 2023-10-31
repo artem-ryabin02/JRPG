@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/grass_middle.png</file>
+        <file>assets/grass_water_bottom.png</file>
+        <file>assets/grass_water_corner_bottom.png</file>
+        <file>assets/grass_water_corner_top.png</file>
+        <file>assets/grass_water_side.png</file>
+        <file>assets/grass_water_top.png</file>
+        <file>assets/menu_demo.png</file>
+        <file>assets/nps_demot.png</file>
+        <file>assets/vkhod.png</file>
+        <file>assets/water.png</file>
+        <file>assets/hero.png</file>
+    </qresource>
+    <qresource prefix="/loadFiles"/>
+</RCC>
