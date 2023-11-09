@@ -5,7 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaef9d2d-26de-4ae9-8889-a74217dd2f56" name="Changes" comment="New Final Project">
+      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/background/menu_demo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/buttonAndText/exit_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/buttonAndText/load_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/buttonAndText/new_game_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/buttonAndText/title.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/fieldsVillage/grass_middle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/fieldsVillage/grass_water_bottom.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/imagebutton.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/imagebutton.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JRPG/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JRPG/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9110f782-3912-4926-89de-cde8c90afcc0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9110f782-3912-4926-89de-cde8c90afcc0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_2023_17_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_2023_17_17__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample.db" beforeDir="false" afterPath="$PROJECT_DIR$/sample.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/JRPG.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/JRPG.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/JRPG.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/JRPG.pro.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets.qrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/grass_middle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/grass_water_bottom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/grass_water_corner_bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/fieldsVillage/grass_water_corner_bottom.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/grass_water_corner_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/fieldsVillage/grass_water_corner_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/grass_water_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/fieldsVillage/grass_water_side.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/grass_water_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/fieldsVillage/grass_water_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/hero.png" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/characters/hero.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/menu_demo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/nps_demot.png" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/characters/nps_demot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/vkhod.png" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/fieldsVillage/vkhod.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/water.png" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/fieldsVillage/water.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/boardlocation.h" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/boardlocation.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/dialogwithnpc.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/dialogwithnpc.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/fieldlocation.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/fieldlocation.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/fieldlocation.h" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/fieldlocation.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/mainwindow.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/mainwindow.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,12 +56,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "IKycTI"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;IKycTI&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -43,10 +77,10 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2XXOd3Cf1IrnVqWYqKjDAUr3bij" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -57,11 +91,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "dev",
-    "last_opened_file_path": "C:/Users/Simon/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.pom",
-    "project.structure.last.edited": "Modules",
+    "last_opened_file_path": "F:/JavaLib/sqlite-jdbc-3.43.2.1.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.35402298"
+    "project.structure.side.proportion": "0.35402298",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -83,6 +123,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698772043067</updated>
+      <workItem from="1699362168308" duration="1611000" />
     </task>
     <task id="LOCAL-00001" summary="New Final Project">
       <option name="closed" value="true" />
@@ -95,9 +136,17 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="теперь для запуска сцен реализован отдельный класс" />
     <MESSAGE value="New Final Project" />
     <option name="LAST_COMMIT_MESSAGE" value="New Final Project" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Java_JRPG$Main.ic" NAME="Main Coverage Results" MODIFIED="1699363171079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.morecode.JRPG.*</FILTER>
+    </SUITE>
   </component>
 </project>

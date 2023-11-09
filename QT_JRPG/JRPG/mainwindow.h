@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QWidget>
 #include "mainwindowgame.h"
 
 QT_BEGIN_NAMESPACE
@@ -23,8 +24,13 @@ private slots:
 
     void on_buttonLoadGame_clicked();
 
+    //bool eventFilter(QObject* obj, QEvent* e);
+    void objFilter(QObject* obj);
+
 private:
     Ui::MainWindow *ui;
     MainWindowGame* mwg;
+    QWidget* w;
+
 };
 #endif // MAINWINDOW_H

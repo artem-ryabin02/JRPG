@@ -25,8 +25,7 @@ public:
 
     void updatePostion(int r, int c);
 protected:
-    //dvoid timerEvent(QTimerEvent *t_event);
-    //void keyPressEvent(QKeyEvent *event)override;
+
 private:
     QGridLayout* grid;
     FieldLocation*** fl;
@@ -54,7 +53,6 @@ private:
     void loadBoardVillage(QFile& file);
     void clearLocation();
     void initialization();
-    //void updatePostion(int r, int c);
 
 
 signals:

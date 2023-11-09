@@ -1,16 +1,29 @@
 <RCC>
-    <qresource prefix="/">
-        <file>assets/grass_middle.png</file>
-        <file>assets/grass_water_bottom.png</file>
-        <file>assets/grass_water_corner_bottom.png</file>
-        <file>assets/grass_water_corner_top.png</file>
-        <file>assets/grass_water_side.png</file>
-        <file>assets/grass_water_top.png</file>
-        <file>assets/menu_demo.png</file>
-        <file>assets/nps_demot.png</file>
-        <file>assets/vkhod.png</file>
-        <file>assets/water.png</file>
-        <file>assets/hero.png</file>
-    </qresource>
     <qresource prefix="/loadFiles"/>
+    <qresource prefix="/fileAssets"/>
+    <qresource prefix="/">
+        <file>assets/background/menu_demo.png</file>
+        <file>assets/buttonAndText/title.png</file>
+        <file>assets/buttonAndText/exit_button.png</file>
+        <file>assets/buttonAndText/load_button.png</file>
+        <file>assets/buttonAndText/new_game_button.png</file>
+        <file>assets/characters/hero.png</file>
+        <file>assets/characters/nps_demot.png</file>
+        <file>assets/fieldsVillage/grass_water_corner_bottom.png</file>
+        <file>assets/fieldsVillage/grass_water_corner_top.png</file>
+        <file>assets/fieldsVillage/grass_water_side.png</file>
+        <file>assets/fieldsVillage/grass_water_top.png</file>
+        <file>assets/fieldsVillage/vkhod.png</file>
+        <file>assets/fieldsVillage/water.png</file>
+        <file>assets/fieldsVillage/grass_middle.png</file>
+        <file>assets/fieldsVillage/grass_water_bottom.png</file>
+        <file>assets/buttonAndText/exit_button_act.png</file>
+        <file>assets/buttonAndText/load_button_act.png</file>
+        <file>assets/buttonAndText/new_game_button_act.png</file>
+        <file>assets/buttonAndText/char_list_button.png</file>
+        <file>assets/buttonAndText/char_list_button_act.png</file>
+        <file>assets/buttonAndText/inventory_button.png</file>
+        <file>assets/buttonAndText/inventory_button_act.png</file>
+        <file>assets/buttonAndText/parametrs_table.png</file>
+    </qresource>
 </RCC>

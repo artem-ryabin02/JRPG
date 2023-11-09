@@ -31,15 +31,13 @@ public:
     void setFieldName(QString fn);
     void fullSet(bool isFree, bool isNPC, bool isLab, QString flName);
     void setHero(bool f);
-    //void deleteHero();
 
     bool getFree();
     bool getNPC();
 
 protected:
     void paintEvent(QPaintEvent * pE) override;
-    //void mouseDoubleClickEvent(QMouseEvent *event) override;
-    //void keyReleaseEvent(QKeyEvent *event)override;
+
 
 private:
     int size;
@@ -49,16 +47,12 @@ private:
     bool isHero;
 
     QString fieldName;
-    //std::map<NAME_FIELD, QString> fieldName;
+
 
 
 
 signals:
-    void leftMouseDoubleClick();
-    void wPress();
-    void aPress();
-    void sPress();
-    void dPress();
+
 };
 
 #endif // FIELDLOCATION_H

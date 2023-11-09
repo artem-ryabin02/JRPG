@@ -17,49 +17,20 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="buttonNewGame">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>1620</x>
-      <y>580</y>
-      <width>270</width>
-      <height>45</height>
+      <x>39</x>
+      <y>428</y>
+      <width>582</width>
+      <height>156</height>
      </rect>
     </property>
     <property name="text">
-     <string>Начать Новую игру</string>
+     <string/>
     </property>
-   </widget>
-   <widget class="QPushButton" name="buttonLoadGame">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>1710</x>
-      <y>640</y>
-      <width>180</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Загрузить</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="buttonExit">
-    <property name="geometry">
-     <rect>
-      <x>1800</x>
-      <y>700</y>
-      <width>90</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Выход</string>
+    <property name="pixmap">
+     <pixmap resource="assets.qrc">:/assets/buttonAndText/title.png</pixmap>
     </property>
    </widget>
   </widget>
@@ -75,6 +46,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="assets.qrc"/>
+ </resources>
  <connections/>
 </ui>

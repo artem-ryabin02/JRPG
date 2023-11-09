@@ -20,7 +20,10 @@ public:
 protected:
     void keyPressEvent(QKeyEvent *event)override;
 private slots:
-    void on_pushButton_clicked();
+    void on_pushExitButton_clicked();
+    void on_pushInventoryButton_clicked();
+    void on_pushCharListButton_clicked();
+    void on_pushLoadButton_clicked();
 
 
     void receivedSignalDialogWithNPC();
@@ -30,6 +33,7 @@ private:
     Ui::MainWindowGame* ui;
     BoardLocation* bl;
     DialogWithNPC* dwNPC;
+    QWidget* w;
 signals:
     void wPress();
     void aPress();

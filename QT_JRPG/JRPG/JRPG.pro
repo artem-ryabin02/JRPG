@@ -12,6 +12,7 @@ SOURCES += \
     boardlocation.cpp \
     dialogwithnpc.cpp \
     fieldlocation.cpp \
+    imagebutton.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindowgame.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     boardlocation.h \
     dialogwithnpc.h \
     fieldlocation.h \
+    imagebutton.h \
     mainwindow.h \
     mainwindowgame.h
 
