@@ -3,10 +3,6 @@
     <qresource prefix="/fileAssets"/>
     <qresource prefix="/">
         <file>assets/background/menu_demo.png</file>
-        <file>assets/buttonAndText/title.png</file>
-        <file>assets/buttonAndText/exit_button.png</file>
-        <file>assets/buttonAndText/load_button.png</file>
-        <file>assets/buttonAndText/new_game_button.png</file>
         <file>assets/characters/hero.png</file>
         <file>assets/characters/nps_demot.png</file>
         <file>assets/fieldsVillage/grass_water_corner_bottom.png</file>
@@ -17,13 +13,30 @@
         <file>assets/fieldsVillage/water.png</file>
         <file>assets/fieldsVillage/grass_middle.png</file>
         <file>assets/fieldsVillage/grass_water_bottom.png</file>
-        <file>assets/buttonAndText/exit_button_act.png</file>
-        <file>assets/buttonAndText/load_button_act.png</file>
-        <file>assets/buttonAndText/new_game_button_act.png</file>
-        <file>assets/buttonAndText/char_list_button.png</file>
-        <file>assets/buttonAndText/char_list_button_act.png</file>
-        <file>assets/buttonAndText/inventory_button.png</file>
-        <file>assets/buttonAndText/inventory_button_act.png</file>
-        <file>assets/buttonAndText/parametrs_table.png</file>
+        <file>assets/PressStart2P-Regular.ttf</file>
+        <file>assets/buttonAndText/Game/char_list_button.png</file>
+        <file>assets/buttonAndText/Game/char_list_button_act.png</file>
+        <file>assets/buttonAndText/Game/exit_button.png</file>
+        <file>assets/buttonAndText/Game/exit_button_act.png</file>
+        <file>assets/buttonAndText/Game/inventory_button.png</file>
+        <file>assets/buttonAndText/Game/inventory_button_act.png</file>
+        <file>assets/buttonAndText/Game/load_button.png</file>
+        <file>assets/buttonAndText/Game/load_button_act.png</file>
+        <file>assets/buttonAndText/Game/parametrs_table.png</file>
+        <file>assets/buttonAndText/mainMenu/exit_button.png</file>
+        <file>assets/buttonAndText/mainMenu/exit_button_act.png</file>
+        <file>assets/buttonAndText/mainMenu/load_button.png</file>
+        <file>assets/buttonAndText/mainMenu/load_button_act.png</file>
+        <file>assets/buttonAndText/mainMenu/new_game_button.png</file>
+        <file>assets/buttonAndText/mainMenu/new_game_button_act.png</file>
+        <file>assets/buttonAndText/mainMenu/title.png</file>
+        <file>assets/buttonAndText/Talking/bunny_text.png</file>
+        <file>assets/buttonAndText/Talking/goodbye.png</file>
+        <file>assets/buttonAndText/Talking/goodbye_act.png</file>
+        <file>assets/buttonAndText/Talking/hero_text.png</file>
+        <file>assets/buttonAndText/Talking/quest.png</file>
+        <file>assets/buttonAndText/Talking/quest_act.png</file>
+        <file>assets/buttonAndText/Talking/trade.png</file>
+        <file>assets/buttonAndText/Talking/trade_act.png</file>
     </qresource>
 </RCC>

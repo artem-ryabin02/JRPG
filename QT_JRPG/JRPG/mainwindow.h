@@ -3,7 +3,10 @@
 
 #include <QMainWindow>
 #include <QWidget>
-#include "mainwindowgame.h"
+#include "game.h"
+#include "mainmenu.h"
+#include "talkingwithnpc.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,14 +26,24 @@ private slots:
     void on_buttonNewGame_clicked();
 
     void on_buttonLoadGame_clicked();
+    void on_buttonInvetory_clicked();
+    void on_buttonCharList_clicked();
+    void recTalk();
+    void recGoodbye();
 
-    //bool eventFilter(QObject* obj, QEvent* e);
-    void objFilter(QObject* obj);
 
+protected:
+    void keyPressEvent(QKeyEvent *event);
 private:
     Ui::MainWindow *ui;
-    MainWindowGame* mwg;
-    QWidget* w;
+    MainMenu* wmm;
+    Game* wg;
+    TalkingWithNPC* twn;
+signals:
+    void wPress();
+    void aPress();
+    void sPress();
+    void dPress();
 
 };
 #endif // MAINWINDOW_H

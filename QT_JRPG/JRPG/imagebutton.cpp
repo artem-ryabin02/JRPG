@@ -22,7 +22,6 @@ QSize ImageButton::sizeHint() const
 void ImageButton::paintEvent(QPaintEvent *e)
 {
     Q_UNUSED(e);
-    qDebug() << "paint event\n";
     QPainter p( this );
     p.drawPixmap( 0, 0, pixmap );
 }
@@ -31,12 +30,10 @@ bool ImageButton::eventFilter(QObject *obj, QEvent *e)
 {
     Q_UNUSED(obj);
     if (e->type() == QEvent::HoverEnter) {
-        qDebug() << "hover enter event\n";
         StartHoverEnterAnimation();
     }
 
     if (e->type() == QEvent::HoverLeave) {
-        qDebug() << "hover leave event\n";
         StartHoverLeaveAnimation();
     }
 

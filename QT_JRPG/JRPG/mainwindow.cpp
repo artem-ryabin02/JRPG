@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "imagebutton.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -7,6 +6,17 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->centralwidget->setContentsMargins(0,0,0,0);
+
+
+    wmm = new MainMenu(ui->centralwidget);
+    //wmm->setHidden(true);
+
+    wg = new Game(ui->centralwidget);
+    wg->setHidden(true);
+
+    twn = new TalkingWithNPC(ui->centralwidget);
+    twn->setHidden(true);
 
 
 
@@ -15,34 +25,27 @@ MainWindow::MainWindow(QWidget *parent)
     QPalette p = palette();
     p.setBrush(QPalette::Window, bkgnd);
     setPalette(p);
-    w = new QWidget(ui->centralwidget);
-    w->setObjectName("containerWidget");
-    w->setLayout(new QVBoxLayout);
-    w->setGeometry(1488, 435, 375, 250);
-    ImageButton* nbg = new ImageButton(":/assets/buttonAndText/new_game_button.png");
-    nbg->setObjectName("newGameB");
-    nbg->setCursor(Qt::CursorShape::PointingHandCursor);
-    w->layout()->addWidget(nbg);
-    w->layout()->setAlignment(nbg, Qt::AlignHCenter);
-    ImageButton* lbg = new ImageButton(":/assets/buttonAndText/load_button.png");
-    lbg->setObjectName("loadGameB");
-    lbg->setCursor(Qt::CursorShape::PointingHandCursor);
-    w->layout()->addWidget(lbg);
-    w->layout()->setAlignment(lbg, Qt::AlignHCenter);
-    ImageButton* ebg = new ImageButton(":/assets/buttonAndText/exit_button.png");
-    ebg->setObjectName("exitGameB");
-    ebg->setCursor(Qt::CursorShape::PointingHandCursor);
-    w->layout()->addWidget(ebg);
-    w->layout()->setAlignment(ebg, Qt::AlignHCenter);
-    connect(nbg, &ImageButton::clicked, this, &MainWindow::on_buttonNewGame_clicked);
-    connect(lbg, &ImageButton::clicked, this, &MainWindow::on_buttonLoadGame_clicked);
-    connect(ebg, &ImageButton::clicked, this, &MainWindow::on_buttonExit_clicked);
+
+    connect(wmm, &MainMenu::newGame, this, &MainWindow::on_buttonNewGame_clicked);
+    connect(wmm, &MainMenu::loadGame, this, &MainWindow::on_buttonLoadGame_clicked);
+    connect(wmm, &MainMenu::exit, this, &MainWindow::on_buttonExit_clicked);
+
+    connect(wg, &Game::loadGame, this, &MainWindow::on_buttonLoadGame_clicked);
+    connect(wg, &Game::inventory, this, &MainWindow::on_buttonInvetory_clicked);
+    connect(wg, &Game::charList, this, &MainWindow::on_buttonCharList_clicked);
+    connect(wg, &Game::exit, this, &MainWindow::on_buttonExit_clicked);
+    connect(wg, &Game::talkWithNPC, this, &MainWindow::recTalk);
+
+    connect(twn, &TalkingWithNPC::exitFromTWNPC, this, &MainWindow::recGoodbye);
 
 
 
+    connect(this, &MainWindow::wPress, wg, &Game::recaivedNorth);
+    connect(this, &MainWindow::aPress, wg, &Game::recaivedWest);
+    connect(this, &MainWindow::sPress, wg, &Game::recaivedSouth);
+    connect(this, &MainWindow::dPress, wg, &Game::recaivedEast);
 
 
-    mwg = new MainWindowGame();
 
 
 }
@@ -50,11 +53,28 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete mwg;
-    delete w;
+    delete wmm;
+    delete twn;
 }
 
-
+void MainWindow::keyPressEvent(QKeyEvent *event){
+    switch (event->key()) {
+    case Qt::Key_W:
+        emit wPress();
+        break;
+    case Qt::Key_A:
+        emit aPress();
+        break;
+    case Qt::Key_S:
+        emit sPress();
+        break;
+    case Qt::Key_D:
+        emit dPress();
+        break;
+    default:
+        break;
+    }
+}
 
 void MainWindow::on_buttonExit_clicked()
 {
@@ -65,8 +85,9 @@ void MainWindow::on_buttonExit_clicked()
 void MainWindow::on_buttonNewGame_clicked()
 {
 
-    this->close();
-    mwg->showFullScreen();
+    wmm->setHidden(true);
+    wg->setHidden(false);
+
 }
 
 
@@ -75,17 +96,29 @@ void MainWindow::on_buttonLoadGame_clicked()
     ui->statusbar->showMessage("ПОКА НЕ РАБОТАЕТ", 2000);
 }
 
-void MainWindow::objFilter(QObject *obj)
+void MainWindow::on_buttonInvetory_clicked()
 {
-    if (obj->objectName() == "newGameB"){
-        on_buttonNewGame_clicked();
-    }
-    if (obj->objectName() == "loadGameB"){
-        on_buttonLoadGame_clicked();
-    }
-    if (obj->objectName() == "exitGameB"){
-        on_buttonExit_clicked();
-    }
+    ui->statusbar->showMessage("ПОКА НЕ РАБОТАЕТ", 2000);
 }
+
+void MainWindow::on_buttonCharList_clicked()
+{
+    ui->statusbar->showMessage("ПОКА НЕ РАБОТАЕТ", 2000);
+}
+
+void MainWindow::recTalk()
+{
+    wg->setHidden(true);
+    //_sleep(1000);
+    twn->setHidden(false);
+}
+
+void MainWindow::recGoodbye()
+{
+    wg->setHidden(false);
+    //_sleep(1000);
+    twn->setHidden(true);
+}
+
 
 

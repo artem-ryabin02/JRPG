@@ -10,25 +10,26 @@ CONFIG += c++17
 
 SOURCES += \
     boardlocation.cpp \
-    dialogwithnpc.cpp \
     fieldlocation.cpp \
+    game.cpp \
     imagebutton.cpp \
     main.cpp \
+    mainmenu.cpp \
     mainwindow.cpp \
-    mainwindowgame.cpp
+    talkingwithnpc.cpp
 
 HEADERS += \
     boardlocation.h \
-    dialogwithnpc.h \
     fieldlocation.h \
+    game.h \
     imagebutton.h \
+    imagebutton_копия.h \
+    mainmenu.h \
     mainwindow.h \
-    mainwindowgame.h
+    talkingwithnpc.h
 
 FORMS += \
-    dialogwithnpc.ui \
-    mainwindow.ui \
-    mainwindowgame.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
