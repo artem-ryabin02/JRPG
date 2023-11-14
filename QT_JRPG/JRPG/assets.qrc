@@ -38,5 +38,6 @@
         <file>assets/buttonAndText/Talking/quest_act.png</file>
         <file>assets/buttonAndText/Talking/trade.png</file>
         <file>assets/buttonAndText/Talking/trade_act.png</file>
+        <file>assets/VillageFile.txt</file>
     </qresource>
 </RCC>

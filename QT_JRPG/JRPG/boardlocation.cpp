@@ -5,7 +5,7 @@ BoardLocation::BoardLocation(QWidget* parent)
 {
     grid = new QGridLayout(this);
     grid->setSpacing(0);
-    QFile file("F:/MyPrograms/JRPG/VillageFile.txt");
+    QFile file(":/assets/VillageFile.txt");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
         exit(-1);
     }

@@ -22,7 +22,6 @@ void GeneratorLabyrinth::generateLabyrinth()
     int randX = QRandomGenerator::global()->bounded(row-1);
     int randY = QRandomGenerator::global()->bounded(col-1);
     int size = idField.size();
-   // qDebug()<< size << "\n";
     int randomInt = QRandomGenerator::global()->bounded(size-1);
     QString randId = idField[randomInt];
 
@@ -67,13 +66,13 @@ bool GeneratorLabyrinth::checkPass(QString idField, int direction)
 
 bool GeneratorLabyrinth::checkBorderX(int direction, int x)
 {
-    qDebug() << x + direction<< "\n";
+
     return ((x + direction) >= 0 && (x + direction) < this->col);
 }
 
 bool GeneratorLabyrinth::checkBorderY(int direction, int y)
 {
-    qDebug() << y + direction<< "\n";
+
     return ((y + direction) >= 0 && (y + direction) < this->row);
 }
 
@@ -127,7 +126,7 @@ void GeneratorLabyrinth::generatingPassageWays(int x, int y)
             case 1:
                 direction = 1;
                 size = idNorth.size();
-                qDebug() << " x+1 " << "\n";
+
                 if(checkBorderX(direction, x)){
                     if(checkWall(tmpData[x + direction][y].getId())){
                         QString randId = idNorth[QRandomGenerator::global()->bounded(size-1)];
@@ -138,7 +137,7 @@ void GeneratorLabyrinth::generatingPassageWays(int x, int y)
             case 2:
                 direction = 1;
                 size = idWest.size();
-                qDebug() << " y+1 " << "\n";
+
                 if(checkBorderY(direction, y)){
                     if(checkWall(tmpData[x][y + direction].getId())){
                         QString randId = idWest[QRandomGenerator::global()->bounded(size-1)];
@@ -149,7 +148,7 @@ void GeneratorLabyrinth::generatingPassageWays(int x, int y)
             case 3:
                 direction = -1;
                 size = idSouth.size();
-                qDebug() << " y-1 " << "\n";
+
                 if(checkBorderY(direction, y)){
 
                     if(checkWall(tmpData[x][y + direction].getId())){
@@ -162,7 +161,6 @@ void GeneratorLabyrinth::generatingPassageWays(int x, int y)
 
         }
     }
-    qDebug() << "end " << "\n";
 }
 
 void GeneratorLabyrinth::allGenerateLabyrinth()
