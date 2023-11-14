@@ -34,9 +34,9 @@ private:
     int xHero = 3;
     int yHero = 1;
 
-    int xEnd;
-    int yEnd;
-    int timerId;
+
+
+
 
     std::map<NAME_FIELD, QString> fieldName ={
         {NAME_FIELD::GRASS, "grass_middle.png"},
@@ -51,12 +51,12 @@ private:
     };
 
     void loadBoardVillage(QFile& file);
-    void clearLocation();
     void initialization();
 
 
 signals:
     void signalDialogWithNPC();
+    void signalEntryLabyrinth();
 };
 
 #endif // BOARDLOCATION_H

@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "boardlabyrinth.h"
 #include "boardlocation.h"
 #include "imagebutton.h"
 #include <QObject>
@@ -23,6 +24,9 @@ private slots:
     void receivedSignalDialogWithNPC();
     void receivedSignalExitDialogWithNPC();
 
+    void receivedSignalEntryLab();
+    void receivedSignalExitLab();
+
 public slots:
     void recaivedSouth();
     void recaivedNorth();
@@ -32,7 +36,9 @@ public slots:
 
 private:
     BoardLocation* bl;
+    BoardLabyrinth* blb;
     QWidget* wBoard;
+    QWidget* wBoardLab;
     QWidget* wHPMP;
     QWidget* wParametrs;
     QWidget* wButtoms;

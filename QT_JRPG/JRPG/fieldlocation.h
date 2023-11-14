@@ -35,6 +35,8 @@ public:
     bool getFree();
     bool getNPC();
 
+    bool getIsLabyrinth() const;
+
 protected:
     void paintEvent(QPaintEvent * pE) override;
 

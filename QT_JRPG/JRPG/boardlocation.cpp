@@ -4,8 +4,7 @@ BoardLocation::BoardLocation(QWidget* parent)
     : QWidget{parent}
 {
     grid = new QGridLayout(this);
-    grid->setVerticalSpacing(0);
-    grid->setHorizontalSpacing(0);
+    grid->setSpacing(0);
     QFile file("F:/MyPrograms/JRPG/VillageFile.txt");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
         exit(-1);
@@ -69,6 +68,7 @@ void BoardLocation::loadBoardVillage(QFile& file){
     }
 }
 
+
 void BoardLocation::initialization(){
     for (int r = 0; r < rows; r++){
         for(int c = 0; c < cols; c++){
@@ -89,8 +89,10 @@ void BoardLocation::updatePostion(int r, int c){
             yHero = yNew;
         }
         if (fl[xNew][yNew]->getNPC()){
-            //this->window()->setEnabled(false);
             emit signalDialogWithNPC();
+        }
+        if (fl[xNew][yNew]->getIsLabyrinth()){
+            emit signalEntryLabyrinth();
         }
     }
 }

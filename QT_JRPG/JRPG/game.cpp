@@ -10,6 +10,15 @@ Game::Game(QWidget *parent)
     wBoard->setGeometry(0, 0, 1080, 1080);
     bl = new BoardLocation(wBoard);
     bl->rescale(wBoard->height());
+    wBoardLab = new QWidget(parent);
+    wBoardLab->setObjectName("boardLabWidget");
+    wBoardLab->setLayout(new QVBoxLayout);
+    wBoardLab->setGeometry(0, 0, 1080, 1080);
+    blb = new BoardLabyrinth(wBoardLab);
+    blb->rescale(wBoard->height());
+    if (!wBoardLab->isHidden()){
+        wBoardLab->setHidden(true);
+    }
 
     wButtoms = new QWidget(parent);
     wButtoms->setObjectName("buttomsWidget");
@@ -111,8 +120,8 @@ Game::Game(QWidget *parent)
 
 
    connect(bl, &BoardLocation::signalDialogWithNPC, this, &Game::receivedSignalDialogWithNPC);
+   connect(bl, &BoardLocation::signalEntryLabyrinth, this, &Game::receivedSignalEntryLab);
 
-//    connect(dwNPC, &DialogWithNPC::exitSignal, this, &MainWindowGame::receivedSignalExitDialogWithNPC);
 
 }
 
@@ -126,6 +135,9 @@ Game::~Game()
 void Game::setHidden(bool hidden)
 {
     wBoard->setHidden(hidden);
+    if (!wBoardLab->isHidden()){
+        wBoardLab->setHidden(hidden);
+    }
     wHPMP->setHidden(hidden);
     wButtoms->setHidden(hidden);
     lblAgl->setHidden(hidden);
@@ -165,6 +177,18 @@ void Game::receivedSignalDialogWithNPC()
 void Game::receivedSignalExitDialogWithNPC()
 {
 
+}
+
+void Game::receivedSignalEntryLab()
+{
+    wBoard->setHidden(true);
+    wBoardLab->setHidden(false);
+}
+
+void Game::receivedSignalExitLab()
+{
+    wBoard->setHidden(false);
+    wBoardLab->setHidden(true);
 }
 
 void Game::recaivedSouth()

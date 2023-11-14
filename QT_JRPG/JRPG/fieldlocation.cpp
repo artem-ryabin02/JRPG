@@ -32,6 +32,11 @@ void FieldLocation::paintEvent(QPaintEvent * pE){
 
 }
 
+bool FieldLocation::getIsLabyrinth() const
+{
+    return isLabyrinth;
+}
+
 void FieldLocation::rescale(int _size){
     size = _size;
     repaint();

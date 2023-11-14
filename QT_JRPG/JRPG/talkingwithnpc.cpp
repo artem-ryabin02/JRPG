@@ -5,6 +5,9 @@ TalkingWithNPC::TalkingWithNPC(QWidget *parent)
     : QWidget{parent}
 {
 
+//    int id = QFontDatabase::addApplicationFont(":/fonts/monospace.ttf");
+//    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+//    QFont monospace(family);
     QFont textFont("Stencil", 36);
     panelText = new QWidget(parent);
     panelText->setObjectName("panelTextWidget");
