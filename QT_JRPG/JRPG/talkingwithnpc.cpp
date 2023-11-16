@@ -15,8 +15,8 @@ TalkingWithNPC::TalkingWithNPC(QWidget *parent)
     panelText->setGeometry(0, 600, 1920, 440);
     panelText->setStyleSheet("background-color: rgb(115, 115, 115);");
 
-    QLabel* h = new QLabel();
-    QLabel* n = new QLabel();
+    h = new QLabel();
+    n = new QLabel();
     h->setPixmap(QPixmap(":/assets/buttonAndText/Talking/hero_text.png"));
     n->setPixmap(QPixmap(":/assets/buttonAndText/Talking/bunny_text.png"));
     h->setFixedHeight(50);
@@ -82,6 +82,13 @@ TalkingWithNPC::TalkingWithNPC(QWidget *parent)
     connect(tb, &ImageButton::clicked, this, &TalkingWithNPC::onClickedTrade);
 
 
+}
+
+TalkingWithNPC::~TalkingWithNPC()
+{
+    delete panelText;
+    delete wNPC;
+    delete wHero;
 }
 
 void TalkingWithNPC::setHidden(bool hidden)

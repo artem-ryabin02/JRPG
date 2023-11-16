@@ -1,11 +1,30 @@
 #include "imagebutton.h"
 
+#include <QSoundEffect>
+
+
+
 
 ImageButton::ImageButton(QString namePXM)
 {
     namePixmap = namePXM;
     setPixmap(QPixmap(namePixmap));
     installEventFilter(this);
+
+    // its worked
+    //static const QString SND_FILE_NAME = QDir::currentPath()+ "/music/button_click.wav";
+    player = new QMediaPlayer();
+    ao = new QAudioOutput();
+    ao->setVolume(50);
+    player->setSource(QUrl::fromLocalFile(QDir::currentPath()+ "/music/button_click.wav"));
+    player->setAudioOutput(ao);
+
+}
+
+ImageButton::~ImageButton()
+{
+    delete player;
+    delete ao;
 }
 
 void ImageButton::setPixmap(const QPixmap &pm)
@@ -42,6 +61,7 @@ bool ImageButton::eventFilter(QObject *obj, QEvent *e)
 
 void ImageButton::StartHoverEnterAnimation()
 {
+    player->play();
     int pos = namePixmap.lastIndexOf(QChar('.'));
     QString namePixmapAct = namePixmap.left(pos) + "_act.png";
     setPixmap(namePixmapAct);

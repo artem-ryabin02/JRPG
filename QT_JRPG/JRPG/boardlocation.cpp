@@ -13,7 +13,11 @@ BoardLocation::BoardLocation(QWidget* parent)
     file.close();
     initialization();
 
-
+    player = new QMediaPlayer();
+    ao = new QAudioOutput();
+    ao->setVolume(50);
+    player->setSource(QUrl::fromLocalFile(QDir::currentPath()+ "/music/sound_steps_on_village.wav"));
+    player->setAudioOutput(ao);
 
 
 }
@@ -83,6 +87,7 @@ void BoardLocation::updatePostion(int r, int c){
     int yNew = yHero + c;
     if ((xNew >= 0 && yNew >= 0) && (xNew < rows && yNew < cols)){
         if(fl[xNew][yNew]->getFree()){
+            player->play();
             fl[xHero][yHero]->setHero(false);
             fl[xNew][yNew]->setHero(true);
             xHero = xNew;
@@ -95,6 +100,7 @@ void BoardLocation::updatePostion(int r, int c){
             emit signalEntryLabyrinth();
         }
     }
+
 }
 
 void BoardLocation::rescale(int _size){

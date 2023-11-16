@@ -45,6 +45,11 @@ void FieldLabyrinth::paintEvent(QPaintEvent *pE)
 
 }
 
+int FieldLabyrinth::getSize() const
+{
+        return size;
+}
+
 
 void FieldLabyrinth::setDirections(QString id)
 {

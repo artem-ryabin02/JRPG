@@ -7,6 +7,10 @@
 #include <QFile>
 #include <map>
 #include <QProcess>
+#include <QMediaPlayer>
+#include <QAudioOutput>
+#include <QDir>
+
 #include "fieldlocation.h"
 
 enum class NAME_OBJECT{
@@ -29,6 +33,8 @@ protected:
 private:
     QGridLayout* grid;
     FieldLocation*** fl;
+    QMediaPlayer *player;
+    QAudioOutput* ao;
     int cols = 7;
     int rows = 7;
     int xHero = 3;

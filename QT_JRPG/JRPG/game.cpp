@@ -12,7 +12,7 @@ Game::Game(QWidget *parent)
     bl->rescale(wBoard->height());
     wBoardLab = new QWidget(parent);
     wBoardLab->setObjectName("boardLabWidget");
-    wBoardLab->setLayout(new QVBoxLayout);
+    wBoardLab->setLayout(new QGridLayout);
     wBoardLab->setGeometry(0, 0, 1080, 1080);
     blb = new BoardLabyrinth(wBoardLab);
     blb->rescale(wBoard->height());

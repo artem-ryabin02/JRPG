@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QWidget>
+#include <QDir>
 #include "game.h"
 #include "mainmenu.h"
 #include "talkingwithnpc.h"
@@ -39,6 +40,8 @@ private:
     MainMenu* wmm;
     Game* wg;
     TalkingWithNPC* twn;
+
+    void loadSouns();
 signals:
     void wPress();
     void aPress();

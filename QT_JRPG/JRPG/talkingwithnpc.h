@@ -12,11 +12,14 @@ class TalkingWithNPC : public QWidget
     Q_OBJECT
 public:
     explicit TalkingWithNPC(QWidget *parent = nullptr);
+    ~TalkingWithNPC();
     void setHidden(bool hidden);
 private:
     QWidget* panelText;
     QWidget* wNPC;
     QWidget* wHero;
+    QLabel* h;
+    QLabel* n;
     QLabel* lblNPC;
     QLabel* lblHero;
     QTextEdit* monolog;

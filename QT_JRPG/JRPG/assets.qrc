@@ -39,5 +39,8 @@
         <file>assets/buttonAndText/Talking/trade.png</file>
         <file>assets/buttonAndText/Talking/trade_act.png</file>
         <file>assets/VillageFile.txt</file>
+        <file>assets/music/button_click.wav</file>
+        <file>assets/music/sound_steps_on_labyrinth.wav</file>
+        <file>assets/music/sound_steps_on_village.wav</file>
     </qresource>
 </RCC>

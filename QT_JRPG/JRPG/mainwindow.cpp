@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->centralwidget->setContentsMargins(0,0,0,0);
 
+    loadSouns();
+
 
     wmm = new MainMenu(ui->centralwidget);
     //wmm->setHidden(true);
@@ -73,6 +75,53 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
         break;
     default:
         break;
+    }
+}
+
+void MainWindow::loadSouns()
+{
+    QDir dirMusic;
+    if (!dirMusic.exists("music")){
+        dirMusic.mkdir("music");
+    }
+    static const QString SND_FILE_BUTTTON = "button_click.wav";
+    static const QString SND_FILE_STEPS_V = "sound_steps_on_village.wav";
+    static const QString SND_FILE_STEPS_L = "sound_steps_on_labyrinth.wav";
+    static const QString SND_FILE_PATH = QDir::currentPath() + "/music/";
+    QString SND_FILE_NAME = SND_FILE_PATH + SND_FILE_BUTTTON;
+
+    QFile outB( SND_FILE_NAME );
+    if( !outB.exists() ) {
+        QFile in( ":/assets/music/" + SND_FILE_BUTTTON );
+
+        if (in.copy(SND_FILE_NAME))
+        {
+            qDebug() << "true";
+        }
+        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
+    }
+    SND_FILE_NAME = SND_FILE_PATH + SND_FILE_STEPS_V;
+    QFile outSV( SND_FILE_NAME );
+    if( !outSV.exists() ) {
+        QFile in( ":/assets/music/" + SND_FILE_STEPS_V );
+
+        if (in.copy(SND_FILE_NAME))
+        {
+            qDebug() << "true";
+        }
+        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
+
+    }
+    SND_FILE_NAME = SND_FILE_PATH + SND_FILE_STEPS_L;
+    QFile outSL( SND_FILE_NAME );
+    if( !outSL.exists() ) {
+        QFile in( ":/assets/music/" + SND_FILE_STEPS_L );
+
+        if (in.copy(SND_FILE_NAME))
+        {
+            qDebug() << "true";
+        }
+        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
     }
 }
 

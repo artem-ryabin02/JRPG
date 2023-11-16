@@ -51,6 +51,8 @@ public:
     void setHero(bool flag);
 
 
+    int getSize() const;
+
 protected:
     void paintEvent(QPaintEvent * pE) override;
 private:
