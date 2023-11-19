@@ -1,6 +1,8 @@
 #ifndef SKILL_H
 #define SKILL_H
 
+#include "effect.h"
+
 #include <QString>
 
 class Skill

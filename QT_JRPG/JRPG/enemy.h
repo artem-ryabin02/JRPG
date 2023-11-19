@@ -3,6 +3,8 @@
 
 #include "character.h"
 
+#include "skill.h"
+
 #include <QRandomGenerator>
 
 class Enemy : public Character
