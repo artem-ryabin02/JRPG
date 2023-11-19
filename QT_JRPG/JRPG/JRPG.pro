@@ -14,28 +14,40 @@ CONFIG += c++17
 SOURCES += \
     boardlabyrinth.cpp \
     boardlocation.cpp \
+    character.cpp \
+    effect.cpp \
+    enemy.cpp \
     fieldlabyrinth.cpp \
     fieldlocation.cpp \
     game.cpp \
     generatorlabyrinth.cpp \
+    hero.cpp \
     imagebutton.cpp \
+    item.cpp \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
+    skill.cpp \
     talkingwithnpc.cpp \
     tmpdata.cpp
 
 HEADERS += \
     boardlabyrinth.h \
     boardlocation.h \
+    character.h \
+    effect.h \
+    enemy.h \
     fieldlabyrinth.h \
     fieldlocation.h \
     game.h \
     generatorlabyrinth.h \
+    hero.h \
     imagebutton.h \
     imagebutton_копия.h \
+    item.h \
     mainmenu.h \
     mainwindow.h \
+    skill.h \
     talkingwithnpc.h \
     tmpdata.h
 
