@@ -182,31 +182,53 @@ void Game::receivedSignalExitDialogWithNPC()
 void Game::receivedSignalEntryLab()
 {
     wBoard->setHidden(true);
+    wBoard->setDisabled(true);
     wBoardLab->setHidden(false);
 }
 
 void Game::receivedSignalExitLab()
 {
     wBoard->setHidden(false);
+    wBoard->setDisabled(false);
     wBoardLab->setHidden(true);
 }
 
 void Game::recaivedSouth()
 {
-    bl->updatePostion(1, 0);
+    if (!wBoard->isHidden()){
+        bl->updatePostion(1, 0);
+    }
+    if (!wBoardLab->isHidden()){
+        blb->updatePostion(1, 0);
+    }
 }
 
 void Game::recaivedNorth()
 {
-    bl->updatePostion(-1, 0);
+    if (!wBoard->isHidden()){
+        bl->updatePostion(-1, 0);
+    }
+    if (!wBoardLab->isHidden()){
+        blb->updatePostion(-1, 0);
+    }
 }
 
 void Game::recaivedEast()
 {
-    bl->updatePostion(0, 1);
+    if (!wBoard->isHidden()){
+        bl->updatePostion(0, 1);
+    }
+    if (!wBoardLab->isHidden()){
+        blb->updatePostion(0, 1);
+    }
 }
 
 void Game::recaivedWest()
 {
-    bl->updatePostion(0, -1);
+    if (!wBoard->isHidden()){
+        bl->updatePostion(0, -1);
+    }
+    if (!wBoardLab->isHidden()){
+        blb->updatePostion(0, -1);
+    }
 }

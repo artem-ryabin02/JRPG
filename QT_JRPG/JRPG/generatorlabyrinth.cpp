@@ -85,22 +85,22 @@ QString GeneratorLabyrinth::randomizeEvent()
 {
     int cube = QRandomGenerator::global()->bounded(100);
     if(!boss){
-        if (cube <= 80){
+        if (cube <= 70){
             return nameEv[1];
-        } else if(cube <= 90){
-            return nameEv[3];
-        } else if(cube <= 95){
+        } else if(cube <= 80){
             return nameEv[2];
+        } else if(cube <= 95){
+            return nameEv[3];
         } else {
             boss = true;
             return nameEv[4];
         }
     } else {
-        if (cube <= 80) {
+        if (cube <= 70) {
             return nameEv[1];
-        } else if (cube <= 90) {
-            return nameEv[3];
-        } else return nameEv[2];
+        } else if (cube <= 80) {
+            return nameEv[2];
+        } else return nameEv[3];
     }
 }
 

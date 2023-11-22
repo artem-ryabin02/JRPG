@@ -42,5 +42,25 @@
         <file>assets/music/button_click.wav</file>
         <file>assets/music/sound_steps_on_labyrinth.wav</file>
         <file>assets/music/sound_steps_on_village.wav</file>
+        <file>assets/fieldsLabyrinth/E.png</file>
+        <file>assets/fieldsLabyrinth/N.png</file>
+        <file>assets/fieldsLabyrinth/NS.png</file>
+        <file>assets/fieldsLabyrinth/NSE.png</file>
+        <file>assets/fieldsLabyrinth/NSW.png</file>
+        <file>assets/fieldsLabyrinth/NSWE.png</file>
+        <file>assets/fieldsLabyrinth/NW.png</file>
+        <file>assets/fieldsLabyrinth/NWE.png</file>
+        <file>assets/fieldsLabyrinth/S.png</file>
+        <file>assets/fieldsLabyrinth/SE.png</file>
+        <file>assets/fieldsLabyrinth/SW.png</file>
+        <file>assets/fieldsLabyrinth/SWE.png</file>
+        <file>assets/fieldsLabyrinth/W.png</file>
+        <file>assets/fieldsLabyrinth/WALL.png</file>
+        <file>assets/fieldsLabyrinth/WE.png</file>
+        <file>assets/fieldsLabyrinth/NE.png</file>
+        <file>assets/labyrinthEvent/boss.png</file>
+        <file>assets/labyrinthEvent/chest.png</file>
+        <file>assets/labyrinthEvent/enemy.png</file>
+        <file>assets/labyrinthEvent/entry.png</file>
     </qresource>
 </RCC>

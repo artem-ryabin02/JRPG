@@ -4,7 +4,7 @@
 FieldLabyrinth::FieldLabyrinth(QWidget *parent)
     : QWidget{parent}
 {
-    size = parent->height()/7;
+    size = parent->height()/10;
     hero = false;
     this->east = false;
     this->west = false;
@@ -28,20 +28,38 @@ void FieldLabyrinth::paintEvent(QPaintEvent *pE)
     Q_UNUSED(pE);
     QPainter p(this);
     p.setRenderHint(QPainter::Antialiasing, true);
-    //    QPixmap pMap(":/assets/fieldsVillage/"+fieldName);
-    //    p.drawPixmap(0, 0, size, size, pMap);
-    //    if (isNPC){
-    //        int shift = 0.05*size;
-    //        int sz = size - 2*shift;
-    //        QPixmap pMap(":/assets/characters/nps_demot.png");
-    //        p.drawPixmap(shift, shift, sz, sz, pMap);
-    //    }
-        if (hero){
-            int shift = 0.05*size;
-            int sz = size - 2*shift;
-            QPixmap pMap(":/assets/characters/hero.png");
-            p.drawPixmap(shift, shift, sz, sz, pMap);
-        }
+    QPixmap pMap(":/assets/fieldsLabyrinth/"+nameField);
+    p.drawPixmap(0, 0, size, size, pMap);
+    if (eventBoss){
+        int shift = 0.25*size;
+        int sz = size - 2*shift;
+        QPixmap pMap(":/assets/labyrinthEvent/boss.png");
+        p.drawPixmap(shift, shift, sz, sz, pMap);
+    }
+    if (eventChest){
+        int shift = 0.25*size;
+        int sz = size - 2*shift;
+        QPixmap pMap(":/assets/labyrinthEvent/chest.png");
+        p.drawPixmap(shift, shift, sz, sz, pMap);
+    }
+    if (eventEnemy){
+        int shift = 0.25*size;
+        int sz = size - 2*shift;
+        QPixmap pMap(":/assets/labyrinthEvent/enemy.png");
+        p.drawPixmap(shift, shift, sz, sz, pMap);
+    }
+    if (eventEntry){
+        int shift = 0.25*size;
+        int sz = size - 2*shift;
+        QPixmap pMap(":/assets/labyrinthEvent/entry.png");
+        p.drawPixmap(shift, shift, sz, sz, pMap);
+    }
+    if (hero){
+        int shift = 0.25*size;
+        int sz = size - 2*shift;
+        QPixmap pMap(":/assets/characters/hero.png");
+        p.drawPixmap(shift, shift, sz, sz, pMap);
+    }
 
 }
 
@@ -82,9 +100,10 @@ void FieldLabyrinth::setEvents(QString event)
 }
 
 
-void FieldLabyrinth::fullSet(QString id, QString _nameEvent)
+void FieldLabyrinth::fullSet(QString _id, QString _nameFieald, QString _nameEvent)
 {
-    nameField = id;
+    id = _id;
+    nameField = _nameFieald;
     setDirections(id);
     nameEvent = _nameEvent;
     setEvents(nameEvent);
@@ -99,6 +118,7 @@ QString FieldLabyrinth::getNameField() const
 void FieldLabyrinth::setHero(bool flag)
 {
     hero = flag;
+    repaint();
 }
 
 

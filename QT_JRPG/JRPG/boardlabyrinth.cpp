@@ -1,6 +1,7 @@
 #include "boardlabyrinth.h"
 #include "generatorlabyrinth.h"
-#include "qlabel.h"
+
+#include <QDir>
 
 BoardLabyrinth::BoardLabyrinth(QWidget *parent)
     : QWidget{parent}
@@ -10,6 +11,12 @@ BoardLabyrinth::BoardLabyrinth(QWidget *parent)
     GeneratorLabyrinth gnerLab(rows, cols);
     loadBoardLab(gnerLab.getLab());
     initialization();
+
+    player = new QMediaPlayer();
+    ao = new QAudioOutput();
+    ao->setVolume(50);
+    player->setSource(QUrl::fromLocalFile(QDir::currentPath()+ "/music/sound_steps_on_labyrinth.wav"));
+    player->setAudioOutput(ao);
 }
 
 BoardLabyrinth::~BoardLabyrinth(){}
@@ -40,7 +47,54 @@ void BoardLabyrinth::loadBoardLab(TmpData **tmpLab)
 
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            fl[i][j]->fullSet(tmpLab[i][j].getId(), tmpLab[i][j].getEvents());
+            if (tmpLab[i][j].getId() == "0001"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::E], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "1000"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::N], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "1001"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::NE], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "1100"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::NS], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "1101"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::NSE], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "1110"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::NSW], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "1111"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::NSWE], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "1010"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::NW], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "1011"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::NWE], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "0100"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::S], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "0101"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::SE], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "0110"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::SW], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "0111"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::SWE], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "0010"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::W], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "0000"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::WALL], tmpLab[i][j].getEvents());
+            }
+            if (tmpLab[i][j].getId() == "0011"){
+                fl[i][j]->fullSet(tmpLab[i][j].getId(), fieldName[NAME_FIELD_LAB::WE], tmpLab[i][j].getEvents());
+            }
             if (tmpLab[i][j].getEvents() == "entry"){
                 xHero = i;
                 yHero = j;
@@ -53,13 +107,13 @@ void BoardLabyrinth::initialization()
 {
     for( int r = 0 ; r < rows ; r ++ ){
         for(int c = 0 ; c < cols ; c ++ ){
-            grid->addWidget(new QLabel(fl[r][c]->getNameField()));
+            grid->addWidget(fl[r][c], r, c);
         }
     }
 }
 
 void BoardLabyrinth::updatePostion(int r, int c){
-
+    player->play();
     int xNew = xHero + r;
     int yNew = yHero + c;
     if ((xNew >= 0 && yNew >= 0) && (xNew < rows && yNew < cols)){
