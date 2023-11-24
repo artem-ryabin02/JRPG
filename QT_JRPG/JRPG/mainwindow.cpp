@@ -20,7 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
     twn = new TalkingWithNPC(ui->centralwidget);
     twn->setHidden(true);
 
-
+    //clv = new CharListView(ui->centralwidget);
+    //clv->setHidden(true);
 
     QPixmap bkgnd(":/assets/background/menu_demo.png");
     bkgnd = bkgnd.scaled(size(), Qt::IgnoreAspectRatio);
@@ -152,7 +153,8 @@ void MainWindow::on_buttonInvetory_clicked()
 
 void MainWindow::on_buttonCharList_clicked()
 {
-    ui->statusbar->showMessage("ПОКА НЕ РАБОТАЕТ", 2000);
+    //wg->setHidden(true);
+    //clv->setHidden(false);
 }
 
 void MainWindow::recTalk()

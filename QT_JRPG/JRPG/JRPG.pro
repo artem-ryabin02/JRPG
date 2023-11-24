@@ -15,6 +15,7 @@ SOURCES += \
     boardlabyrinth.cpp \
     boardlocation.cpp \
     character.cpp \
+    charlistview.cpp \
     effect.cpp \
     enemy.cpp \
     fieldlabyrinth.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     boardlabyrinth.h \
     boardlocation.h \
     character.h \
+    charlistview.h \
     effect.h \
     enemy.h \
     fieldlabyrinth.h \
@@ -61,3 +63,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     assets.qrc
+
+DISTFILES += \
+    assets/buttonAndText/charList/Crit Chance_.png \
+    assets/buttonAndText/charList/Load capacity_.png

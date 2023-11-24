@@ -62,5 +62,16 @@
         <file>assets/labyrinthEvent/chest.png</file>
         <file>assets/labyrinthEvent/enemy.png</file>
         <file>assets/labyrinthEvent/entry.png</file>
+        <file>assets/buttonAndText/charList/attack.png</file>
+        <file>assets/buttonAndText/charList/critChance.png</file>
+        <file>assets/buttonAndText/charList/defence.png</file>
+        <file>assets/buttonAndText/charList/dodge.png</file>
+        <file>assets/buttonAndText/charList/HP.png</file>
+        <file>assets/buttonAndText/charList/loadcapacity.png</file>
+        <file>assets/buttonAndText/charList/MP.png</file>
+        <file>assets/buttonAndText/charList/skills.png</file>
+        <file>assets/buttonAndText/charList/skills_act.png</file>
+        <file>assets/buttonAndText/charList/equipment.png</file>
+        <file>assets/buttonAndText/charList/weapon.png</file>
     </qresource>
 </RCC>
