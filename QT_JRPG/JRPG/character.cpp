@@ -49,8 +49,8 @@ void Character::displayStatus(){
 
 void Character::displayShortStatus(){
     qDebug() << "name: " + name;
-    qDebug() << "health/maxHealth:" << std::to_string(health) << "/" << std::to_string(maxHealth) << "\n";
-    qDebug() << "mana/maxMana: " << std::to_string(mana) << "/" << std::to_string(maxMana) << "\n";
+    qDebug() << "health/maxHealth:" << health << "/" << maxHealth << "\n";
+    qDebug() << "mana/maxMana: " << mana << "/" << maxMana << "\n";
 }
 
 QString Character::getName() {
@@ -126,14 +126,156 @@ void Character::manaRegeneration(){
             mana+=manaRegen;
         }
 }
-bool Character::getAlive (){
+bool Character::getAlive () const{
         return alive;
 }
 
-int Character::getProtection() {
+int Character::getProtection() const {
         return protection;
 }
 
-int Character::getDodge() {
+void Character::setProtection(int newProtection)
+{
+        protection = newProtection;
+}
+int Character::getDodge() const {
         return dodge;
 }
+
+void Character::setDodge(int newDodge)
+{
+        dodge = newDodge;
+}
+int Character::getVitality() const
+{
+        return vitality;
+}
+
+void Character::setVitality(int newVitality)
+{
+        vitality = newVitality;
+}
+
+int Character::getStrength() const
+{
+        return strength;
+}
+
+void Character::setStrength(int newStrength)
+{
+        strength = newStrength;
+}
+
+int Character::getWisdom() const
+{
+        return wisdom;
+}
+
+void Character::setWisdom(int newWisdom)
+{
+        wisdom = newWisdom;
+}
+
+int Character::getIntelligence() const
+{
+        return intelligence;
+}
+
+void Character::setIntelligence(int newIntelligence)
+{
+        intelligence = newIntelligence;
+}
+
+int Character::getAgility() const
+{
+        return agility;
+}
+
+void Character::setAgility(int newAgility)
+{
+        agility = newAgility;
+}
+
+int Character::getPerception() const
+{
+        return perception;
+}
+
+void Character::setPerception(int newPerception)
+{
+        perception = newPerception;
+}
+
+int Character::getMaxHealth() const
+{
+        return maxHealth;
+}
+
+void Character::setMaxHealth(int newMaxHealth)
+{
+        maxHealth = newMaxHealth;
+}
+
+int Character::getHealth() const
+{
+        return health;
+}
+
+void Character::setHealth(int newHealth)
+{
+        health = newHealth;
+}
+
+int Character::getMaxMana() const
+{
+        return maxMana;
+}
+
+void Character::setMaxMana(int newMaxMana)
+{
+        maxMana = newMaxMana;
+}
+
+int Character::getMana() const
+{
+        return mana;
+}
+
+void Character::setMana(int newMana)
+{
+        mana = newMana;
+}
+
+int Character::getManaRegen() const
+{
+        return manaRegen;
+}
+
+void Character::setManaRegen(int newManaRegen)
+{
+        manaRegen = newManaRegen;
+}
+
+int Character::getAttack() const
+{
+        return attack;
+}
+
+void Character::setAttack(int newAttack)
+{
+        attack = newAttack;
+}
+
+int Character::getCritChance() const
+{
+        return critChance;
+}
+
+void Character::setCritChance(int newCritChance)
+{
+        critChance = newCritChance;
+}
+
+
+
+

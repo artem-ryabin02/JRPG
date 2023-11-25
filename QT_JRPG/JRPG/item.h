@@ -5,16 +5,12 @@
 
 class Item
 {
-public:   
-    QString name;
-
-    int weight;
-
-    //Effect eff;
-
-    Item(){};
-
+public:
     Item(QString name, int weight, int effKey);
+private:
+    QString name;
+    int weight;
+    //Effect eff;
 };
 
 #endif // ITEM_H

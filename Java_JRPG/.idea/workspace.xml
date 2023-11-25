@@ -5,25 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaef9d2d-26de-4ae9-8889-a74217dd2f56" name="Changes" comment="New Final Project">
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/character.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/character.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/effect.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/effect.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/enemy.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/enemy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/hero.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/hero.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/item.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/item.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/skill.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/skill.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JRPG/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JRPG/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_2023_17_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_2023_17_17__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_11_2023_19_47__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_11_2023_19_47__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/JRPG.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/JRPG.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/JRPG.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/JRPG.pro.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,24 +53,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/JavaLib/sqlite-jdbc-3.43.2.1.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.35402298&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "dev",
+    "last_opened_file_path": "D:/JRPG_project/JRPG/Java_JRPG",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.35402298",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\GIT\JRPG\Java_JRPG\src\main\resources\ru\morecode\JRPG" />
@@ -108,6 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1698772043067</updated>
       <workItem from="1699362168308" duration="1611000" />
+      <workItem from="1700659354449" duration="27000" />
     </task>
     <task id="LOCAL-00001" summary="New Final Project">
       <option name="closed" value="true" />

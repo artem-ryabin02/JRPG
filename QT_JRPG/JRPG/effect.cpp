@@ -6,20 +6,29 @@ Effect::Effect(QString type, int tier)
     this->tier = tier;
 }
 
-void Effect::doEffect(Character target){
+void Effect::doEffect(Character* user, Character* target){
+    if(target == nullptr){
     switch (toIntType(type)){
     case HEAL:{
-        Heal(target,tier);
+        Heal(user,tier);
         break;
     }
     }
+    }
 }
-void Effect::Heal(Character target, int tier){
-    int heal = 10 * tier;
-    if ( target.maxHealth - target.health <= heal) {
-        target.health = target.maxHealth;
+void Effect::Heal(Character* target, int tier){
+    int vitality = target->getVitality();
+    int wisdom = target->getWisdom();
+
+    int heal = (vitality + wisdom / 2) * tier;
+
+    int health = target->getHealth();
+    int maxHealth = target->getMaxHealth();
+
+    if ( maxHealth - health <= heal) {
+        target->setHealth(maxHealth);
     } else {
-        target.health += heal;
+        target->setHealth(health + heal);
     }
 }
 
@@ -28,4 +37,5 @@ int Effect::toIntType(QString type)
     if(type == "лечение"){
         return HEAL;
     }
+    return -1;
 }

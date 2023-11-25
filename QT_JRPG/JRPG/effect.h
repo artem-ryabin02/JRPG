@@ -2,22 +2,19 @@
 #define EFFECT_H
 
 #include "character.h"
-
 #include <QString>
 
 class Effect
 {
-public: 
-    QString type;
-    int tier;
-
+public:
     Effect(QString type, int tier);
 
-    void doEffect(Character target);
+    void doEffect(Character* user, Character* target = nullptr);
 
-    void Heal(Character target, int tier);
-
+    void Heal(Character* target, int tier);
 private:
+    QString type;
+    int tier;
     int toIntType(QString type);
 
     enum Constants{
