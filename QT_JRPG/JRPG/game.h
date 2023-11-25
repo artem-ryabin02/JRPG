@@ -3,6 +3,7 @@
 
 #include "boardlabyrinth.h"
 #include "boardlocation.h"
+#include "hero.h"
 #include "imagebutton.h"
 #include <QObject>
 #include <QWidget>
@@ -35,6 +36,8 @@ public slots:
 
 
 private:
+
+
     BoardLocation* bl;
     BoardLabyrinth* blb;
     QWidget* wBoard;

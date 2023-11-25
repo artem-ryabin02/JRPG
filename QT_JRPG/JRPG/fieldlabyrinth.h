@@ -12,9 +12,9 @@ enum class EVENT_FIELD{
     NONE
 };
 enum class NAME_FIELD_LAB{
-    N, NS, NE, NW, NSE, NSW, NSEW, NEW,
-    S, SE, SW, SEW,
-    E, EW,
+    N, NS, NE, NW, NSE, NSW, NSWE, NWE,
+    S, SE, SW, SWE,
+    E, WE,
     W,
     WALL
 };
@@ -27,7 +27,7 @@ public:
 
     void rescale(int _size);
 
-    void fullSet(QString id, QString _nameEvent);
+    void fullSet(QString _id, QString _nameFieald, QString _nameEvent);
 
 
     bool getNorth() const;
@@ -52,11 +52,11 @@ public:
 
 
     int getSize() const;
-
 protected:
     void paintEvent(QPaintEvent * pE) override;
 private:
     int size;
+    QString id;
     QString nameField;
     QString nameEvent;
     bool hero;

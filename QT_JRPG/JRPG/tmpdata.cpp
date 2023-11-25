@@ -6,10 +6,7 @@ TmpData::TmpData(const QString &newId, const QString &newEvents)
     events = newEvents;
 }
 
-TmpData::TmpData()
-{
-
-}
+TmpData::TmpData(){}
 
 QString TmpData::getId() const
 {

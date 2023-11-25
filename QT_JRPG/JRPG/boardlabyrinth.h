@@ -5,6 +5,8 @@
 #include "tmpdata.h"
 
 #include <QGridLayout>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 #include <QWidget>
 #include <map>
 
@@ -20,8 +22,10 @@ public:
 private:
     QGridLayout* grid;
     FieldLabyrinth*** fl;
-    int cols = 7;
-    int rows = 7;
+    QMediaPlayer* player;
+    QAudioOutput* ao;
+    int cols = 10;
+    int rows = 10;
     int xHero = 3;
     int yHero = 1;
 
@@ -30,17 +34,25 @@ private:
     void loadBoardLab(TmpData **tmpLab );
     void initialization();
     bool isCanGo(int x, int y, int nx, int ny);
-//    std::map<NAME_FIELD_LAB, QString> fieldName ={
-//        {NAME_FIELD::GRASS, "grass_middle.png"},
-//        {NAME_FIELD::WATER, "water.png"},
-//        {NAME_FIELD::GRASS_WATER_B, "grass_water_bottom.png"},
-//        {NAME_FIELD::GRASS_WATER_T, "grass_water_top.png"},
-//        {NAME_FIELD::GRASS_WATER_S, "grass_water_side.png"},
-//        {NAME_FIELD::GRASS_WATER_C_B, "grass_water_corner_bottom.png"},
-//        {NAME_FIELD::GRASS_WATER_C_T, "grass_water_corner_top.png"},
-//        {NAME_FIELD::LABYRINTH_ENTRY, "vkhod.png"},
-//        {NAME_FIELD::NONE, ""}
-//    };
+
+    std::map<NAME_FIELD_LAB, QString> fieldName ={
+        {NAME_FIELD_LAB::E, "E.png"},
+        {NAME_FIELD_LAB::N, "N.png"},
+        {NAME_FIELD_LAB::NE, "NE.png"},
+        {NAME_FIELD_LAB::NS, "NS.png"},
+        {NAME_FIELD_LAB::NSE, "NSE.png"},
+        {NAME_FIELD_LAB::NSW, "NSW.png"},
+        {NAME_FIELD_LAB::NSWE, "NSWE.png"},
+        {NAME_FIELD_LAB::NW, "NW.png"},
+        {NAME_FIELD_LAB::NWE, "NWE.png"},
+        {NAME_FIELD_LAB::S, "S.png"},
+        {NAME_FIELD_LAB::SE, "SE.png"},
+        {NAME_FIELD_LAB::SW, "SW.png"},
+        {NAME_FIELD_LAB::SWE, "SWE.png"},
+        {NAME_FIELD_LAB::W, "W.png"},
+        {NAME_FIELD_LAB::WALL, "WALL.png"},
+        {NAME_FIELD_LAB::WE, "WE.png"}
+    };
 
 signals:
 
