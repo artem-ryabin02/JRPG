@@ -1,0 +1,7 @@
+G|G|G|G|G|G|G|
+G|N|G|G|G|G|G|
+G|G|G|G|G|G|G|
+G|G|G|GWCB|GWB|GWB|GWB|
+G|G|G|GWS|W|W|W|
+G|G|G|GWS|W|W|W|
+G|L|G|GWS|W|W|W|

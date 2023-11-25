@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ru.morecode.jrpg.subclasses.SceneSizeChangeListener;
+import ru.morecode.jrpg.subclasses.StartScene;
 
 public class MainMenuController {
 
@@ -31,15 +32,7 @@ public class MainMenuController {
     @FXML
     private Button buttonNewGame;
 
-    private void letterbox(final Scene scene, final Pane contentPane) {
-        final double initWidth  = scene.getWidth();
-        final double initHeight = scene.getHeight();
-        final double ratio      = initWidth / initHeight;
 
-        SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight, initWidth, contentPane);
-        scene.widthProperty().addListener(sizeListener);
-        scene.heightProperty().addListener(sizeListener);
-    }
     @FXML
     void initialize() {
         buttonExit.setOnAction(actionEvent ->{
@@ -51,22 +44,8 @@ public class MainMenuController {
         buttonNewGame.setOnAction(actionEvent ->{
             buttonNewGame.getScene().getWindow().hide();
 
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("game-window.fxml"));
-            Stage stage = new Stage();
-            Pane root;
-            try {
-                root = fxmlLoader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            Scene scene = new Scene(new Group(root));
-            stage.setScene(scene);
-            stage.setTitle("Game window");
-            stage.show();
-            stage.setFullScreenExitHint("");
-            letterbox(scene, root);
-            stage.setFullScreen(true);
+            StartScene scene = new StartScene("game-window.fxml");
+            scene.start();
         } );
     }
 

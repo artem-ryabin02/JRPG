@@ -5,6 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ru.morecode.jrpg.HelloApplication;
 
 
 import java.io.IOException;
@@ -28,9 +29,9 @@ public class StartScene {
         scene.widthProperty().addListener(sizeListener);
         scene.heightProperty().addListener(sizeListener);
     }
-    public StartScene(Stage stage, String nameFXML){
+    public StartScene(String nameFXML){
         fxmlLoader = new FXMLLoader();
-        this.stage = stage;
+        this.stage = new Stage();
         //Вероятно проблема здесь так как при выводе location выводится null
         fxmlLoader.setLocation(getClass().getResource(nameFXML));
         System.out.println(fxmlLoader.getLocation());

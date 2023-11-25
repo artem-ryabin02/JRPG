@@ -149,7 +149,7 @@
             </VBox>
             <ImageView fitHeight="327.0" fitWidth="250.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../assets/menu_demo.png" />
+                  <Image url="@../../../../assets/menu_demo.png" />
                </image>
             </ImageView>
             <VBox prefHeight="200.0" prefWidth="180.0">

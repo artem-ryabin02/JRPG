@@ -12,7 +12,7 @@
    <children>
       <ImageView cache="true" fitHeight="720.0" fitWidth="1720.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../assets/menu_demo.png" />
+            <Image url="@../../../../assets/menu_demo.png" />
          </image>
          <rotationAxis>
             <Point3D />
