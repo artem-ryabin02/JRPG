@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->centralwidget->setContentsMargins(0,0,0,0);
 
     loadSouns();
-
+    loadDB();
 
     wmm = new MainMenu(ui->centralwidget);
     //wmm->setHidden(true);

@@ -85,5 +85,6 @@
         <file>assets/battleArena/itemButton_act.png</file>
         <file>assets/battleArena/skillButton.png</file>
         <file>assets/battleArena/skillButton_act.png</file>
+        <file>assets/jrpg.sqlite</file>
     </qresource>
 </RCC>
