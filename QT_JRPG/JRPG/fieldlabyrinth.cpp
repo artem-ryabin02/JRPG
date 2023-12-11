@@ -63,6 +63,21 @@ void FieldLabyrinth::paintEvent(QPaintEvent *pE)
 
 }
 
+void FieldLabyrinth::setEventBoss(bool newEventBoss)
+{
+    eventBoss = newEventBoss;
+}
+
+void FieldLabyrinth::setEventChest(bool newEventChest)
+{
+    eventChest = newEventChest;
+}
+
+void FieldLabyrinth::setEventEnemy(bool newEventEnemy)
+{
+    eventEnemy = newEventEnemy;
+}
+
 int FieldLabyrinth::getSize() const
 {
         return size;

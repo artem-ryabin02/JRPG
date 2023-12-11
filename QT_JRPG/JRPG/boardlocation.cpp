@@ -103,6 +103,11 @@ void BoardLocation::updatePostion(int r, int c){
 
 }
 
+void BoardLocation::setDisable(bool disable)
+{
+    this->blockSignals(disable);
+}
+
 void BoardLocation::rescale(int _size){
     int w = ( _size / rows ) * rows ;
     int h = ( _size / cols ) * cols ;

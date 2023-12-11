@@ -52,6 +52,12 @@ public:
 
 
     int getSize() const;
+    void setEventEnemy(bool newEventEnemy);
+
+    void setEventChest(bool newEventChest);
+
+    void setEventBoss(bool newEventBoss);
+
 protected:
     void paintEvent(QPaintEvent * pE) override;
 private:
@@ -64,6 +70,7 @@ private:
     bool south;
     bool east;
     bool west;
+
     bool eventEnemy;
     bool eventChest;
     bool eventBoss;
@@ -71,11 +78,7 @@ private:
 
     void setDirections(QString id);
     void setEvents(QString event);
-signals:
-    void enemy();
-    void chest();
-    void boss();
-    void entry();
+
 };
 
 #endif // FIELDLABYRINTH_H

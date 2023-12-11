@@ -10,62 +10,69 @@ CharListView::CharListView(QWidget *parent)
     wArtEquips->setGeometry(75, 165, 600, 750);
     art = new QLabel();
     art->setFixedSize(365, 575);
-    art->setStyleSheet("backgroud-color: grey");
+    art->setStyleSheet("background:grey");
     wEquips = new QWidget();
     wEquips->setLayout(new QVBoxLayout);
     weaponArt = new QLabel();
     weaponArt->setFixedSize(90, 90);
-    weaponArt->setPixmap(QPixmap(":/assets/buttonAndText/charList/weapon.png"));
+    weaponArt->setStyleSheet("background:white");
+    QPixmap sw(":/assets/buttonAndText/charList/weapon.png");
+    sw.scaled(90, 90);
+    weaponArt->setPixmap(sw);
     armorArt = new QLabel();
     armorArt->setFixedSize(90, 90);
-    armorArt->setPixmap(QPixmap(":/assets/buttonAndText/charList/equipment.png"));
+    armorArt->setStyleSheet("background:white");
+    QPixmap hlt(":/assets/buttonAndText/charList/equipment.png");
+    hlt.scaled(90, 90);
+    armorArt->setPixmap(hlt);
     wEquips->layout()->addWidget(armorArt);
     wEquips->layout()->addWidget(weaponArt);
     wArtEquips->layout()->addWidget(art);
     wArtEquips->layout()->addWidget(wEquips);
 
     wParametrs = new QWidget(parent);
+    wParametrs->setStyleSheet("background:grey");
     wParametrs->setGeometry(765, 165 , 1050, 750);
     wParametrs->setLayout(new QVBoxLayout);
     lblParametrs = new QLabel();
     lblParametrs->setFixedSize(1000, 150);
     QPixmap pt(":/assets/buttonAndText/Game/parametrs_table.png");
-    pt.scaled(1000, 150);
+    //pt.scaled(1000, 150);
     lblParametrs->setPixmap(pt);
     wParametrs->layout()->addWidget(lblParametrs);
 
     lblStr = new QLabel(parent);
-    lblStr->setGeometry(1010, 220, 75, 69);
+    lblStr->setGeometry(933, 195, 54, 51);
     lblStr->setStyleSheet("background:grey");
     lblStr->setAlignment(Qt::AlignCenter);
     lblStr->setFont(textFont);
     lblStr->setText(QString::number(5));
     lblVit = new QLabel(parent);
-    lblVit->setGeometry(1010, 300, 54, 51);
+    lblVit->setGeometry(933, 254, 54, 51);
     lblVit->setStyleSheet("background:grey");
     lblVit->setAlignment(Qt::AlignCenter);
     lblVit->setFont(textFont);
     lblVit->setText(QString::number(5));
     lblAgl = new QLabel(parent);
-    lblAgl->setGeometry(1360, 220, 54, 51);
+    lblAgl->setGeometry(1184, 195, 54, 51);
     lblAgl->setStyleSheet("background:grey");
     lblAgl->setAlignment(Qt::AlignCenter);
     lblAgl->setFont(textFont);
     lblAgl->setText(QString::number(5));
     lblPer = new QLabel(parent);
-    lblPer->setGeometry(1360, 300, 54, 51);
+    lblPer->setGeometry(1185, 254, 54, 51);
     lblPer->setStyleSheet("background:grey");
     lblPer->setAlignment(Qt::AlignCenter);
     lblPer->setFont(textFont);
     lblPer->setText(QString::number(5));
     lblInt = new QLabel(parent);
-    lblInt->setGeometry(1715, 220, 54, 51);
+    lblInt->setGeometry(1437, 195, 54, 51);
     lblInt->setStyleSheet("background:grey");
     lblInt->setAlignment(Qt::AlignCenter);
     lblInt->setFont(textFont);
     lblInt->setText(QString::number(5));
     lblWis = new QLabel(parent);
-    lblWis->setGeometry(1715, 300, 54, 51);
+    lblWis->setGeometry(1437, 254, 54, 51);
     lblWis->setStyleSheet("background:grey");
     lblWis->setAlignment(Qt::AlignCenter);
     lblWis->setFont(textFont);
@@ -76,6 +83,7 @@ CharListView::CharListView(QWidget *parent)
     QLabel* lHP = new QLabel();
     lHP->setPixmap(QPixmap(":/assets/buttonAndText/charList/HP.png"));
     QLabel* lblhp = new QLabel();
+    lblhp->setFont(textFont);
     lblhp->setText("10/10");
     wHP->layout()->addWidget(lHP);
     wHP->layout()->addWidget(lblhp);
@@ -86,6 +94,7 @@ CharListView::CharListView(QWidget *parent)
     QLabel* lMP = new QLabel();
     lMP->setPixmap(QPixmap(":/assets/buttonAndText/charList/MP.png"));
     QLabel* lblMp = new QLabel();
+    lblMp->setFont(textFont);
     lblMp->setText("10/10");
     wMP->layout()->addWidget(lMP);
     wMP->layout()->addWidget(lblMp);
@@ -93,18 +102,20 @@ CharListView::CharListView(QWidget *parent)
     QWidget* wCC = new QWidget();
     wCC->setLayout(new QHBoxLayout);
     QLabel* lcc = new QLabel();
-    lcc->setPixmap(QPixmap(":/assets/buttonAndText/charList/HP.png"));
+    lcc->setPixmap(QPixmap(":/assets/buttonAndText/charList/critChance.png"));
     QLabel* lblcc = new QLabel();
     lblcc->setText("10%");
+    lblcc->setFont(textFont);
     wCC->layout()->addWidget(lcc);
     wCC->layout()->addWidget(lblcc);
 
     QWidget* wLC = new QWidget();
     wLC->setLayout(new QHBoxLayout);
     QLabel* llc = new QLabel();
-    llc->setPixmap(QPixmap(":/assets/buttonAndText/charList/HP.png"));
+    llc->setPixmap(QPixmap(":/assets/buttonAndText/charList/loadcapacity.png"));
     QLabel* lbllc = new QLabel();
     lbllc->setText("10%");
+    lbllc->setFont(textFont);
     wLC->layout()->addWidget(llc);
     wLC->layout()->addWidget(lbllc);
 
@@ -113,22 +124,24 @@ CharListView::CharListView(QWidget *parent)
     firstCol->layout()->addWidget(wHP);
     firstCol->layout()->addWidget(wMP);
     firstCol->layout()->addWidget(wCC);
-    firstCol->layout()->addWidget(wLC);
+    //firstCol->layout()->addWidget(wLC);
 
     QWidget* wATC = new QWidget();
     wATC->setLayout(new QHBoxLayout);
     QLabel* lATC = new QLabel();
-    lATC->setPixmap(QPixmap(":/assets/buttonAndText/charList/MP.png"));
+    lATC->setPixmap(QPixmap(":/assets/buttonAndText/charList/attack.png"));
     QLabel* lblATC = new QLabel();
-    lblATC->setText("10/10");
+    lblATC->setFont(textFont);
+    lblATC->setText("10");
     wATC->layout()->addWidget(lATC);
     wATC->layout()->addWidget(lblATC);
 
     QWidget* wDEF = new QWidget();
     wDEF->setLayout(new QHBoxLayout);
     QLabel* lDEF = new QLabel();
-    lDEF->setPixmap(QPixmap(":/assets/buttonAndText/charList/HP.png"));
+    lDEF->setPixmap(QPixmap(":/assets/buttonAndText/charList/defence.png"));
     QLabel* lblDEF = new QLabel();
+    lblDEF->setFont(textFont);
     lblDEF->setText("10%");
     wDEF->layout()->addWidget(lDEF);
     wDEF->layout()->addWidget(lblDEF);
@@ -136,15 +149,16 @@ CharListView::CharListView(QWidget *parent)
     QWidget* wDOD = new QWidget();
     wDOD->setLayout(new QHBoxLayout);
     QLabel* llDOD = new QLabel();
-    llDOD->setPixmap(QPixmap(":/assets/buttonAndText/charList/HP.png"));
+    llDOD->setPixmap(QPixmap(":/assets/buttonAndText/charList/dodge.png"));
     QLabel* lblDOD = new QLabel();
+    lblDOD->setFont(textFont);
     lblDOD->setText("10%");
     wDOD->layout()->addWidget(llDOD);
     wDOD->layout()->addWidget(lblDOD);
 
     secondCol = new QWidget();
     secondCol->setLayout(new QVBoxLayout);
-    secondCol->layout()->addWidget(lATC);
+    secondCol->layout()->addWidget(wATC);
     secondCol->layout()->addWidget(wDEF);
     secondCol->layout()->addWidget(wDOD);
 
@@ -153,23 +167,28 @@ CharListView::CharListView(QWidget *parent)
     wHorizon->layout()->addWidget(firstCol);
     wHorizon->layout()->addWidget(secondCol);
     wParametrs->layout()->addWidget(wHorizon);
+    wParametrs->layout()->addWidget(wLC);
 
     skills = new ImageButton(":/assets/buttonAndText/charList/skills.png");
     skills->setCursor(Qt::CursorShape::PointingHandCursor);
     wParametrs->layout()->addWidget(skills);
+    wParametrs->layout()->setAlignment(skills, Qt::AlignHCenter);
+    back = new ImageButton(":/assets/buttonAndText/back.png");
+    back->setCursor(Qt::CursorShape::PointingHandCursor);
+    wParametrs->layout()->addWidget(back);
+    wParametrs->layout()->setAlignment(back, Qt::AlignHCenter);
+    connect(skills, &ImageButton::clicked, this, [this](){emit goSkill();});
+    connect(back, &ImageButton::clicked, this, [this](){emit goBack();});
 }
 
-//QWidget* wParametrs;
-//QLabel* lblStr;
-//QLabel* lblVit;
-//QLabel* lblAgl;
-//QLabel* lblPer;
-//QLabel* lblInt;
-//QLabel* lblWis;
-//QLabel* lblParametrs;
-//QWidget* firstCol;
-//QWidget* secondCol;
-//QWidget* wHorizon;
-
-
-//ImageButton* skills;
+void CharListView::setHidden(bool hidden)
+{
+    wArtEquips->setHidden(hidden);
+    wParametrs->setHidden(hidden);
+    lblStr->setHidden(hidden);
+    lblVit->setHidden(hidden);
+    lblAgl->setHidden(hidden);
+    lblPer->setHidden(hidden);
+    lblInt->setHidden(hidden);
+    lblWis->setHidden(hidden);
+}

@@ -17,6 +17,8 @@ public:
     ~Game();
 
     void setHidden(bool hidden);
+    void setLabAct(bool newLabAct);
+
 private slots:
     void onPushExitButtonClicked();
     void onPushInventoryButtonClicked();
@@ -36,7 +38,6 @@ public slots:
 
 
 private:
-
 
     BoardLocation* bl;
     BoardLabyrinth* blb;
@@ -62,12 +63,19 @@ private:
     ImageButton* invb;
     ImageButton* lgb;
     ImageButton* egb;
+
+
+
+    bool labAct = 0;
 signals:
     void exit();
     void charList();
     void inventory();
     void loadGame();
     void talkWithNPC();
+
+    void transmitEnemyEntry();
+    //void transmitEnemyExit();
 
 };
 

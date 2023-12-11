@@ -122,9 +122,29 @@ void BoardLabyrinth::updatePostion(int r, int c){
             fl[xNew][yNew]->setHero(true);
             xHero = xNew;
             yHero = yNew;
+            if (fl[xNew][yNew]->getEventBoss()){
+                emit boss();
+                fl[xNew][yNew]->setEventBoss(false);
+            }
+            if (fl[xNew][yNew]->getEventChest()){
+                emit chest();
+                fl[xNew][yNew]->setEventChest(false);
+            }
+            if (fl[xNew][yNew]->getEventEnemy()){
+                emit enemy();
+                fl[xNew][yNew]->setEventEnemy(false);
+            }
+            if (fl[xNew][yNew]->getEventEntry()){
+                emit entry();
+            }
         }
 
     }
+}
+
+void BoardLabyrinth::setDisable(bool disable)
+{
+    this->blockSignals(disable);
 }
 
 bool BoardLabyrinth::isCanGo(int x, int y, int nx, int ny)

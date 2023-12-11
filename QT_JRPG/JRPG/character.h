@@ -8,6 +8,7 @@ class Character
 public:
 
     Character(QString name, int vitality, int strength, int wisdom, int intelligence, int agility, int perception);
+    //Character(){};
 
     void calculationOfSecondaryParametrs(int vitality, int strength, int wisdom, int intelligence, int agility, int perception);
 
@@ -77,11 +78,12 @@ public:
     void setCritChance(int newCritChance);
 
     void setDodge(int newDodge);
-
+protected:
+    int vitality, strength, wisdom, intelligence, agility, perception, maxHealth, health, maxMana,
+        mana, manaRegen, attack, protection, critChance, dodge;
 private:
     QString name;
-    int vitality, strength, wisdom, intelligence, agility, perception, maxHealth, health, maxMana,
-        mana, manaRegen, attack, protection, critChance, dodge, tempDefence = 10;
+    int tempDefence = 10;
     bool defenceFlag = false;
     bool alive = true;
 };

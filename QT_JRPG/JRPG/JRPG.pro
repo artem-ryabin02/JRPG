@@ -1,4 +1,5 @@
 QT       += core gui
+
 QT       += sql
 QT       += multimedia
 
@@ -12,11 +13,11 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    batllearena.cpp \
     boardlabyrinth.cpp \
     boardlocation.cpp \
     character.cpp \
     charlistview.cpp \
-    dbcontroller.cpp \
     effect.cpp \
     enemy.cpp \
     fieldlabyrinth.cpp \
@@ -34,11 +35,11 @@ SOURCES += \
     tmpdata.cpp
 
 HEADERS += \
+    batllearena.h \
     boardlabyrinth.h \
     boardlocation.h \
     character.h \
     charlistview.h \
-    dbcontroller.h \
     effect.h \
     enemy.h \
     fieldlabyrinth.h \

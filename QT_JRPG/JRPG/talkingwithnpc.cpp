@@ -1,14 +1,15 @@
 #include "talkingwithnpc.h"
 #include "qboxlayout.h"
+#include <QFontDatabase>
 
 TalkingWithNPC::TalkingWithNPC(QWidget *parent)
     : QWidget{parent}
 {
 
-//    int id = QFontDatabase::addApplicationFont(":/fonts/monospace.ttf");
-//    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
-//    QFont monospace(family);
-    QFont textFont("Stencil", 36);
+    int id = QFontDatabase::addApplicationFont(":/assets/PressStart2P-Regular.ttf");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont textFont(family, 36);
+    //QFont textFont("Stencil", 36);
     panelText = new QWidget(parent);
     panelText->setObjectName("panelTextWidget");
     panelText->setLayout(new QVBoxLayout);

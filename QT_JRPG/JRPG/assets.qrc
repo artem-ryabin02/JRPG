@@ -73,6 +73,17 @@
         <file>assets/buttonAndText/charList/skills_act.png</file>
         <file>assets/buttonAndText/charList/equipment.png</file>
         <file>assets/buttonAndText/charList/weapon.png</file>
-        <file>assets/jrpg.sqlite</file>
+        <file>assets/buttonAndText/back.png</file>
+        <file>assets/buttonAndText/back_act.png</file>
+        <file>assets/battleArena/attackButton.png</file>
+        <file>assets/battleArena/attackButton_act.png</file>
+        <file>assets/battleArena/defenceButton.png</file>
+        <file>assets/battleArena/defenceButton_act.png</file>
+        <file>assets/battleArena/escapeButton.png</file>
+        <file>assets/battleArena/escapeButton_act.png</file>
+        <file>assets/battleArena/itemButton.png</file>
+        <file>assets/battleArena/itemButton_act.png</file>
+        <file>assets/battleArena/skillButton.png</file>
+        <file>assets/battleArena/skillButton_act.png</file>
     </qresource>
 </RCC>

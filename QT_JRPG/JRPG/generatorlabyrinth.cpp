@@ -34,7 +34,6 @@ void GeneratorLabyrinth::generateLabyrinth()
 bool GeneratorLabyrinth::qualityControl()
 {
     int countWall = 0;
-    QVector<QString> tmpLab;
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {
             if (tmpData[i][j].getId() == idWall){

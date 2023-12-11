@@ -28,6 +28,7 @@ public:
     void rescale(int _size);
 
     void updatePostion(int r, int c);
+    void setDisable(bool disable);
 protected:
 
 private:

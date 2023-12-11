@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->centralwidget->setContentsMargins(0,0,0,0);
 
     loadSouns();
-    loadDB();
+
 
     wmm = new MainMenu(ui->centralwidget);
     //wmm->setHidden(true);
@@ -20,8 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
     twn = new TalkingWithNPC(ui->centralwidget);
     twn->setHidden(true);
 
-    //clv = new CharListView(ui->centralwidget);
-    //clv->setHidden(true);
+    clv = new CharListView(ui->centralwidget);
+    clv->setHidden(true);
+
+    ba = new BatlleArena(ui->centralwidget);
+    ba->setHidden(true);
 
     QPixmap bkgnd(":/assets/background/menu_demo.png");
     bkgnd = bkgnd.scaled(size(), Qt::IgnoreAspectRatio);
@@ -29,17 +32,20 @@ MainWindow::MainWindow(QWidget *parent)
     p.setBrush(QPalette::Window, bkgnd);
     setPalette(p);
 
-    connect(wmm, &MainMenu::newGame, this, &MainWindow::on_buttonNewGame_clicked);
-    connect(wmm, &MainMenu::loadGame, this, &MainWindow::on_buttonLoadGame_clicked);
-    connect(wmm, &MainMenu::exit, this, &MainWindow::on_buttonExit_clicked);
+    connect(wmm, &MainMenu::newGame, this, &MainWindow::onButtonNewGameClicked);
+    connect(wmm, &MainMenu::loadGame, this, &MainWindow::onButtonLoadGameClicked);
+    connect(wmm, &MainMenu::exit, this, &MainWindow::onButtonExitClicked);
 
-    connect(wg, &Game::loadGame, this, &MainWindow::on_buttonLoadGame_clicked);
-    connect(wg, &Game::inventory, this, &MainWindow::on_buttonInvetory_clicked);
-    connect(wg, &Game::charList, this, &MainWindow::on_buttonCharList_clicked);
-    connect(wg, &Game::exit, this, &MainWindow::on_buttonExit_clicked);
+    connect(wg, &Game::loadGame, this, &MainWindow::onButtonLoadGameClicked);
+    connect(wg, &Game::inventory, this, &MainWindow::onButtonInvetoryClicked);
+    connect(wg, &Game::charList, this, &MainWindow::onButtonCharListClicked);
+    connect(wg, &Game::exit, this, &MainWindow::onButtonExitClicked);
     connect(wg, &Game::talkWithNPC, this, &MainWindow::recTalk);
+    connect(wg, &Game::transmitEnemyEntry, this, &MainWindow::recEnemy);
 
     connect(twn, &TalkingWithNPC::exitFromTWNPC, this, &MainWindow::recGoodbye);
+
+    connect(clv, &CharListView::goBack, this, &MainWindow::returnFromCharList);
 
 
 
@@ -48,8 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, &MainWindow::sPress, wg, &Game::recaivedSouth);
     connect(this, &MainWindow::dPress, wg, &Game::recaivedEast);
 
-
-
+    connect(ba, &BatlleArena::win, this, &MainWindow::returnFromBattleArena);
+//    connect(ba, &BatlleArena::win, this, &MainWindow::returnFromBattleArena);
+//    connect(ba, &BatlleArena::win, this, &MainWindow::returnFromBattleArena);
 
 }
 
@@ -126,35 +133,13 @@ void MainWindow::loadSouns()
     }
 }
 
-void MainWindow::loadDB()
-{
-    QDir dirDB;
-    if (!dirDB.exists("db")){
-        dirDB.mkdir("db");
-    }
-    static const QString SND_FILE_DB = "jrpg.sqlite";
-    static const QString SND_FILE_PATH = QDir::currentPath() + "/db/";
-    QString SND_FILE_NAME = SND_FILE_PATH + SND_FILE_DB;
-
-    QFile outB( SND_FILE_NAME );
-    if( !outB.exists() ) {
-        QFile in( ":/assets/" + SND_FILE_DB );
-
-        if (in.copy(SND_FILE_NAME))
-        {
-            qDebug() << "true";
-        }
-        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
-    }
-}
-
-void MainWindow::on_buttonExit_clicked()
+void MainWindow::onButtonExitClicked()
 {
     this->close();
 }
 
 
-void MainWindow::on_buttonNewGame_clicked()
+void MainWindow::onButtonNewGameClicked()
 {
 
     wmm->setHidden(true);
@@ -163,20 +148,26 @@ void MainWindow::on_buttonNewGame_clicked()
 }
 
 
-void MainWindow::on_buttonLoadGame_clicked()
+void MainWindow::onButtonLoadGameClicked()
 {
     ui->statusbar->showMessage("ПОКА НЕ РАБОТАЕТ", 2000);
 }
 
-void MainWindow::on_buttonInvetory_clicked()
+void MainWindow::onButtonInvetoryClicked()
 {
     ui->statusbar->showMessage("ПОКА НЕ РАБОТАЕТ", 2000);
 }
 
-void MainWindow::on_buttonCharList_clicked()
+void MainWindow::onButtonCharListClicked()
 {
-    //wg->setHidden(true);
-    //clv->setHidden(false);
+    wg->setHidden(true);
+    clv->setHidden(false);
+}
+
+void MainWindow::returnFromCharList()
+{
+    wg->setHidden(false);
+    clv->setHidden(true);
 }
 
 void MainWindow::recTalk()
@@ -191,6 +182,21 @@ void MainWindow::recGoodbye()
     wg->setHidden(false);
     //_sleep(1000);
     twn->setHidden(true);
+}
+
+void MainWindow::recEnemy()
+{
+    wg->setHidden(true);
+    Hero cat("cat", 5,5,5,5,5,5);
+    Enemy rat("rat", 1,20,10,5,12,12);
+    ba->startBattle(cat, rat);
+    ba->setHidden(false);
+}
+
+void MainWindow::returnFromBattleArena()
+{
+    wg->setHidden(false);
+    ba->setHidden(true);
 }
 
 

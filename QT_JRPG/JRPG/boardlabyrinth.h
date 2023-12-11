@@ -19,6 +19,8 @@ public:
     void rescale(int _size);
 
     void updatePostion(int r, int c);
+
+    void setDisable(bool disable);
 private:
     QGridLayout* grid;
     FieldLabyrinth*** fl;
@@ -55,6 +57,10 @@ private:
     };
 
 signals:
+    void enemy();
+    void chest();
+    void boss();
+    void entry();
 
 };
 

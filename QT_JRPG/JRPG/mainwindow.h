@@ -8,6 +8,7 @@
 #include "game.h"
 #include "mainmenu.h"
 #include "talkingwithnpc.h"
+#include "batllearena.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -23,15 +24,19 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_buttonExit_clicked();
+    void onButtonExitClicked();
 
-    void on_buttonNewGame_clicked();
+    void onButtonNewGameClicked();
 
-    void on_buttonLoadGame_clicked();
-    void on_buttonInvetory_clicked();
-    void on_buttonCharList_clicked();
+    void onButtonLoadGameClicked();
+    void onButtonInvetoryClicked();
+    void onButtonCharListClicked();
+    void returnFromCharList();
     void recTalk();
     void recGoodbye();
+
+    void recEnemy();
+    void returnFromBattleArena();
 
 
 protected:
@@ -42,9 +47,9 @@ private:
     Game* wg;
     TalkingWithNPC* twn;
     CharListView* clv;
+    BatlleArena* ba;
 
     void loadSouns();
-    void loadDB();
 signals:
     void wPress();
     void aPress();

@@ -12,6 +12,7 @@ class CharListView : public QWidget
     Q_OBJECT
 public:
     explicit CharListView(QWidget *parent = nullptr);
+    void setHidden(bool hidden);
 private:
     QWidget* wArtEquips;
     QLabel* art;
@@ -33,9 +34,13 @@ private:
 
 
     ImageButton* skills;
+    ImageButton* back;
 
 
 signals:
+    void goSkill();
+    void goBack();
+
 
 };
 
