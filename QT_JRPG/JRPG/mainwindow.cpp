@@ -133,6 +133,11 @@ void MainWindow::loadSouns()
     }
 }
 
+void MainWindow::loadDB()
+{
+
+}
+
 void MainWindow::onButtonExitClicked()
 {
     this->close();
