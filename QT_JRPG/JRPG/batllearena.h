@@ -14,7 +14,7 @@ class BatlleArena : public QWidget
     Q_OBJECT
 public:
     explicit BatlleArena(QWidget *parent = nullptr);
-    void startBattle(Hero& _hero, Enemy &_enemy);
+    void startBattle(Hero& _hero);
     void setHidden(bool hidden);
 private slots:
     void onButtonClickAttack();

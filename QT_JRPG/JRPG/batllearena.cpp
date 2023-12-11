@@ -1,11 +1,12 @@
 #include "batllearena.h"
 #include "qboxlayout.h"
 
+#include <DBcontroller.h>
 #include <QFontDatabase>
 
 
 BatlleArena::BatlleArena(QWidget *parent)
-    : QWidget{parent}, hero("H", 1,1,1,1,1,1), enemy("E", 1,1,1,1,1,1)
+    : QWidget{parent}, hero("H", 1,1,1,1,1,1), enemy("E", 1,1,1,1,1,1, "qwerty")
 {
     int id = QFontDatabase::addApplicationFont(":/assets/PressStart2P-Regular.ttf");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
@@ -111,17 +112,13 @@ BatlleArena::BatlleArena(QWidget *parent)
     connect(buttonEcp, &ImageButton::clicked, this, &BatlleArena::onButtonClickEscape);
 }
 
-void BatlleArena::startBattle(Hero &_hero, Enemy& _enemy)
+void BatlleArena::startBattle(Hero &_hero)
 {
     hero = _hero;
     hero.displayStatus();
     qDebug() << "--------------------------------------\n";
-    //вызов метода из бд на выбор врага
 
-    //QString::number();
-    //DBControlle::randEnemy();
-    //return enemy;
-    enemy = _enemy; //DBControlle::randEnemy();;
+    enemy =DBcontroller::randEnemy();
     enemy.displayStatus();
     HeroHPPB->setMaximum(hero.getMaxHealth());
     HeroHPPB->setValue(hero.getHealth());

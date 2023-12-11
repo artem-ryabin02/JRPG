@@ -1,5 +1,11 @@
 #include "enemy.h"
 
+Enemy::Enemy(QString name, int vitality, int strength, int wisdom, int intelligence, int agility, int perception, QString pathName)
+    :Character(name, vitality, strength, wisdom, intelligence, agility, perception)
+{
+    this->pathName = pathName;
+}
+
 int Enemy::randAction()
 {
     int action = QRandomGenerator::global()->bounded(100);

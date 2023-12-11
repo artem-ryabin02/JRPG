@@ -10,18 +10,13 @@
 class Enemy : public Character
 {
 public:
-//    enum class CONSTANS{
-//        actionAttack = 1,
-//        actionDefence = 2,
-//        actionSkill = 3
-//    };
-    //Skill skl;
 
-    Enemy(QString name, int vitality, int strength, int wisdom, int intelligence, int agility, int perception)
-        :Character(name, vitality, strength, wisdom, intelligence, agility, perception){};
-    //Enemy(){};
+    Enemy(QString name, int vitality, int strength, int wisdom, int intelligence, int agility, int perception, QString pathName);
+
 
     int randAction();
+private:
+    QString pathName;
 };
 
 #endif // ENEMY_H

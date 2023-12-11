@@ -18,7 +18,7 @@ SOURCES += \
     boardlocation.cpp \
     character.cpp \
     charlistview.cpp \
-    dbconroller.cpp \
+    dbcontroller.cpp \
     effect.cpp \
     enemy.cpp \
     fieldlabyrinth.cpp \
@@ -41,7 +41,7 @@ HEADERS += \
     boardlocation.h \
     character.h \
     charlistview.h \
-    dbconroller.h \
+    dbcontroller.h \
     effect.h \
     enemy.h \
     fieldlabyrinth.h \

@@ -135,7 +135,24 @@ void MainWindow::loadSouns()
 
 void MainWindow::loadDB()
 {
+    QDir dirDB;
+    if (!dirDB.exists("db")){
+        dirDB.mkdir("db");
+    }
+    static const QString SND_FILE_DB = "jrpg.sqlite";
+    static const QString SND_FILE_PATH = QDir::currentPath() + "/db/";
+    QString SND_FILE_NAME = SND_FILE_PATH + SND_FILE_DB;
 
+    QFile outB( SND_FILE_NAME );
+    if( !outB.exists() ) {
+        QFile in( ":/assets/" + SND_FILE_DB );
+
+        if (in.copy(SND_FILE_NAME))
+        {
+            qDebug() << "true";
+        }
+        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
+    }
 }
 
 void MainWindow::onButtonExitClicked()
@@ -193,8 +210,7 @@ void MainWindow::recEnemy()
 {
     wg->setHidden(true);
     Hero cat("cat", 5,5,5,5,5,5);
-    Enemy rat("rat", 1,20,10,5,12,12);
-    ba->startBattle(cat, rat);
+    ba->startBattle(cat);
     ba->setHidden(false);
 }
 

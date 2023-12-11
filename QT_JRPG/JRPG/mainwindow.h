@@ -50,6 +50,7 @@ private:
     BatlleArena* ba;
 
     void loadSouns();
+    void loadDB();
 signals:
     void wPress();
     void aPress();
