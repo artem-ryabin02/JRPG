@@ -44,6 +44,7 @@ private:
     CharListView* clv;
 
     void loadSouns();
+    void loadDB();
 signals:
     void wPress();
     void aPress();

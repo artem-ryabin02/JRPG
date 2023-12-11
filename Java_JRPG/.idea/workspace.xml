@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaef9d2d-26de-4ae9-8889-a74217dd2f56" name="Changes" comment="New Final Project">
-      <change beforePath="$PROJECT_DIR$/../JRPG/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JRPG/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets/jrpg.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9110f782-3912-4926-89de-cde8c90afcc0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9110f782-3912-4926-89de-cde8c90afcc0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_2023_17_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_2023_17_17__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_11_2023_19_47__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_11_2023_19_47__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/JRPG.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/JRPG.pro.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/assets.qrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QT_JRPG/JRPG/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../QT_JRPG/JRPG/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,24 +60,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev",
-    "last_opened_file_path": "D:/JRPG_project/JRPG/Java_JRPG",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.35402298",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JRPG_project/JRPG/Java_JRPG&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.35402298&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\GIT\JRPG\Java_JRPG\src\main\resources\ru\morecode\JRPG" />
@@ -92,6 +99,8 @@
       <updated>1698772043067</updated>
       <workItem from="1699362168308" duration="1611000" />
       <workItem from="1700659354449" duration="27000" />
+      <workItem from="1701796542459" duration="144000" />
+      <workItem from="1701934051789" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="New Final Project">
       <option name="closed" value="true" />

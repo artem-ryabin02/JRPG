@@ -73,5 +73,6 @@
         <file>assets/buttonAndText/charList/skills_act.png</file>
         <file>assets/buttonAndText/charList/equipment.png</file>
         <file>assets/buttonAndText/charList/weapon.png</file>
+        <file>assets/jrpg.sqlite</file>
     </qresource>
 </RCC>

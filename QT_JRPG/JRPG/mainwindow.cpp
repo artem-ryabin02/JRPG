@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->centralwidget->setContentsMargins(0,0,0,0);
 
     loadSouns();
-
+    loadDB();
 
     wmm = new MainMenu(ui->centralwidget);
     //wmm->setHidden(true);
@@ -117,6 +117,28 @@ void MainWindow::loadSouns()
     QFile outSL( SND_FILE_NAME );
     if( !outSL.exists() ) {
         QFile in( ":/assets/music/" + SND_FILE_STEPS_L );
+
+        if (in.copy(SND_FILE_NAME))
+        {
+            qDebug() << "true";
+        }
+        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
+    }
+}
+
+void MainWindow::loadDB()
+{
+    QDir dirDB;
+    if (!dirDB.exists("db")){
+        dirDB.mkdir("db");
+    }
+    static const QString SND_FILE_DB = "jrpg.sqlite";
+    static const QString SND_FILE_PATH = QDir::currentPath() + "/db/";
+    QString SND_FILE_NAME = SND_FILE_PATH + SND_FILE_DB;
+
+    QFile outB( SND_FILE_NAME );
+    if( !outB.exists() ) {
+        QFile in( ":/assets/" + SND_FILE_DB );
 
         if (in.copy(SND_FILE_NAME))
         {
