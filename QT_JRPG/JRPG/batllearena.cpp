@@ -27,15 +27,15 @@ BatlleArena::BatlleArena(QWidget *parent)
     HeroHPPB->setStyleSheet("QProgressBar::chunk {background:QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FF0350,stop: 0.4999 #FF0020,stop: 0.5 #FF0019,stop: 1 #FF0000 );border-radius: 5px;border: .px solid black;}QProgressBar{border-radius: 5px;background:grey}");
     HeroHPPB->setFixedSize(400, 30);
     HeroHPPB->setTextVisible(false);
-    HeroHPPB->setMaximum(100/*cat.getMaxHealth()*/);
-    HeroHPPB->setValue(100/*cat.getMaxHealth()*/);
+    HeroHPPB->setMaximum(100);
+    HeroHPPB->setValue(100);
     HeroWid->layout()->addWidget(HeroHPPB);
     HeroMPPB = new QProgressBar();
     HeroMPPB->setStyleSheet("QProgressBar::chunk {background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #78d,stop: 0.4999 #46a,stop: 0.5 #45a,stop: 1 #238 );border-radius: 5px;border: px solid black;}QProgressBar{border-radius: 5px;background:grey}");
     HeroMPPB->setFixedSize(400, 30);
     HeroMPPB->setTextVisible(false);
-    HeroMPPB->setMaximum(100/*cat.getMaxHealth()*/);
-    HeroMPPB->setValue(100/*cat.getMaxHealth()*/);
+    HeroMPPB->setMaximum(100);
+    HeroMPPB->setValue(100);
     HeroWid->layout()->addWidget(HeroMPPB);
 
     HeroImage = new QLabel();
@@ -52,15 +52,15 @@ BatlleArena::BatlleArena(QWidget *parent)
     EnemyHPPB->setStyleSheet("QProgressBar::chunk {background:QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FF0350,stop: 0.4999 #FF0020,stop: 0.5 #FF0019,stop: 1 #FF0000 );border-radius: 5px;border: .px solid black;}QProgressBar{border-radius: 5px;background:grey}");
     EnemyHPPB->setFixedSize(400, 30);
     EnemyHPPB->setTextVisible(false);
-    EnemyHPPB->setMaximum(100/*cat.getMaxHealth()*/);
-    EnemyHPPB->setValue(100/*cat.getMaxHealth()*/);
+    EnemyHPPB->setMaximum(100);
+    EnemyHPPB->setValue(100);
     EnemyWid->layout()->addWidget(EnemyHPPB);
     EnemyMPPB = new QProgressBar();
     EnemyMPPB->setStyleSheet("QProgressBar::chunk {background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #78d,stop: 0.4999 #46a,stop: 0.5 #45a,stop: 1 #238 );border-radius: 5px;border: px solid black;}QProgressBar{border-radius: 5px;background:grey}");
     EnemyMPPB->setFixedSize(400, 30);
     EnemyMPPB->setTextVisible(false);
-    EnemyMPPB->setMaximum(100/*cat.getMaxHealth()*/);
-    EnemyMPPB->setValue(100/*cat.getMaxHealth()*/);
+    EnemyMPPB->setMaximum(100);
+    EnemyMPPB->setValue(100);
     EnemyWid->layout()->addWidget(EnemyMPPB);
 
     EnemyImage = new QLabel();
@@ -112,7 +112,7 @@ BatlleArena::BatlleArena(QWidget *parent)
     connect(buttonEcp, &ImageButton::clicked, this, &BatlleArena::onButtonClickEscape);
 }
 
-void BatlleArena::startBattle(Hero &_hero)
+void BatlleArena::startBattle(const Hero _hero)
 {
     hero = _hero;
     hero.displayStatus();
@@ -176,6 +176,11 @@ void BatlleArena::onButtonClickSkill()
 void BatlleArena::onButtonClickEscape()
 {
     emit escape();
+}
+
+Hero BatlleArena::getHero() const
+{
+    return hero;
 }
 
 void BatlleArena::enemyMotion()

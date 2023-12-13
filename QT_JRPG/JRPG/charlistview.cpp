@@ -1,7 +1,7 @@
 #include "charlistview.h"
 
 CharListView::CharListView(QWidget *parent)
-    : QWidget{parent}
+    : QWidget{parent}, cat("Cater", 5,5,5,5,5,5)
 {
     QFont textFont("Stencil", 36);
 
@@ -46,37 +46,37 @@ CharListView::CharListView(QWidget *parent)
     lblStr->setStyleSheet("background:grey");
     lblStr->setAlignment(Qt::AlignCenter);
     lblStr->setFont(textFont);
-    lblStr->setText(QString::number(5));
+    lblStr->setText(QString::number(cat.getStrength()));
     lblVit = new QLabel(parent);
     lblVit->setGeometry(933, 254, 54, 51);
     lblVit->setStyleSheet("background:grey");
     lblVit->setAlignment(Qt::AlignCenter);
     lblVit->setFont(textFont);
-    lblVit->setText(QString::number(5));
+    lblVit->setText(QString::number(cat.getVitality()));
     lblAgl = new QLabel(parent);
     lblAgl->setGeometry(1184, 195, 54, 51);
     lblAgl->setStyleSheet("background:grey");
     lblAgl->setAlignment(Qt::AlignCenter);
     lblAgl->setFont(textFont);
-    lblAgl->setText(QString::number(5));
+    lblAgl->setText(QString::number(cat.getAgility()));
     lblPer = new QLabel(parent);
     lblPer->setGeometry(1185, 254, 54, 51);
     lblPer->setStyleSheet("background:grey");
     lblPer->setAlignment(Qt::AlignCenter);
     lblPer->setFont(textFont);
-    lblPer->setText(QString::number(5));
+    lblPer->setText(QString::number(cat.getPerception()));
     lblInt = new QLabel(parent);
     lblInt->setGeometry(1437, 195, 54, 51);
     lblInt->setStyleSheet("background:grey");
     lblInt->setAlignment(Qt::AlignCenter);
     lblInt->setFont(textFont);
-    lblInt->setText(QString::number(5));
+    lblInt->setText(QString::number(cat.getIntelligence()));
     lblWis = new QLabel(parent);
     lblWis->setGeometry(1437, 254, 54, 51);
     lblWis->setStyleSheet("background:grey");
     lblWis->setAlignment(Qt::AlignCenter);
     lblWis->setFont(textFont);
-    lblWis->setText(QString::number(5));
+    lblWis->setText(QString::number(cat.getWisdom()));
 
     QWidget* wHP = new QWidget();
     wHP->setLayout(new QHBoxLayout);
@@ -84,7 +84,7 @@ CharListView::CharListView(QWidget *parent)
     lHP->setPixmap(QPixmap(":/assets/buttonAndText/charList/HP.png"));
     QLabel* lblhp = new QLabel();
     lblhp->setFont(textFont);
-    lblhp->setText("10/10");
+    lblhp->setText(QString::number(cat.getHealth()) + "/" + QString::number(cat.getMaxHealth()));
     wHP->layout()->addWidget(lHP);
     wHP->layout()->addWidget(lblhp);
 
@@ -95,7 +95,7 @@ CharListView::CharListView(QWidget *parent)
     lMP->setPixmap(QPixmap(":/assets/buttonAndText/charList/MP.png"));
     QLabel* lblMp = new QLabel();
     lblMp->setFont(textFont);
-    lblMp->setText("10/10");
+    lblMp->setText(QString::number(cat.getMana()) + "/" + QString::number(cat.getMaxMana()));
     wMP->layout()->addWidget(lMP);
     wMP->layout()->addWidget(lblMp);
 
@@ -104,7 +104,7 @@ CharListView::CharListView(QWidget *parent)
     QLabel* lcc = new QLabel();
     lcc->setPixmap(QPixmap(":/assets/buttonAndText/charList/critChance.png"));
     QLabel* lblcc = new QLabel();
-    lblcc->setText("10%");
+    lblcc->setText(QString::number(cat.getCritChance())+"%");
     lblcc->setFont(textFont);
     wCC->layout()->addWidget(lcc);
     wCC->layout()->addWidget(lblcc);
@@ -114,7 +114,7 @@ CharListView::CharListView(QWidget *parent)
     QLabel* llc = new QLabel();
     llc->setPixmap(QPixmap(":/assets/buttonAndText/charList/loadcapacity.png"));
     QLabel* lbllc = new QLabel();
-    lbllc->setText("10%");
+    lbllc->setText(QString::number(100));
     lbllc->setFont(textFont);
     wLC->layout()->addWidget(llc);
     wLC->layout()->addWidget(lbllc);
@@ -132,7 +132,7 @@ CharListView::CharListView(QWidget *parent)
     lATC->setPixmap(QPixmap(":/assets/buttonAndText/charList/attack.png"));
     QLabel* lblATC = new QLabel();
     lblATC->setFont(textFont);
-    lblATC->setText("10");
+    lblATC->setText(QString::number(cat.getAttack()));
     wATC->layout()->addWidget(lATC);
     wATC->layout()->addWidget(lblATC);
 
@@ -142,7 +142,7 @@ CharListView::CharListView(QWidget *parent)
     lDEF->setPixmap(QPixmap(":/assets/buttonAndText/charList/defence.png"));
     QLabel* lblDEF = new QLabel();
     lblDEF->setFont(textFont);
-    lblDEF->setText("10%");
+    lblDEF->setText("~");
     wDEF->layout()->addWidget(lDEF);
     wDEF->layout()->addWidget(lblDEF);
 
@@ -152,7 +152,7 @@ CharListView::CharListView(QWidget *parent)
     llDOD->setPixmap(QPixmap(":/assets/buttonAndText/charList/dodge.png"));
     QLabel* lblDOD = new QLabel();
     lblDOD->setFont(textFont);
-    lblDOD->setText("10%");
+    lblDOD->setText(QString::number(cat.getDodge())+"%");
     wDOD->layout()->addWidget(llDOD);
     wDOD->layout()->addWidget(lblDOD);
 

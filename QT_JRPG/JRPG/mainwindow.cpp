@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     //wmm->setHidden(true);
 
     wg = new Game(ui->centralwidget);
-    wg->setHidden(true);
+    wg->setFHidden(true);
 
     twn = new TalkingWithNPC(ui->centralwidget);
     twn->setHidden(true);
@@ -55,8 +55,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, &MainWindow::dPress, wg, &Game::recaivedEast);
 
     connect(ba, &BatlleArena::win, this, &MainWindow::returnFromBattleArena);
-//    connect(ba, &BatlleArena::win, this, &MainWindow::returnFromBattleArena);
-//    connect(ba, &BatlleArena::win, this, &MainWindow::returnFromBattleArena);
+    connect(ba, &BatlleArena::loose, this, &MainWindow::gameOver);
+    connect(ba, &BatlleArena::escape, this, &MainWindow::escapeFromBattleArena);
 
 }
 
@@ -163,10 +163,8 @@ void MainWindow::onButtonExitClicked()
 
 void MainWindow::onButtonNewGameClicked()
 {
-
     wmm->setHidden(true);
     wg->setHidden(false);
-
 }
 
 
@@ -182,13 +180,14 @@ void MainWindow::onButtonInvetoryClicked()
 
 void MainWindow::onButtonCharListClicked()
 {
-    wg->setHidden(true);
+    wg->setFHidden(true);
     clv->setHidden(false);
 }
 
 void MainWindow::returnFromCharList()
 {
-    wg->setHidden(false);
+    wg->setFHidden(false);
+
     clv->setHidden(true);
 }
 
@@ -208,15 +207,28 @@ void MainWindow::recGoodbye()
 
 void MainWindow::recEnemy()
 {
-    wg->setHidden(true);
-    Hero cat("cat", 5,5,5,5,5,5);
-    ba->startBattle(cat);
+    wg->setFHidden(true);
+    ba->startBattle(wg->getCat());
     ba->setHidden(false);
 }
 
 void MainWindow::returnFromBattleArena()
 {
     wg->setHidden(false);
+    wg->setCat(ba->getHero());
+    ba->setHidden(true);
+}
+
+void MainWindow::escapeFromBattleArena()
+{
+    wg->setHidden(false);
+    wg->setCat(ba->getHero());
+    ba->setHidden(true);
+}
+
+void MainWindow::gameOver()
+{
+    wmm->setHidden(false);
     ba->setHidden(true);
 }
 

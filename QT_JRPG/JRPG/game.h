@@ -17,7 +17,11 @@ public:
     ~Game();
 
     void setHidden(bool hidden);
+    void setFHidden(bool hidden);
     void setLabAct(bool newLabAct);
+
+    Hero getCat() const;
+    void setCat(const Hero &newCat);
 
 private slots:
     void onPushExitButtonClicked();
@@ -64,8 +68,7 @@ private:
     ImageButton* lgb;
     ImageButton* egb;
 
-
-
+    Hero cat;
     bool labAct = 0;
 signals:
     void exit();

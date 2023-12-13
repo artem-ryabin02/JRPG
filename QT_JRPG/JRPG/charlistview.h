@@ -1,6 +1,7 @@
 #ifndef CHARLISTVIEW_H
 #define CHARLISTVIEW_H
 
+#include "hero.h"
 #include "imagebutton.h"
 #include <QLabel>
 #include <QObject>
@@ -35,6 +36,8 @@ private:
 
     ImageButton* skills;
     ImageButton* back;
+
+    Hero cat;
 
 
 signals:

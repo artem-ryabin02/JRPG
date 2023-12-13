@@ -23,6 +23,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
     void onButtonExitClicked();
 
@@ -37,8 +38,8 @@ private slots:
 
     void recEnemy();
     void returnFromBattleArena();
-
-
+    void escapeFromBattleArena();
+    void gameOver();
 protected:
     void keyPressEvent(QKeyEvent *event);
 private:
@@ -48,6 +49,7 @@ private:
     TalkingWithNPC* twn;
     CharListView* clv;
     BatlleArena* ba;
+
 
     void loadSouns();
     void loadDB();

@@ -1,9 +1,8 @@
 #include "game.h"
 
 Game::Game(QWidget *parent)
-    : QWidget{parent}
+    : QWidget{parent}, cat("Cater", 5, 5, 5, 5, 5, 5)
 {
- //   Hero cat("Cater", 5, 5, 5, 5, 5, 5);
     wBoard = new QWidget(parent);
     wBoard->setObjectName("boardWidget");
     wBoard->setLayout(new QVBoxLayout);
@@ -53,37 +52,37 @@ Game::Game(QWidget *parent)
     lblStr->setStyleSheet("background:grey");
     lblStr->setAlignment(Qt::AlignCenter);
     lblStr->setFont(textFont);
-    lblStr->setText(QString::number(/*cat.getStrength()*/5));
+    lblStr->setText(QString::number(cat.getStrength()));
     lblVit = new QLabel(parent);
     lblVit->setGeometry(1319, 659, 54, 51);
     lblVit->setStyleSheet("background:grey");
     lblVit->setAlignment(Qt::AlignCenter);
     lblVit->setFont(textFont);
-    lblVit->setText(QString::number(/*cat.getVitality()*/5));
+    lblVit->setText(QString::number(cat.getVitality()));
     lblAgl = new QLabel(parent);
     lblAgl->setGeometry(1570, 600, 54, 51);
     lblAgl->setStyleSheet("background:grey");
     lblAgl->setAlignment(Qt::AlignCenter);
     lblAgl->setFont(textFont);
-    lblAgl->setText(QString::number(/*cat.getAgility()*/5));
+    lblAgl->setText(QString::number(cat.getAgility()));
     lblPer = new QLabel(parent);
     lblPer->setGeometry(1570, 659, 54, 51);
     lblPer->setStyleSheet("background:grey");
     lblPer->setAlignment(Qt::AlignCenter);
     lblPer->setFont(textFont);
-    lblPer->setText(QString::number(/*cat.getPerception()*/5));
+    lblPer->setText(QString::number(cat.getPerception()));
     lblInt = new QLabel(parent);
     lblInt->setGeometry(1823, 600, 54, 51);
     lblInt->setStyleSheet("background:grey");
     lblInt->setAlignment(Qt::AlignCenter);
     lblInt->setFont(textFont);
-    lblInt->setText(QString::number(/*cat.getIntelligence()*/5));
+    lblInt->setText(QString::number(cat.getIntelligence()));
     lblWis = new QLabel(parent);
     lblWis->setGeometry(1823, 659, 54, 51);
     lblWis->setStyleSheet("background:grey");
     lblWis->setAlignment(Qt::AlignCenter);
     lblWis->setFont(textFont);
-    lblWis->setText(QString::number(/*cat.getWisdom()*/5));
+    lblWis->setText(QString::number(cat.getWisdom()));
 
 
     wHPMP = new QWidget(parent);
@@ -96,14 +95,14 @@ Game::Game(QWidget *parent)
     pbHP->setStyleSheet("QProgressBar::chunk {background:QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FF0350,stop: 0.4999 #FF0020,stop: 0.5 #FF0019,stop: 1 #FF0000 );border-radius: 5px;border: .px solid black;}QProgressBar{border-radius: 5px;background:grey}");
     pbHP->setFixedSize(100, 450);
     pbHP->setTextVisible(false);
-    pbHP->setMaximum(/*cat.getMaxHealth()*/100);
-    pbHP->setValue(/*cat.getMaxHealth()*/100);
+    pbHP->setMaximum(cat.getMaxHealth());
+    pbHP->setValue(cat.getMaxHealth());
     pbMP->setOrientation(Qt::Vertical);
     pbMP->setStyleSheet("QProgressBar::chunk {background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #78d,stop: 0.4999 #46a,stop: 0.5 #45a,stop: 1 #238 );border-radius: 5px;border: px solid black;}QProgressBar{border-radius: 5px;background:grey}");
     pbMP->setFixedSize(100, 450);
     pbMP->setTextVisible(false);
-    pbMP->setMaximum(/*cat.getMaxMana()*/100);
-    pbMP->setValue(/*cat.getMaxMana()*/100);
+    pbMP->setMaximum(cat.getMaxMana());
+    pbMP->setValue(cat.getMaxMana());
     lblHero = new QLabel();
     lblHero->setFixedSize(430, 500);
     QPixmap hero(":/assets/characters/hero.png");
@@ -135,20 +134,29 @@ Game::~Game()
 
 void Game::setHidden(bool hidden)
 {
-    if(wBoard->isHidden()){
-        if (labAct){
-            wBoardLab->setHidden(hidden);
-            wBoard->setHidden(!hidden);
-        }
-        else{
-            wBoardLab->setHidden(!hidden);
-            wBoard->setHidden(hidden);
-        }
+    if (labAct){
+        wBoardLab->setHidden(hidden);
+        wBoard->setHidden(!hidden);
     }
     else{
-        wBoardLab->setHidden(hidden);
+        wBoardLab->setHidden(!hidden);
         wBoard->setHidden(hidden);
     }
+    wHPMP->setHidden(hidden);
+    wButtoms->setHidden(hidden);
+    lblAgl->setHidden(hidden);
+    lblPer->setHidden(hidden);
+    lblStr->setHidden(hidden);
+    lblVit->setHidden(hidden);
+    lblInt->setHidden(hidden);
+    lblWis->setHidden(hidden);
+    lblParametrs->setHidden(hidden);
+}
+
+void Game::setFHidden(bool hidden)
+{
+    wBoardLab->setHidden(hidden);
+    wBoard->setHidden(hidden);
     wHPMP->setHidden(hidden);
     wButtoms->setHidden(hidden);
     lblAgl->setHidden(hidden);
@@ -246,6 +254,18 @@ void Game::recaivedWest()
     if (!wBoardLab->isHidden()){
         blb->updatePostion(0, -1);
     }
+}
+
+Hero Game::getCat() const
+{
+    return cat;
+}
+
+void Game::setCat(const Hero &newCat)
+{
+    cat = newCat;
+    pbHP->setValue(cat.getHealth());
+    pbMP->setValue(cat.getMana());
 }
 
 void Game::setLabAct(bool newLabAct)
