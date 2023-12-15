@@ -38,7 +38,6 @@ private slots:
     void returnFromCharList();
     void recTalk();
     void recGoodbye();
-
     void recEnemy();
     void returnFromBattleArena();
     void escapeFromBattleArena();
@@ -58,6 +57,7 @@ private:
     QSlider *slider;
     QLabel *label;
 
+    void newGame();
 
     void loadSouns();
     void loadDB();

@@ -7,12 +7,14 @@
 class Effect
 {
 public:
-    Effect(QString type, int tier);
+    Effect();
+    Effect(int id, QString type, int tier);
 
     void doEffect(Character* user, Character* target = nullptr);
 
     void Heal(Character* target, int tier);
 private:
+    int id;
     QString type;
     int tier;
     int toIntType(QString type);

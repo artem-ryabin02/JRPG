@@ -86,5 +86,11 @@
         <file>assets/battleArena/skillButton.png</file>
         <file>assets/battleArena/skillButton_act.png</file>
         <file>assets/jrpg.sqlite</file>
+        <file>assets/buttonAndText/Game/artefact.png</file>
+        <file>assets/buttonAndText/YesOrNot/answer.png</file>
+        <file>assets/buttonAndText/YesOrNot/no.png</file>
+        <file>assets/buttonAndText/YesOrNot/no_act.png</file>
+        <file>assets/buttonAndText/YesOrNot/yes.png</file>
+        <file>assets/buttonAndText/YesOrNot/yes_act.png</file>
     </qresource>
 </RCC>

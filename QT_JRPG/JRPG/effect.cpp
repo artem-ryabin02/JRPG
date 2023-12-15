@@ -1,7 +1,8 @@
 #include "effect.h"
 
-Effect::Effect(QString type, int tier)
+Effect::Effect(int id, QString type, int tier)
 {
+    this->id;
     this->type = type;
     this->tier = tier;
 }

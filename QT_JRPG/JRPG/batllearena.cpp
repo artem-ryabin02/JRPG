@@ -6,7 +6,7 @@
 
 
 BatlleArena::BatlleArena(QWidget *parent)
-    : QWidget{parent}, hero("H", 1,1,1,1,1,1), enemy("E", 1,1,1,1,1,1, "qwerty")
+    : QWidget{parent}, hero("H", 1,1,1,1,1,1), enemy("E", 1,1,1,1,1,1, "skill", "qwerty")
 {
     int id = QFontDatabase::addApplicationFont(":/assets/PressStart2P-Regular.ttf");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
@@ -128,7 +128,7 @@ void BatlleArena::startBattle(const Hero _hero)
     hero.displayStatus();
     qDebug() << "--------------------------------------\n";
 
-    enemy =DBcontroller::randEnemy();
+    enemy = DBcontroller::randEnemy();
     enemy.displayStatus();
     HeroHPPB->setMaximum(hero.getMaxHealth());
     HeroHPPB->setValue(hero.getHealth());
@@ -185,7 +185,14 @@ void BatlleArena::onButtonClickSkill()
 
 void BatlleArena::onButtonClickEscape()
 {
-    emit escape();
+    int cube = QRandomGenerator::global()->bounded(100);
+    if (cube <= hero.getDodge()){
+        emit escape();
+    }
+    else {
+        sb->showMessage("Побег не удался");
+        enemyMotion();
+    }
 }
 
 Hero BatlleArena::getHero() const
@@ -195,34 +202,28 @@ Hero BatlleArena::getHero() const
 
 void BatlleArena::enemyMotion()
 {
-    //sb->showMessage("Ход " + enemy.getName());
     qDebug() << "enemy motion \n";
     enemy.removeDefence();
     int action = enemy.randAction();
     if (action == 1) {
-        //System.out.println("крыса атакует");
         sb->showMessage(enemy.getName() + " атакует");
         hero.receivedDamage(enemy.causedDamage(hero.getProtection(), hero.getDodge()));
         HeroHPPB->setValue(hero.getHealth());
     }
     if (action == 2) {
-        //System.out.println("крыса защищается");
         sb->showMessage(enemy.getName() + " защищается");
         enemy.Defence();
     }
     if (action == 3) {
         if (enemy.wastingMana(1)){
             EnemyMPPB->setValue(enemy.getMana());
-            //System.out.println("крыса лечится");
             sb->showMessage(enemy.getName() + " лечится");
             enemy.Heal(5);
         }else{
-            //System.out.println("крыса не смогла вылечится, из-за не хватки маны");
             sb->showMessage(enemy.getName() + " не смог(ла) вылечится, из-за не хватки маны");
         }
     }
     checkWin();
-    //sb->showMessage("Ход " + hero.getName());
     hero.removeDefence();
 }
 

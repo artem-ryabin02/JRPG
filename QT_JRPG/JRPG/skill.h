@@ -8,13 +8,13 @@
 class Skill
 {
 public:
-
-    Skill(QString name, int cost);
+    Skill();
+    explicit Skill(QString name, int cost, int effect_id, Effect eff);
 private:
-
     QString name;
     int cost;
-    //Effect eff;
+    int effect_id;
+    Effect eff;
 };
 
 #endif // SKILL_H
