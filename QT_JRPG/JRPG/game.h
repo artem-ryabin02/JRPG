@@ -22,6 +22,7 @@ public:
 
     Hero getCat() const;
     void setCat(const Hero &newCat);
+    void setVolume(int volume);
 
 private slots:
     void onPushExitButtonClicked();
@@ -39,6 +40,7 @@ public slots:
     void recaivedNorth();
     void recaivedEast();
     void recaivedWest();
+
 
 
 private:

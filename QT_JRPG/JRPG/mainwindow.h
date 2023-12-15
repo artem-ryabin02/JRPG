@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QWidget>
 #include <QDir>
+#include <QSlider>
+#include <QLabel>
+
 #include "charlistview.h"
 #include "game.h"
 #include "mainmenu.h"
@@ -40,6 +43,8 @@ private slots:
     void returnFromBattleArena();
     void escapeFromBattleArena();
     void gameOver();
+
+    void valueChanged();
 protected:
     void keyPressEvent(QKeyEvent *event);
 private:
@@ -49,6 +54,9 @@ private:
     TalkingWithNPC* twn;
     CharListView* clv;
     BatlleArena* ba;
+    QWidget *volumeWidget;
+    QSlider *slider;
+    QLabel *label;
 
 
     void loadSouns();
@@ -58,6 +66,7 @@ signals:
     void aPress();
     void sPress();
     void dPress();
+    void volumeChanged();
 
 };
 #endif // MAINWINDOW_H
