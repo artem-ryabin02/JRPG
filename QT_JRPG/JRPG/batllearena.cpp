@@ -112,6 +112,16 @@ BatlleArena::BatlleArena(QWidget *parent)
     connect(buttonEcp, &ImageButton::clicked, this, &BatlleArena::onButtonClickEscape);
 }
 
+BatlleArena::~BatlleArena()
+{
+    qDebug() << "des BattlArena";
+    delete HeroWid;
+    delete EnemyWid;
+    delete panelButtons;
+    delete sb;
+
+}
+
 void BatlleArena::startBattle(const Hero _hero)
 {
     hero = _hero;

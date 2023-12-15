@@ -181,6 +181,21 @@ CharListView::CharListView(QWidget *parent)
     connect(back, &ImageButton::clicked, this, [this](){emit goBack();});
 }
 
+CharListView::~CharListView()
+{
+    qDebug() << "des CharListView";
+    delete wArtEquips;
+    delete wParametrs;
+    delete lblStr;
+    delete lblVit;
+    delete lblAgl;
+    delete lblPer;
+    delete lblInt;
+    delete lblWis;
+    delete wHorizon;
+
+}
+
 void CharListView::setHidden(bool hidden)
 {
     wArtEquips->setHidden(hidden);

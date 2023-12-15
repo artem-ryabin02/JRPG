@@ -13,6 +13,7 @@ class CharListView : public QWidget
     Q_OBJECT
 public:
     explicit CharListView(QWidget *parent = nullptr);
+    ~CharListView();
     void setHidden(bool hidden);
 private:
     QWidget* wArtEquips;

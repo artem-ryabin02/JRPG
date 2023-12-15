@@ -13,8 +13,7 @@ class GeneratorLabyrinth
 {
 public:
     GeneratorLabyrinth(int row, int col);
-
-
+    ~GeneratorLabyrinth();
 
     TmpData **getLab();
 private:

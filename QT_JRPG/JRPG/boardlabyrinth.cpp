@@ -19,7 +19,12 @@ BoardLabyrinth::BoardLabyrinth(QWidget *parent)
     player->setAudioOutput(ao);
 }
 
-BoardLabyrinth::~BoardLabyrinth(){}
+BoardLabyrinth::~BoardLabyrinth(){
+    qDebug() << "des BoardLabyrinth";
+    delete player;
+    delete ao;
+    delete grid;
+}
 
 void BoardLabyrinth::rescale(int _size){
     int w = ( _size / rows ) * rows ;

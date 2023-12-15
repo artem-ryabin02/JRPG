@@ -62,9 +62,13 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    qDebug() << "MainWindow";
     delete ui;
     delete wmm;
     delete twn;
+    delete wg;
+    delete clv;
+    delete ba;
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){

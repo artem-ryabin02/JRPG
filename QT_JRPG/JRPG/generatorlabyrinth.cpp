@@ -17,6 +17,15 @@ GeneratorLabyrinth::GeneratorLabyrinth(int row, int col)
     generateLabyrinth();
 }
 
+GeneratorLabyrinth::~GeneratorLabyrinth()
+{
+    qDebug() << "GeneratorLabyrinth";
+    /*for(int i = 0; i < row; i++){
+        delete tmpData[i];
+    }
+    delete[] tmpData;*/
+}
+
 void GeneratorLabyrinth::generateLabyrinth()
 {
     int randX = QRandomGenerator::global()->bounded(row-1);

@@ -23,6 +23,7 @@ ImageButton::ImageButton(QString namePXM)
 
 ImageButton::~ImageButton()
 {
+    qDebug() << "ImageButton";
     delete player;
     delete ao;
 }

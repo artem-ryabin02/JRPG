@@ -87,6 +87,7 @@ TalkingWithNPC::TalkingWithNPC(QWidget *parent)
 
 TalkingWithNPC::~TalkingWithNPC()
 {
+    qDebug() << "TalkingWithNPC";
     delete panelText;
     delete wNPC;
     delete wHero;

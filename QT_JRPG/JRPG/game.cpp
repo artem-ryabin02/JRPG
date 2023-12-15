@@ -127,9 +127,18 @@ Game::Game(QWidget *parent)
 
 Game::~Game()
 {
+    qDebug() << "des Game";
     delete wBoard;
     delete wHPMP;
     delete wButtoms;
+    delete wBoardLab;
+    delete lblParametrs;
+    delete lblStr;
+    delete lblVit;
+    delete lblAgl;
+    delete lblPer;
+    delete lblInt;
+    delete lblWis;
 }
 
 void Game::setHidden(bool hidden)

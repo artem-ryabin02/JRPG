@@ -21,7 +21,12 @@ BoardLocation::BoardLocation(QWidget* parent)
 
 
 }
-BoardLocation::~BoardLocation(){}
+BoardLocation::~BoardLocation(){
+    qDebug() << "des BoardLocation";
+    delete player;
+    delete ao;
+    delete grid;
+}
 
 void BoardLocation::loadBoardVillage(QFile& file){
 //    QProcess process;
