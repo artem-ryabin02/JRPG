@@ -35,7 +35,6 @@ private slots:
     void returnFromCharList();
     void recTalk();
     void recGoodbye();
-
     void recEnemy();
     void returnFromBattleArena();
     void escapeFromBattleArena();

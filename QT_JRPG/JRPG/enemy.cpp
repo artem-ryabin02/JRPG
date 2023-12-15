@@ -1,9 +1,10 @@
 #include "enemy.h"
 
-Enemy::Enemy(QString name, int vitality, int strength, int wisdom, int intelligence, int agility, int perception, QString pathName)
+Enemy::Enemy(QString name, int vitality, int strength, int wisdom, int intelligence, int agility, int perception, QString enemy_skill_id, QString pathName)
     :Character(name, vitality, strength, wisdom, intelligence, agility, perception)
 {
     this->pathName = pathName;
+    this->enemy_skill_id = enemy_skill_id;
 }
 
 int Enemy::randAction()
@@ -32,3 +33,13 @@ int Enemy::randAction()
         } else return 3;
     }
 }
+
+QString Enemy::getEnemy_skill_id() const
+{
+    return enemy_skill_id;
+}
+
+//void Enemy::setSk(const Skill &newSk)
+//{
+//    sk = newSk;
+//}

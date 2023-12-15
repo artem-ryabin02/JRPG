@@ -13,6 +13,8 @@ public:
     DBcontroller();
     ~DBcontroller(){};
     static Enemy randEnemy();
+    static Skill randEnemySkill(QString enemy_skill);
+    static Effect makeEffect(int id);
 private:
     static void dbOpener();
 };
