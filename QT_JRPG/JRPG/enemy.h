@@ -11,12 +11,23 @@ class Enemy : public Character
 {
 public:
 
-    Enemy(QString name, int vitality, int strength, int wisdom, int intelligence, int agility, int perception, QString pathName);
-
-
+    Enemy(QString name,
+          int vitality,
+          int strength,
+          int wisdom,
+          int intelligence,
+          int agility,
+          int perception,
+          QString enemy_skill_id,
+          QString pathName);
     int randAction();
+    QString getEnemy_skill_id() const;
+    //void setSk(const Skill &newSk);
+
 private:
     QString pathName;
+    QString enemy_skill_id;
+    //Skill sk;
 };
 
 #endif // ENEMY_H

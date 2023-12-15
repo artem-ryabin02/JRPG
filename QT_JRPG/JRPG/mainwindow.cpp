@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QFontDatabase>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -11,6 +13,38 @@ MainWindow::MainWindow(QWidget *parent)
     loadSouns();
     loadDB();
 
+<<<<<<< HEAD
+    int id = QFontDatabase::addApplicationFont(":/assets/PressStart2P-Regular.ttf");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont textFont(family, 36);
+
+    volumeWidget = new QWidget(ui->centralwidget);
+    volumeWidget->setLayout(new QHBoxLayout);
+    volumeWidget->setGeometry(1600, 10, 305, 60);
+
+
+    slider = new QSlider(Qt::Horizontal);
+
+    slider->setMaximum(-1);
+    slider->setMaximum(101);
+    slider->setValue(50);
+
+    label = new QLabel();
+
+    label->setText(QString::number(slider->value()));
+    label->setFont(textFont);
+    label->setStyleSheet("Background:grey");
+    label->setFixedSize(140, 60);
+    label->setAlignment(Qt::AlignCenter);
+
+    volumeWidget->layout()->addWidget(label);
+    volumeWidget->layout()->addWidget(slider);
+
+
+    wmm = new MainMenu(ui->centralwidget);
+    //wmm->setHidden(true);
+=======
+>>>>>>> 8295b76e31bbf7a7cf8750a1561c2ffe4ae5f29e
 
 
     wmm = new MainMenu(ui->centralwidget);
@@ -36,10 +70,36 @@ MainWindow::MainWindow(QWidget *parent)
     connect(wmm, &MainMenu::loadGame, this, &MainWindow::onButtonLoadGameClicked);
     connect(wmm, &MainMenu::exit, this, &MainWindow::onButtonExitClicked);
 
+<<<<<<< HEAD
+
+    connect(slider, &QSlider::sliderMoved, this, &MainWindow::valueChanged);
+
+
+
+    connect(wg, &Game::loadGame, this, &MainWindow::onButtonLoadGameClicked);
+    connect(wg, &Game::inventory, this, &MainWindow::onButtonInvetoryClicked);
+    connect(wg, &Game::charList, this, &MainWindow::onButtonCharListClicked);
+    connect(wg, &Game::exit, this, &MainWindow::onButtonExitClicked);
+    connect(wg, &Game::talkWithNPC, this, &MainWindow::recTalk);
+    connect(wg, &Game::transmitEnemyEntry, this, &MainWindow::recEnemy);
+
+=======
+>>>>>>> 8295b76e31bbf7a7cf8750a1561c2ffe4ae5f29e
     connect(twn, &TalkingWithNPC::exitFromTWNPC, this, &MainWindow::recGoodbye);
 
     connect(clv, &CharListView::goBack, this, &MainWindow::returnFromCharList);
 
+<<<<<<< HEAD
+
+
+    connect(this, &MainWindow::wPress, wg, &Game::recaivedNorth);
+    connect(this, &MainWindow::aPress, wg, &Game::recaivedWest);
+    connect(this, &MainWindow::sPress, wg, &Game::recaivedSouth);
+    connect(this, &MainWindow::dPress, wg, &Game::recaivedEast);
+
+
+=======
+>>>>>>> 8295b76e31bbf7a7cf8750a1561c2ffe4ae5f29e
     connect(ba, &BatlleArena::win, this, &MainWindow::returnFromBattleArena);
     connect(ba, &BatlleArena::loose, this, &MainWindow::gameOver);
     connect(ba, &BatlleArena::escape, this, &MainWindow::escapeFromBattleArena);
@@ -245,6 +305,12 @@ void MainWindow::gameOver()
         wg = nullptr;
     }
     ba->setHidden(true);
+}
+
+void MainWindow::valueChanged(){
+    label->setText(QString::number(slider->value()));
+
+    emit volumeChanged();
 }
 
 

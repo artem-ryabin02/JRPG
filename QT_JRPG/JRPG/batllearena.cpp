@@ -6,7 +6,7 @@
 
 
 BatlleArena::BatlleArena(QWidget *parent)
-    : QWidget{parent}, hero("H", 1,1,1,1,1,1), enemy("E", 1,1,1,1,1,1, "qwerty")
+    : QWidget{parent}, hero("H", 1,1,1,1,1,1), enemy("E", 1,1,1,1,1,1, "skill", "qwerty")
 {
     int id = QFontDatabase::addApplicationFont(":/assets/PressStart2P-Regular.ttf");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
@@ -128,7 +128,7 @@ void BatlleArena::startBattle(const Hero _hero)
     hero.displayStatus();
     qDebug() << "--------------------------------------\n";
 
-    enemy =DBcontroller::randEnemy();
+    enemy = DBcontroller::randEnemy();
     enemy.displayStatus();
     HeroHPPB->setMaximum(hero.getMaxHealth());
     HeroHPPB->setValue(hero.getHealth());

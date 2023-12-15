@@ -29,6 +29,8 @@ public:
 
     void updatePostion(int r, int c);
     void setDisable(bool disable);
+
+    void setVolume(int volume);
 protected:
 
 private:

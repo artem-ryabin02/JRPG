@@ -113,6 +113,11 @@ void BoardLocation::setDisable(bool disable)
     this->blockSignals(disable);
 }
 
+void BoardLocation::setVolume(int volume)
+{
+    ao->setVolume(volume);
+}
+
 void BoardLocation::rescale(int _size){
     int w = ( _size / rows ) * rows ;
     int h = ( _size / cols ) * cols ;

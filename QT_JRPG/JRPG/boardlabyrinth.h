@@ -21,6 +21,10 @@ public:
     void updatePostion(int r, int c);
 
     void setDisable(bool disable);
+
+    void setVolume(int volume);
+
+
 private:
     QGridLayout* grid;
     FieldLabyrinth*** fl;
@@ -30,8 +34,6 @@ private:
     int rows = 10;
     int xHero = 3;
     int yHero = 1;
-
-
 
     void loadBoardLab(TmpData **tmpLab );
     void initialization();

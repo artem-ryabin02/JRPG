@@ -11,7 +11,6 @@ BoardLabyrinth::BoardLabyrinth(QWidget *parent)
     GeneratorLabyrinth gnerLab(rows, cols);
     loadBoardLab(gnerLab.getLab());
     initialization();
-
     player = new QMediaPlayer();
     ao = new QAudioOutput();
     ao->setVolume(50);
@@ -150,6 +149,11 @@ void BoardLabyrinth::updatePostion(int r, int c){
 void BoardLabyrinth::setDisable(bool disable)
 {
     this->blockSignals(disable);
+}
+
+void BoardLabyrinth::setVolume(int volume)
+{
+    ao->setVolume(volume);
 }
 
 bool BoardLabyrinth::isCanGo(int x, int y, int nx, int ny)
