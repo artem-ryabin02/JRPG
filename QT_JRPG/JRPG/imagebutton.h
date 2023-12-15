@@ -18,6 +18,7 @@ public:
     ~ImageButton();
     void setPixmap( const QPixmap& pm );
     QSize sizeHint() const;
+    void setVolume(int volume);
 
 
 protected:

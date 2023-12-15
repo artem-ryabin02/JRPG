@@ -39,6 +39,11 @@ QSize ImageButton::sizeHint() const
     return pixmap.size();
 }
 
+void ImageButton::setVolume(int volume)
+{
+    ao->setVolume(volume);
+}
+
 void ImageButton::paintEvent(QPaintEvent *e)
 {
     Q_UNUSED(e);
