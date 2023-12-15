@@ -52,7 +52,6 @@ bool ImageButton::eventFilter(QObject *obj, QEvent *e)
     if (e->type() == QEvent::HoverEnter) {
         StartHoverEnterAnimation();
     }
-
     if (e->type() == QEvent::HoverLeave) {
         StartHoverLeaveAnimation();
     }

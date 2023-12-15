@@ -124,7 +124,6 @@ CharListView::CharListView(QWidget *parent)
     firstCol->layout()->addWidget(wHP);
     firstCol->layout()->addWidget(wMP);
     firstCol->layout()->addWidget(wCC);
-    //firstCol->layout()->addWidget(wLC);
 
     QWidget* wATC = new QWidget();
     wATC->setLayout(new QHBoxLayout);

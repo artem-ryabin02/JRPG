@@ -11,11 +11,11 @@ MainWindow::MainWindow(QWidget *parent)
     loadSouns();
     loadDB();
 
-    wmm = new MainMenu(ui->centralwidget);
-    //wmm->setHidden(true);
 
-    wg = new Game(ui->centralwidget);
-    wg->setFHidden(true);
+
+    wmm = new MainMenu(ui->centralwidget);
+
+    newGame();
 
     twn = new TalkingWithNPC(ui->centralwidget);
     twn->setHidden(true);
@@ -36,23 +36,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(wmm, &MainMenu::loadGame, this, &MainWindow::onButtonLoadGameClicked);
     connect(wmm, &MainMenu::exit, this, &MainWindow::onButtonExitClicked);
 
-    connect(wg, &Game::loadGame, this, &MainWindow::onButtonLoadGameClicked);
-    connect(wg, &Game::inventory, this, &MainWindow::onButtonInvetoryClicked);
-    connect(wg, &Game::charList, this, &MainWindow::onButtonCharListClicked);
-    connect(wg, &Game::exit, this, &MainWindow::onButtonExitClicked);
-    connect(wg, &Game::talkWithNPC, this, &MainWindow::recTalk);
-    connect(wg, &Game::transmitEnemyEntry, this, &MainWindow::recEnemy);
-
     connect(twn, &TalkingWithNPC::exitFromTWNPC, this, &MainWindow::recGoodbye);
 
     connect(clv, &CharListView::goBack, this, &MainWindow::returnFromCharList);
-
-
-
-    connect(this, &MainWindow::wPress, wg, &Game::recaivedNorth);
-    connect(this, &MainWindow::aPress, wg, &Game::recaivedWest);
-    connect(this, &MainWindow::sPress, wg, &Game::recaivedSouth);
-    connect(this, &MainWindow::dPress, wg, &Game::recaivedEast);
 
     connect(ba, &BatlleArena::win, this, &MainWindow::returnFromBattleArena);
     connect(ba, &BatlleArena::loose, this, &MainWindow::gameOver);
@@ -88,6 +74,24 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     default:
         break;
     }
+}
+
+void MainWindow::newGame()
+{
+    wg = new Game(ui->centralwidget);
+    wg->setFHidden(true);
+    connect(wg, &Game::loadGame, this, &MainWindow::onButtonLoadGameClicked);
+    connect(wg, &Game::inventory, this, &MainWindow::onButtonInvetoryClicked);
+    connect(wg, &Game::charList, this, &MainWindow::onButtonCharListClicked);
+    connect(wg, &Game::exit, this, &MainWindow::onButtonExitClicked);
+    connect(wg, &Game::talkWithNPC, this, &MainWindow::recTalk);
+    connect(wg, &Game::transmitEnemyEntry, this, &MainWindow::recEnemy);
+
+
+    connect(this, &MainWindow::wPress, wg, &Game::recaivedNorth);
+    connect(this, &MainWindow::aPress, wg, &Game::recaivedWest);
+    connect(this, &MainWindow::sPress, wg, &Game::recaivedSouth);
+    connect(this, &MainWindow::dPress, wg, &Game::recaivedEast);
 }
 
 void MainWindow::loadSouns()
@@ -168,6 +172,9 @@ void MainWindow::onButtonExitClicked()
 void MainWindow::onButtonNewGameClicked()
 {
     wmm->setHidden(true);
+    if (wg == nullptr){
+        newGame();
+    }
     wg->setHidden(false);
 }
 
@@ -190,7 +197,7 @@ void MainWindow::onButtonCharListClicked()
 
 void MainWindow::returnFromCharList()
 {
-    wg->setFHidden(false);
+    wg->setHidden(false);
 
     clv->setHidden(true);
 }
@@ -233,6 +240,10 @@ void MainWindow::escapeFromBattleArena()
 void MainWindow::gameOver()
 {
     wmm->setHidden(false);
+    if (wg != nullptr){
+        delete wg;
+        wg = nullptr;
+    }
     ba->setHidden(true);
 }
 
