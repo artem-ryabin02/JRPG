@@ -1,8 +1,15 @@
 #include "game.h"
 
+#include <QFontDatabase>
+#include <QRandomGenerator>
+
 Game::Game(QWidget *parent)
     : QWidget{parent}, cat("Cater", 5, 5, 5, 5, 5, 5)
 {
+    int id = QFontDatabase::addApplicationFont(":/assets/PressStart2P-Regular.ttf");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont textFont(family, 36);
+
     wBoard = new QWidget(parent);
     wBoard->setObjectName("boardWidget");
     wBoard->setLayout(new QVBoxLayout);
@@ -46,7 +53,6 @@ Game::Game(QWidget *parent)
     lblParametrs = new QLabel(parent);
     lblParametrs->setGeometry(1160, 600, 717, 109);
     lblParametrs->setPixmap(QPixmap(":/assets/buttonAndText/Game/parametrs_table.png"));
-    QFont textFont("Stencil", 36);
     lblStr = new QLabel(parent);
     lblStr->setGeometry(1319, 600, 54, 51);
     lblStr->setStyleSheet("background:grey");
@@ -112,16 +118,33 @@ Game::Game(QWidget *parent)
     wHPMP->layout()->addWidget(lblHero);
     wHPMP->layout()->addWidget(pbMP);
 
+    artCounter = new QWidget(parent);
+    artCounter->setLayout(new QHBoxLayout());
+    artCounter->setGeometry(1080, 0, 410, 60);
+    artefact = new QLabel();
+    artefact->setPixmap(QPixmap(":/assets/buttonAndText/Game/artefact.png"));
+    artefact->setFont(textFont);
+    counter =new QLabel(QString::number(countArt));
+    counter->setFont(textFont);
+    counter->setStyleSheet("background:grey");
+    artCounter->layout()->addWidget(artefact);
+    artCounter->layout()->addWidget(counter);
+
+
+
     connect(chlb, &ImageButton::clicked, this, &Game::onPushCharListButtonClicked);
     connect(invb, &ImageButton::clicked, this, &Game::onPushInventoryButtonClicked);
     connect(lgb, &ImageButton::clicked, this, &Game::onPushLoadButtonClicked);
     connect(egb, &ImageButton::clicked, this, &Game::onPushExitButtonClicked);
 
 
-   connect(bl, &BoardLocation::signalDialogWithNPC, this, &Game::receivedSignalDialogWithNPC);
-   connect(bl, &BoardLocation::signalEntryLabyrinth, this, &Game::receivedSignalEntryLab);
+    connect(bl, &BoardLocation::signalDialogWithNPC, this, &Game::receivedSignalDialogWithNPC);
+    connect(bl, &BoardLocation::signalEntryLabyrinth, this, &Game::receivedSignalEntryLab);
 
-   connect(blb, &BoardLabyrinth::enemy, this, &Game::transmitEnemyEntry);
+    connect(blb, &BoardLabyrinth::enemy, this, &Game::transmitEnemyEntry);
+    connect(blb, &BoardLabyrinth::chest, this, &Game::receiverChest);
+    connect(blb, &BoardLabyrinth::entry, this, &Game::receivedSignalExitLab);
+    connect(blb, &BoardLabyrinth::boss, this, &Game::transmitEnemyEntry);
 
 }
 
@@ -139,17 +162,18 @@ Game::~Game()
     delete lblPer;
     delete lblInt;
     delete lblWis;
+    delete artCounter;
 }
 
 void Game::setHidden(bool hidden)
 {
-    if (labAct){
-        wBoardLab->setHidden(hidden);
-        wBoard->setHidden(!hidden);
+    if (!labAct){
+        wBoardLab->setHidden(true);
+        wBoard->setHidden(false);
     }
     else{
-        wBoardLab->setHidden(!hidden);
-        wBoard->setHidden(hidden);
+        wBoardLab->setHidden(false);
+        wBoard->setHidden(true);
     }
     wHPMP->setHidden(hidden);
     wButtoms->setHidden(hidden);
@@ -160,6 +184,7 @@ void Game::setHidden(bool hidden)
     lblInt->setHidden(hidden);
     lblWis->setHidden(hidden);
     lblParametrs->setHidden(hidden);
+    artCounter->setHidden(hidden);
 }
 
 void Game::setFHidden(bool hidden)
@@ -175,6 +200,7 @@ void Game::setFHidden(bool hidden)
     lblInt->setHidden(hidden);
     lblWis->setHidden(hidden);
     lblParametrs->setHidden(hidden);
+    artCounter->setHidden(hidden);
 }
 
 void Game::onPushExitButtonClicked()
@@ -202,11 +228,6 @@ void Game::receivedSignalDialogWithNPC()
     emit talkWithNPC();
 }
 
-void Game::receivedSignalExitDialogWithNPC()
-{
-
-}
-
 void Game::receivedSignalEntryLab()
 {
     wBoard->setHidden(true);
@@ -223,6 +244,12 @@ void Game::receivedSignalExitLab()
     wBoardLab->setHidden(true);
     blb->setDisable(true);
     labAct = false;
+}
+
+void Game::receiverChest()
+{
+    countArt += QRandomGenerator::global()->bounded(5);
+    counter->setText(QString::number(countArt));
 }
 
 void Game::recaivedSouth()

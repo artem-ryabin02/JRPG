@@ -50,6 +50,7 @@ private:
     CharListView* clv;
     BatlleArena* ba;
 
+    void newGame();
 
     void loadSouns();
     void loadDB();

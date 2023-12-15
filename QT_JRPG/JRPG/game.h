@@ -29,10 +29,11 @@ private slots:
     void onPushCharListButtonClicked();
     void onPushLoadButtonClicked();
     void receivedSignalDialogWithNPC();
-    void receivedSignalExitDialogWithNPC();
 
     void receivedSignalEntryLab();
     void receivedSignalExitLab();
+
+    void receiverChest();
 
 public slots:
     void recaivedSouth();
@@ -61,7 +62,10 @@ private:
     QLabel* lblHero;
     QProgressBar* pbHP;
     QProgressBar* pbMP;
-    //QLabel* lbl;
+
+    QWidget* artCounter;
+    QLabel* artefact;
+    QLabel* counter;
 
     ImageButton* chlb;
     ImageButton* invb;
@@ -69,6 +73,7 @@ private:
     ImageButton* egb;
 
     Hero cat;
+    int countArt = 0;
     bool labAct = 0;
 signals:
     void exit();
@@ -78,7 +83,6 @@ signals:
     void talkWithNPC();
 
     void transmitEnemyEntry();
-    //void transmitEnemyExit();
 
 };
 

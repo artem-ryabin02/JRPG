@@ -19,6 +19,7 @@ SOURCES += \
     character.cpp \
     charlistview.cpp \
     dbcontroller.cpp \
+    dialogforexitfromlab.cpp \
     effect.cpp \
     enemy.cpp \
     fieldlabyrinth.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     character.h \
     charlistview.h \
     dbcontroller.h \
+    dialogforexitfromlab.h \
     effect.h \
     enemy.h \
     fieldlabyrinth.h \

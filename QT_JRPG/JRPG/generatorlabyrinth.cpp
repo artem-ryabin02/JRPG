@@ -20,10 +20,7 @@ GeneratorLabyrinth::GeneratorLabyrinth(int row, int col)
 GeneratorLabyrinth::~GeneratorLabyrinth()
 {
     qDebug() << "GeneratorLabyrinth";
-    /*for(int i = 0; i < row; i++){
-        delete tmpData[i];
-    }
-    delete[] tmpData;*/
+
 }
 
 void GeneratorLabyrinth::generateLabyrinth()
@@ -96,9 +93,9 @@ QString GeneratorLabyrinth::randomizeEvent()
         if (cube <= 70){
             return nameEv[1];
         } else if(cube <= 80){
-            return nameEv[2];
-        } else if(cube <= 95){
             return nameEv[3];
+        } else if(cube <= 95){
+            return nameEv[2];
         } else {
             boss = true;
             return nameEv[4];
@@ -107,15 +104,13 @@ QString GeneratorLabyrinth::randomizeEvent()
         if (cube <= 70) {
             return nameEv[1];
         } else if (cube <= 80) {
-            return nameEv[2];
-        } else return nameEv[3];
+            return nameEv[3];
+        } else return nameEv[2];
     }
 }
 
 void GeneratorLabyrinth::generatingPassageWays(int x, int y)
 {
-
-
     for(int i = 0; i < idWall.size(); i++){
         if(checkPass(tmpData[x][y].getId(), i)){
             int direction;
