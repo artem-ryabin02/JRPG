@@ -3,6 +3,7 @@
 
 #include "boardlabyrinth.h"
 #include "boardlocation.h"
+#include "dialogforexitfromlab.h"
 #include "hero.h"
 #include "imagebutton.h"
 #include <QObject>
@@ -24,28 +25,9 @@ public:
     void setCat(const Hero &newCat);
     void setVolume(int volume);
 
-private slots:
-    void onPushExitButtonClicked();
-    void onPushInventoryButtonClicked();
-    void onPushCharListButtonClicked();
-    void onPushLoadButtonClicked();
-    void receivedSignalDialogWithNPC();
-
-    void receivedSignalEntryLab();
-    void receivedSignalExitLab();
-
-    void receiverChest();
-
-public slots:
-    void recaivedSouth();
-    void recaivedNorth();
-    void recaivedEast();
-    void recaivedWest();
-
-
 
 private:
-
+    DialogForExitFromLab* dfefl;
     BoardLocation* bl;
     BoardLabyrinth* blb;
     QWidget* wBoard;
@@ -77,6 +59,32 @@ private:
     Hero cat;
     int countArt = 0;
     bool labAct = 0;
+
+    void generateLab();
+
+private slots:
+    void onPushExitButtonClicked();
+    void onPushInventoryButtonClicked();
+    void onPushCharListButtonClicked();
+    void onPushLoadButtonClicked();
+    void receivedSignalDialogWithNPC();
+
+    void receivedSignalEntryLab();
+    void receivedSignalExitLab();
+
+    void answerForExit();
+    void hideAnswer();
+
+    void receiverChest();
+
+public slots:
+    void recaivedSouth();
+    void recaivedNorth();
+    void recaivedEast();
+    void recaivedWest();
+
+
+
 signals:
     void exit();
     void charList();

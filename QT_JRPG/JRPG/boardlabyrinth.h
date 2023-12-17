@@ -24,6 +24,9 @@ public:
 
     void setVolume(int volume);
 
+    void regeneration();
+
+
 
 private:
     QGridLayout* grid;
@@ -38,6 +41,7 @@ private:
     void loadBoardLab(TmpData **tmpLab );
     void initialization();
     bool isCanGo(int x, int y, int nx, int ny);
+    void setNulls();
 
     std::map<NAME_FIELD_LAB, QString> fieldName ={
         {NAME_FIELD_LAB::E, "E.png"},

@@ -8,9 +8,15 @@ BoardLabyrinth::BoardLabyrinth(QWidget *parent)
 {
     grid = new QGridLayout(this);
     grid->setSpacing(0);
-    GeneratorLabyrinth gnerLab(rows, cols);
-    loadBoardLab(gnerLab.getLab());
-    initialization();
+    fl = new FieldLabyrinth**[rows];
+    for (int r = 0; r < rows; r++){
+        fl[r] = new FieldLabyrinth*[cols];
+        for(int c = 0; c < cols; c++){
+            fl[r][c] = new FieldLabyrinth(this);
+        }
+    }
+
+    regeneration();
     player = new QMediaPlayer();
     ao = new QAudioOutput();
     ao->setVolume(50);
@@ -41,13 +47,6 @@ void BoardLabyrinth::rescale(int _size){
 
 void BoardLabyrinth::loadBoardLab(TmpData **tmpLab)
 {
-    fl = new FieldLabyrinth**[rows];
-    for (int r = 0; r < rows; r++){
-        fl[r] = new FieldLabyrinth*[cols];
-        for(int c = 0; c < cols; c++){
-            fl[r][c] = new FieldLabyrinth(this);
-        }
-    }
 
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
@@ -154,6 +153,23 @@ void BoardLabyrinth::setDisable(bool disable)
 void BoardLabyrinth::setVolume(int volume)
 {
     ao->setVolume(volume);
+}
+
+void BoardLabyrinth::regeneration()
+{
+    setNulls();
+    GeneratorLabyrinth gnerLab(rows, cols);
+    loadBoardLab(gnerLab.getLab());
+    initialization();
+}
+
+void BoardLabyrinth::setNulls()
+{
+    for( int r = 0 ; r < rows ; r ++ ){
+        for(int c = 0 ; c < cols ; c ++ ){
+            fl[r][c]->setNulls();
+        }
+    }
 }
 
 bool BoardLabyrinth::isCanGo(int x, int y, int nx, int ny)

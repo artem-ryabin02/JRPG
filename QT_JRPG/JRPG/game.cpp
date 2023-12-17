@@ -20,8 +20,8 @@ Game::Game(QWidget *parent)
     wBoardLab->setObjectName("boardLabWidget");
     wBoardLab->setLayout(new QGridLayout);
     wBoardLab->setGeometry(0, 0, 1080, 1080);
-    blb = new BoardLabyrinth(wBoardLab);
-    blb->rescale(wBoard->height());
+//    blb = nullptr;
+//    generateLab();
 
 
     wButtoms = new QWidget(parent);
@@ -130,6 +130,16 @@ Game::Game(QWidget *parent)
     artCounter->layout()->addWidget(artefact);
     artCounter->layout()->addWidget(counter);
 
+    dfefl= new DialogForExitFromLab(parent);
+    dfefl->setHidden(true);
+
+    blb = new BoardLabyrinth(wBoardLab);
+    blb->rescale(wBoard->height());
+
+    connect(blb, &BoardLabyrinth::enemy, this, &Game::transmitEnemyEntry);
+    connect(blb, &BoardLabyrinth::chest, this, &Game::receiverChest);
+    connect(blb, &BoardLabyrinth::entry, this, &Game::answerForExit);
+    connect(blb, &BoardLabyrinth::boss, this, &Game::transmitEnemyEntry);
 
 
     connect(chlb, &ImageButton::clicked, this, &Game::onPushCharListButtonClicked);
@@ -141,11 +151,9 @@ Game::Game(QWidget *parent)
     connect(bl, &BoardLocation::signalDialogWithNPC, this, &Game::receivedSignalDialogWithNPC);
     connect(bl, &BoardLocation::signalEntryLabyrinth, this, &Game::receivedSignalEntryLab);
 
-    connect(blb, &BoardLabyrinth::enemy, this, &Game::transmitEnemyEntry);
-    connect(blb, &BoardLabyrinth::chest, this, &Game::receiverChest);
-    connect(blb, &BoardLabyrinth::entry, this, &Game::receivedSignalExitLab);
-    connect(blb, &BoardLabyrinth::boss, this, &Game::transmitEnemyEntry);
 
+    connect(dfefl, &DialogForExitFromLab::yesSig, this, &Game::receivedSignalExitLab);
+    connect(dfefl, &DialogForExitFromLab::noSig, this, &Game::hideAnswer);
 }
 
 Game::~Game()
@@ -239,11 +247,24 @@ void Game::receivedSignalEntryLab()
 
 void Game::receivedSignalExitLab()
 {
+    dfefl->setHidden(true);
+    //generateLab();
+    blb->regeneration();
     wBoard->setHidden(false);
     bl->setDisable(false);
     wBoardLab->setHidden(true);
     blb->setDisable(true);
     labAct = false;
+}
+
+void Game::answerForExit()
+{
+    dfefl->setHidden(false);
+}
+
+void Game::hideAnswer()
+{
+    dfefl->setHidden(true);
 }
 
 void Game::receiverChest()
@@ -302,6 +323,24 @@ void Game::setCat(const Hero &newCat)
     cat = newCat;
     pbHP->setValue(cat.getHealth());
     pbMP->setValue(cat.getMana());
+}
+
+void Game::generateLab()
+{
+
+    if (blb != nullptr){
+        delete blb;
+        blb = nullptr;
+    }
+
+    blb = new BoardLabyrinth(wBoardLab);
+    blb->rescale(wBoard->height());
+
+    connect(blb, &BoardLabyrinth::enemy, this, &Game::transmitEnemyEntry);
+    connect(blb, &BoardLabyrinth::chest, this, &Game::receiverChest);
+    connect(blb, &BoardLabyrinth::entry, this, &Game::answerForExit);
+    connect(blb, &BoardLabyrinth::boss, this, &Game::transmitEnemyEntry);
+
 }
 
 void Game::setLabAct(bool newLabAct)

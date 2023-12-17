@@ -5,16 +5,16 @@ FieldLabyrinth::FieldLabyrinth(QWidget *parent)
     : QWidget{parent}
 {
     size = parent->height()/10;
-    hero = false;
-    this->east = false;
-    this->west = false;
-    this->south = false;
-    this->north = false;
-    this->nameEvent = "";
-    this->eventBoss = false;
-    this->eventChest = false;
-    this->eventEnemy = false;
-    this->eventEntry = false;
+        hero = false;
+        this->east = false;
+        this->west = false;
+        this->south = false;
+        this->north = false;
+        this->nameEvent = "";
+        this->eventBoss = false;
+        this->eventChest = false;
+        this->eventEnemy = false;
+        this->eventEntry = false;
 }
 
 void FieldLabyrinth::rescale(int _size)
@@ -66,6 +66,23 @@ void FieldLabyrinth::paintEvent(QPaintEvent *pE)
 void FieldLabyrinth::setEventBoss(bool newEventBoss)
 {
     eventBoss = newEventBoss;
+}
+
+void FieldLabyrinth::setNulls()
+{
+    this->id = "";
+    this->nameField = "";
+    this->hero = false;
+    this->east = false;
+    this->west = false;
+    this->south = false;
+    this->north = false;
+    this->nameEvent = "";
+    this->eventBoss = false;
+    this->eventChest = false;
+    this->eventEnemy = false;
+    this->eventEntry = false;
+    repaint();
 }
 
 void FieldLabyrinth::setEventChest(bool newEventChest)

@@ -191,7 +191,6 @@ CharListView::~CharListView()
     delete lblPer;
     delete lblInt;
     delete lblWis;
-    delete wHorizon;
 
 }
 

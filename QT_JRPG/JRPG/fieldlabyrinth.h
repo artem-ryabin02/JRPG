@@ -58,6 +58,7 @@ public:
 
     void setEventBoss(bool newEventBoss);
 
+    void setNulls();
 protected:
     void paintEvent(QPaintEvent * pE) override;
 private:
