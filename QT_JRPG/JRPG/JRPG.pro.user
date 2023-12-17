@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 11.0.3, 2023-12-17T17:38:29. -->
+=======
+<<<<<<< HEAD
+<!-- Written by QtCreator 11.0.3, 2023-12-16T00:07:42. -->
+=======
+<!-- Written by QtCreator 11.0.3, 2023-12-16T00:16:10. -->
+>>>>>>> 88acea5758f628a277d11dde87cfc19a958d0730
+>>>>>>> b5bceecf9ab6c6096878f888445f1271c53204c6
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -247,7 +255,11 @@
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+<<<<<<< HEAD
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/JRPG_project/JRPG/QT_JRPG/build-JRPG-Desktop_Qt_6_6_0_MinGW_64_bit-Debug</value>
+=======
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">F:/MyPrograms/build-JRPG-Desktop_Qt_6_6_0_MinGW_64_bit-Debug</value>
+>>>>>>> 88acea5758f628a277d11dde87cfc19a958d0730
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
