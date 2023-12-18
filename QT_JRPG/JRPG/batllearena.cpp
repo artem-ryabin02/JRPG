@@ -100,6 +100,22 @@ BatlleArena::BatlleArena(QWidget *parent)
     panelButtons->layout()->addWidget(itemNSkill);
     panelButtons->layout()->addWidget(buttonEcp);
 
+    playerAtc = new QMediaPlayer();
+    playerDef = new QMediaPlayer();
+    playerSkill = new QMediaPlayer();
+    aoA = new QAudioOutput();
+    aoA->setVolume(50);
+    aoD = new QAudioOutput();
+    aoD->setVolume(50);
+    aoS = new QAudioOutput();
+    aoS->setVolume(50);
+    playerAtc->setSource(QUrl::fromLocalFile(QDir::currentPath()+ "/music/attack_sound.wav"));
+    playerDef->setSource(QUrl::fromLocalFile(QDir::currentPath()+ "/music/defence_sound.wav"));
+    playerSkill->setSource(QUrl::fromLocalFile(QDir::currentPath()+ "/music/skill_sound.wav"));
+    playerAtc->setAudioOutput(aoA);
+    playerDef->setAudioOutput(aoD);
+    playerSkill->setAudioOutput(aoS);
+
 
     connect(buttonAtc, &ImageButton::clicked, this, &BatlleArena::onButtonClickAttack);
 
@@ -159,6 +175,7 @@ void BatlleArena::setHidden(bool hidden)
 
 void BatlleArena::onButtonClickAttack()
 {
+    playerAtc->play();
     sb->showMessage(hero.getName() + " атакует");
     enemy.receivedDamage(hero.causedDamage(enemy.getProtection(), enemy.getDodge()));
     EnemyHPPB->setValue(enemy.getHealth());
@@ -168,6 +185,7 @@ void BatlleArena::onButtonClickAttack()
 
 void BatlleArena::onButtonClickDefense()
 {
+    playerDef->play();
     sb->showMessage(hero.getName() + " защищается");
     hero.Defence();
     enemyMotion();
@@ -180,6 +198,7 @@ void BatlleArena::onButtonClickItem()
 
 void BatlleArena::onButtonClickSkill()
 {
+    playerSkill->play();
     sb->showMessage("coming soon", 4000);
 }
 
@@ -206,15 +225,18 @@ void BatlleArena::enemyMotion()
     enemy.removeDefence();
     int action = enemy.randAction();
     if (action == 1) {
+        playerAtc->play();
         sb->showMessage(enemy.getName() + " атакует");
         hero.receivedDamage(enemy.causedDamage(hero.getProtection(), hero.getDodge()));
         HeroHPPB->setValue(hero.getHealth());
     }
     if (action == 2) {
+        playerDef->play();
         sb->showMessage(enemy.getName() + " защищается");
         enemy.Defence();
     }
     if (action == 3) {
+        playerSkill->play();
         if (enemy.wastingMana(1)){
             EnemyMPPB->setValue(enemy.getMana());
             sb->showMessage(enemy.getName() + " лечится");

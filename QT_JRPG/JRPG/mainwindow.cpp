@@ -122,6 +122,20 @@ void MainWindow::newGame()
     connect(this, &MainWindow::dPress, wg, &Game::recaivedEast);
 }
 
+void MainWindow::copyFile(QString SND_FILE_NAME, QString SND_FILE )
+{
+    QFile outB( SND_FILE_NAME );
+    if( !outB.exists() ) {
+        QFile in( ":/assets/music/" + SND_FILE );
+
+        if (in.copy(SND_FILE_NAME))
+        {
+            qDebug() << "true";
+        }
+        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
+    }
+}
+
 void MainWindow::loadSouns()
 {
     QDir dirMusic;
@@ -131,42 +145,23 @@ void MainWindow::loadSouns()
     static const QString SND_FILE_BUTTTON = "button_click.wav";
     static const QString SND_FILE_STEPS_V = "sound_steps_on_village.wav";
     static const QString SND_FILE_STEPS_L = "sound_steps_on_labyrinth.wav";
+    static const QString SND_FILE_ATTACK = "attack_sound.wav";
+    static const QString SND_FILE_DEFENCE = "defence_sound.wav";
+    static const QString SND_FILE_SKILL = "skill_sound.wav";
     static const QString SND_FILE_PATH = QDir::currentPath() + "/music/";
     QString SND_FILE_NAME = SND_FILE_PATH + SND_FILE_BUTTTON;
-
-    QFile outB( SND_FILE_NAME );
-    if( !outB.exists() ) {
-        QFile in( ":/assets/music/" + SND_FILE_BUTTTON );
-
-        if (in.copy(SND_FILE_NAME))
-        {
-            qDebug() << "true";
-        }
-        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
-    }
+    copyFile(SND_FILE_NAME, SND_FILE_BUTTTON);
     SND_FILE_NAME = SND_FILE_PATH + SND_FILE_STEPS_V;
-    QFile outSV( SND_FILE_NAME );
-    if( !outSV.exists() ) {
-        QFile in( ":/assets/music/" + SND_FILE_STEPS_V );
-
-        if (in.copy(SND_FILE_NAME))
-        {
-            qDebug() << "true";
-        }
-        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
-
-    }
+    copyFile(SND_FILE_NAME, SND_FILE_STEPS_V);
     SND_FILE_NAME = SND_FILE_PATH + SND_FILE_STEPS_L;
-    QFile outSL( SND_FILE_NAME );
-    if( !outSL.exists() ) {
-        QFile in( ":/assets/music/" + SND_FILE_STEPS_L );
+    copyFile(SND_FILE_NAME, SND_FILE_STEPS_L);
+    SND_FILE_NAME = SND_FILE_PATH + SND_FILE_ATTACK;
+    copyFile(SND_FILE_NAME, SND_FILE_ATTACK);
+    SND_FILE_NAME = SND_FILE_PATH + SND_FILE_DEFENCE;
+    copyFile(SND_FILE_NAME, SND_FILE_DEFENCE);
+    SND_FILE_NAME = SND_FILE_PATH + SND_FILE_SKILL;
+    copyFile(SND_FILE_NAME, SND_FILE_SKILL);
 
-        if (in.copy(SND_FILE_NAME))
-        {
-            qDebug() << "true";
-        }
-        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
-    }
 }
 
 void MainWindow::loadDB()
@@ -187,7 +182,7 @@ void MainWindow::loadDB()
         {
             qDebug() << "true";
         }
-        else qDebug() << QString("error copy sound. Path %1!").arg(SND_FILE_NAME);
+        else qDebug() << QString("error copy db. Path %1!").arg(SND_FILE_NAME);
     }
 }
 

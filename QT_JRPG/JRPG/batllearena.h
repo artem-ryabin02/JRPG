@@ -8,6 +8,8 @@
 #include "qprogressbar.h"
 #include "qstatusbar.h"
 #include <QWidget>
+#include <QtMultimedia/QMediaPlayer>
+#include <QAudioOutput>
 
 class BatlleArena : public QWidget
 {
@@ -46,6 +48,14 @@ private:
     ImageButton* buttonItem;
     ImageButton* buttonSkill;
     ImageButton* buttonEcp;
+
+    QMediaPlayer* playerAtc;
+    QMediaPlayer* playerDef;
+    QMediaPlayer* playerSkill;
+
+    QAudioOutput* aoA;
+    QAudioOutput* aoD;
+    QAudioOutput* aoS;
 
     Hero hero;
     Enemy enemy;

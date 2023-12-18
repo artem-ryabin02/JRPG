@@ -59,6 +59,7 @@ private:
 
     void newGame();
 
+    void copyFile(QString SND_FILE_NAME, QString SND_FILE);
     void loadSouns();
     void loadDB();
 signals:

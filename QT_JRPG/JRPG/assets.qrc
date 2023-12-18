@@ -92,5 +92,8 @@
         <file>assets/buttonAndText/YesOrNot/no_act.png</file>
         <file>assets/buttonAndText/YesOrNot/yes.png</file>
         <file>assets/buttonAndText/YesOrNot/yes_act.png</file>
+        <file>assets/music/attack_sound.wav</file>
+        <file>assets/music/defence_sound.wav</file>
+        <file>assets/music/skill_sound.wav</file>
     </qresource>
 </RCC>
