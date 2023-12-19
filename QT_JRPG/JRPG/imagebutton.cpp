@@ -15,7 +15,7 @@ ImageButton::ImageButton(QString namePXM)
     //static const QString SND_FILE_NAME = QDir::currentPath()+ "/music/button_click.wav";
     player = new QMediaPlayer();
     ao = new QAudioOutput();
-    ao->setVolume(50);
+    ao->setVolume(1);
     player->setSource(QUrl::fromLocalFile(QDir::currentPath()+ "/music/button_click.wav"));
     player->setAudioOutput(ao);
 
@@ -39,7 +39,7 @@ QSize ImageButton::sizeHint() const
     return pixmap.size();
 }
 
-void ImageButton::setVolume(int volume)
+void ImageButton::setVolume(float volume)
 {
     ao->setVolume(volume);
 }

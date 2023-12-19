@@ -333,6 +333,15 @@ void Game::setCat(const Hero &newCat)
     lblWis->setText(QString::number(cat.getWisdom()));
 }
 
+void Game::setVolume(float volume)
+{
+    chlb->setVolume(volume);
+    invb->setVolume(volume);
+    lgb->setVolume(volume);
+    egb->setVolume(volume);
+
+}
+
 void Game::generateLab()
 {
 

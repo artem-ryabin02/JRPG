@@ -23,7 +23,8 @@ public:
 
     Hero getCat() const;
     void setCat(const Hero &newCat);
-    void setVolume(int volume);
+    void setVolume(float volume);
+
 
 
 private:
@@ -62,6 +63,7 @@ private:
 
     void generateLab();
 
+
 private slots:
     void onPushExitButtonClicked();
     void onPushInventoryButtonClicked();
@@ -82,6 +84,7 @@ public slots:
     void recaivedNorth();
     void recaivedEast();
     void recaivedWest();
+
 
 
 
