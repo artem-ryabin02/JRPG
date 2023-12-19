@@ -321,8 +321,16 @@ Hero Game::getCat() const
 void Game::setCat(const Hero &newCat)
 {
     cat = newCat;
+    pbHP->setMaximum(cat.getMaxHealth());
     pbHP->setValue(cat.getHealth());
     pbMP->setValue(cat.getMana());
+    pbMP->setMaximum(cat.getMaxMana());
+    lblAgl->setText(QString::number(cat.getAgility()));
+    lblPer->setText(QString::number(cat.getPerception()));
+    lblVit->setText(QString::number(cat.getVitality()));
+    lblStr->setText(QString::number(cat.getStrength()));
+    lblInt->setText(QString::number(cat.getIntelligence()));
+    lblWis->setText(QString::number(cat.getWisdom()));
 }
 
 void Game::generateLab()

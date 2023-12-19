@@ -95,5 +95,21 @@
         <file>assets/music/attack_sound.wav</file>
         <file>assets/music/defence_sound.wav</file>
         <file>assets/music/skill_sound.wav</file>
+        <file>assets/buttonAndText/newCharacter/agl.png</file>
+        <file>assets/buttonAndText/newCharacter/intl.png</file>
+        <file>assets/buttonAndText/newCharacter/name.png</file>
+        <file>assets/buttonAndText/newCharacter/per.png</file>
+        <file>assets/buttonAndText/newCharacter/points.png</file>
+        <file>assets/buttonAndText/newCharacter/ready.png</file>
+        <file>assets/buttonAndText/newCharacter/ready_act.png</file>
+        <file>assets/buttonAndText/newCharacter/str.png</file>
+        <file>assets/buttonAndText/newCharacter/vit.png</file>
+        <file>assets/buttonAndText/newCharacter/wis.png</file>
+        <file>assets/buttonAndText/minus.png</file>
+        <file>assets/buttonAndText/minus_act.png</file>
+        <file>assets/buttonAndText/plus.png</file>
+        <file>assets/buttonAndText/plus_act.png</file>
+        <file>assets/buttonAndText/newCharacter/skip.png</file>
+        <file>assets/buttonAndText/newCharacter/skip_act.png</file>
     </qresource>
 </RCC>

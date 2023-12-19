@@ -18,6 +18,7 @@ SOURCES += \
     boardlocation.cpp \
     character.cpp \
     charlistview.cpp \
+    createnewcharacter.cpp \
     dbcontroller.cpp \
     dialogforexitfromlab.cpp \
     effect.cpp \
@@ -32,6 +33,7 @@ SOURCES += \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
+    myspinbox.cpp \
     skill.cpp \
     talkingwithnpc.cpp \
     tmpdata.cpp
@@ -42,6 +44,7 @@ HEADERS += \
     boardlocation.h \
     character.h \
     charlistview.h \
+    createnewcharacter.h \
     dbcontroller.h \
     dialogforexitfromlab.h \
     effect.h \
@@ -56,6 +59,7 @@ HEADERS += \
     item.h \
     mainmenu.h \
     mainwindow.h \
+    myspinbox.h \
     skill.h \
     talkingwithnpc.h \
     tmpdata.h

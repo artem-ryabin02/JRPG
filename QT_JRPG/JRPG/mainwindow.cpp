@@ -41,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     wmm = new MainMenu(ui->centralwidget);
 
+    newCharacter();
     newGame();
 
     twn = new TalkingWithNPC(ui->centralwidget);
@@ -102,6 +103,18 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     default:
         break;
     }
+}
+
+void MainWindow::newCharacter()
+{
+    wcnc = new CreateNewCharacter(ui->centralwidget);
+
+
+    connect(wcnc, &CreateNewCharacter::back, this, &MainWindow::returnMainMenu);
+    connect(wcnc, &CreateNewCharacter::ready, this, &MainWindow::startNewGame);
+    wcnc->setHidden(true);
+
+
 }
 
 void MainWindow::newGame()
@@ -195,10 +208,12 @@ void MainWindow::onButtonExitClicked()
 void MainWindow::onButtonNewGameClicked()
 {
     wmm->setHidden(true);
-    if (wg == nullptr){
-        newGame();
+    if (wcnc == nullptr){
+        newCharacter();
     }
-    wg->setHidden(false);
+    wcnc->setHidden(false);
+
+
 }
 
 
@@ -260,12 +275,30 @@ void MainWindow::escapeFromBattleArena()
     ba->setHidden(true);
 }
 
+void MainWindow::returnMainMenu()
+{
+    wcnc->setHidden(true);
+    wmm->setHidden(false);
+}
+
+void MainWindow::startNewGame()
+{
+    wcnc->setHidden(true);
+    if (wg == nullptr){
+        newGame();
+    }
+    wg->setCat(wcnc->getCat());
+    wg->setHidden(false);
+}
+
 void MainWindow::gameOver()
 {
     wmm->setHidden(false);
-    if (wg != nullptr){
+    if (wg != nullptr && wcnc != nullptr){
         delete wg;
         wg = nullptr;
+        delete wcnc;
+        wcnc = nullptr;
     }
     ba->setHidden(true);
 }

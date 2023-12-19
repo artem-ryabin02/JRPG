@@ -8,6 +8,7 @@
 #include <QLabel>
 
 #include "charlistview.h"
+#include "createnewcharacter.h"
 #include "game.h"
 #include "mainmenu.h"
 #include "talkingwithnpc.h"
@@ -29,7 +30,6 @@ public:
 
 private slots:
     void onButtonExitClicked();
-
     void onButtonNewGameClicked();
 
     void onButtonLoadGameClicked();
@@ -41,6 +41,8 @@ private slots:
     void recEnemy();
     void returnFromBattleArena();
     void escapeFromBattleArena();
+    void returnMainMenu();
+    void startNewGame();
     void gameOver();
 
     void valueChanged();
@@ -49,6 +51,7 @@ protected:
 private:
     Ui::MainWindow *ui;
     MainMenu* wmm;
+    CreateNewCharacter* wcnc;
     Game* wg;
     TalkingWithNPC* twn;
     CharListView* clv;
@@ -57,6 +60,8 @@ private:
     QSlider *slider;
     QLabel *label;
 
+
+    void newCharacter();
     void newGame();
 
     void copyFile(QString SND_FILE_NAME, QString SND_FILE);
