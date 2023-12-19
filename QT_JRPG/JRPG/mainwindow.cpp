@@ -24,9 +24,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     slider = new QSlider(Qt::Horizontal);
 
-    slider->setMaximum(-1);
-    slider->setMaximum(101);
+    slider->setMinimum(0);
+    slider->setMaximum(100);
     slider->setValue(50);
+
+
 
     label = new QLabel();
 
@@ -63,6 +65,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(wmm, &MainMenu::exit, this, &MainWindow::onButtonExitClicked);
 
     connect(slider, &QSlider::sliderMoved, this, &MainWindow::valueChanged);
+
     connect(twn, &TalkingWithNPC::exitFromTWNPC, this, &MainWindow::recGoodbye);
 
     connect(clv, &CharListView::goBack, this, &MainWindow::returnFromCharList);
@@ -71,7 +74,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ba, &BatlleArena::win, this, &MainWindow::returnFromBattleArena);
     connect(ba, &BatlleArena::loose, this, &MainWindow::gameOver);
     connect(ba, &BatlleArena::escape, this, &MainWindow::escapeFromBattleArena);
-
 }
 
 MainWindow::~MainWindow()
@@ -272,8 +274,8 @@ void MainWindow::gameOver()
 
 void MainWindow::valueChanged(){
     label->setText(QString::number(slider->value()));
-
-    emit volumeChanged();
+    float v = (float)slider->value() / 100;
+    wg->setVolume(v);
 }
 
 

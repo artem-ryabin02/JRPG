@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QDir>
 #include <QSlider>
+#include <QSlider>
 #include <QLabel>
 
 #include "charlistview.h"
@@ -42,8 +43,8 @@ private slots:
     void returnFromBattleArena();
     void escapeFromBattleArena();
     void gameOver();
-
     void valueChanged();
+
 protected:
     void keyPressEvent(QKeyEvent *event);
 private:
@@ -67,7 +68,7 @@ signals:
     void aPress();
     void sPress();
     void dPress();
-    void volumeChanged();
+
 
 };
 #endif // MAINWINDOW_H
