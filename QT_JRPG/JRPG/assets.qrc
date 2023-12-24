@@ -113,5 +113,8 @@
         <file>assets/buttonAndText/newCharacter/skip_act.png</file>
         <file>assets/buttonAndText/minus_dis.png</file>
         <file>assets/buttonAndText/plus_dis.png</file>
+        <file>assets/buttonAndText/magicBook/use.png</file>
+        <file>assets/buttonAndText/magicBook/use_act.png</file>
+        <file>assets/buttonAndText/magicBook/use_dis.png</file>
     </qresource>
 </RCC>

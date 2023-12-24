@@ -71,6 +71,34 @@ Skill DBcontroller::randEnemySkill(QString enemy_skill)
     return Skill(name, cost, type, tier);
 }
 
+QVector<Skill> DBcontroller::heroSkill()
+{
+    dbOpener();
+    QVector<Skill> temp;
+    QString name = "";
+    int cost = 0;
+    QString type = "";
+    int tier = 0;
+
+    QSqlQuery query2;
+    query2.prepare("SELECT name, cost, type, tier FROM skill WHERE ? = pool_id");
+    query2.addBindValue("hero_skill");
+    if (!query2.exec()) {
+        qDebug() << "Error: Unable to execute query";
+        qDebug() << query2.lastError().text();
+    }
+    else{
+        while (query2.next()) {
+            name = query2.value(0).toString();
+            cost = query2.value(1).toInt();
+            type = query2.value(2).toString();
+            tier = query2.value(3).toInt();
+            temp.push_back(Skill(name, cost, type, tier));
+        }
+    }
+    return temp;
+}
+
 
 void DBcontroller::dbOpener()
 {
