@@ -29,9 +29,6 @@ BoardLocation::~BoardLocation(){
 }
 
 void BoardLocation::loadBoardVillage(QFile& file){
-//    QProcess process;
-//    process.start("cmd", );
-
 
     fl = new FieldLocation**[rows];
     for (int r = 0; r < rows; r++){

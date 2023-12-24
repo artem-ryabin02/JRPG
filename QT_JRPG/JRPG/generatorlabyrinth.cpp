@@ -71,7 +71,6 @@ bool GeneratorLabyrinth::checkPass(QString idField, int direction)
 
 bool GeneratorLabyrinth::checkBorderX(int direction, int x)
 {
-
     return ((x + direction) >= 0 && (x + direction) < this->col);
 }
 

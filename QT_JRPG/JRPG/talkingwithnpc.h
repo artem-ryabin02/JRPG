@@ -1,6 +1,7 @@
 #ifndef TALKINGWITHNPC_H
 #define TALKINGWITHNPC_H
 
+#include "hero.h"
 #include "imagebutton.h"
 #include <QObject>
 #include <QWidget>
@@ -14,6 +15,9 @@ public:
     explicit TalkingWithNPC(QWidget *parent = nullptr);
     ~TalkingWithNPC();
     void setHidden(bool hidden);
+    Hero getCat() const;
+    void setCat(const Hero &newCat);
+
 private:
     QWidget* panelText;
     QWidget* wNPC;
@@ -26,6 +30,13 @@ private:
     ImageButton* qb;
     ImageButton* tb;
     ImageButton* gbb;
+
+
+
+    Hero cat;
+    int scale = 5;
+    void setQuest();
+    void getQuest();
 
 
 private slots:

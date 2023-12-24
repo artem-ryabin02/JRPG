@@ -116,11 +116,12 @@ void BoardLabyrinth::initialization()
 }
 
 void BoardLabyrinth::updatePostion(int r, int c){
-    player->play();
+
     int xNew = xHero + r;
     int yNew = yHero + c;
     if ((xNew >= 0 && yNew >= 0) && (xNew < rows && yNew < cols)){
         if(isCanGo(xHero, yHero, xNew, yNew)){
+            player->play();
             fl[xHero][yHero]->setHero(false);
             fl[xNew][yNew]->setHero(true);
             xHero = xNew;

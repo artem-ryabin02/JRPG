@@ -43,8 +43,10 @@ private slots:
     void returnFromBattleArena();
     void escapeFromBattleArena();
     void returnMainMenu();
+
     void startNewGame();
     void gameOver();
+
     void valueChanged();
 
 protected:
@@ -57,6 +59,7 @@ private:
     TalkingWithNPC* twn;
     CharListView* clv;
     BatlleArena* ba;
+
     QWidget *volumeWidget;
     QSlider *slider;
     QLabel *label;
@@ -66,7 +69,7 @@ private:
     void newGame();
 
     void copyFile(QString SND_FILE_NAME, QString SND_FILE);
-    void loadSouns();
+    void loadSounds();
     void loadDB();
 signals:
     void wPress();

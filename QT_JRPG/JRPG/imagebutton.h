@@ -19,7 +19,7 @@ public:
     void setPixmap( const QPixmap& pm );
     QSize sizeHint() const;
     void setVolume(float volume);
-
+    void setDisabled(bool disable);
 
 
 protected:

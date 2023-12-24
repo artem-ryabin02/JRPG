@@ -6,6 +6,7 @@
 MainMenu::MainMenu(QWidget *parent)
     : QWidget{parent}
 {
+
     wButtons = new QWidget(parent);
     wButtons->setObjectName("buttonWidget");
     wButtons->setLayout(new QVBoxLayout);

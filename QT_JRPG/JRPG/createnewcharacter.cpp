@@ -206,10 +206,3 @@ void CreateNewCharacter::receivedMinusSig()
 }
 
 
-//QWidget* buttonsPanel;
-//ImageButton* backButton;
-//ImageButton* skipButton;
-//ImageButton* readyButton;
-
-
-//Hero cat;

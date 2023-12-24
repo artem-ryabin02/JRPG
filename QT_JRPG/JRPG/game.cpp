@@ -20,8 +20,7 @@ Game::Game(QWidget *parent)
     wBoardLab->setObjectName("boardLabWidget");
     wBoardLab->setLayout(new QGridLayout);
     wBoardLab->setGeometry(0, 0, 1080, 1080);
-//    blb = nullptr;
-//    generateLab();
+
 
 
     wButtoms = new QWidget(parent);
@@ -248,7 +247,6 @@ void Game::receivedSignalEntryLab()
 void Game::receivedSignalExitLab()
 {
     dfefl->setHidden(true);
-    //generateLab();
     blb->regeneration();
     wBoard->setHidden(false);
     bl->setDisable(false);
@@ -342,23 +340,7 @@ void Game::setVolume(float volume)
 
 }
 
-void Game::generateLab()
-{
 
-    if (blb != nullptr){
-        delete blb;
-        blb = nullptr;
-    }
-
-    blb = new BoardLabyrinth(wBoardLab);
-    blb->rescale(wBoard->height());
-
-    connect(blb, &BoardLabyrinth::enemy, this, &Game::transmitEnemyEntry);
-    connect(blb, &BoardLabyrinth::chest, this, &Game::receiverChest);
-    connect(blb, &BoardLabyrinth::entry, this, &Game::answerForExit);
-    connect(blb, &BoardLabyrinth::boss, this, &Game::transmitEnemyEntry);
-
-}
 
 void Game::setLabAct(bool newLabAct)
 {

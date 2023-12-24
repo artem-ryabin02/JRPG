@@ -3,13 +3,13 @@
 #include <QFontDatabase>
 
 TalkingWithNPC::TalkingWithNPC(QWidget *parent)
-    : QWidget{parent}
+    : QWidget{parent}, cat("H", 1,1,1,1,1,1)
 {
 
     int id = QFontDatabase::addApplicationFont(":/assets/PressStart2P-Regular.ttf");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
     QFont textFont(family, 36);
-    //QFont textFont("Stencil", 36);
+
     panelText = new QWidget(parent);
     panelText->setObjectName("panelTextWidget");
     panelText->setLayout(new QVBoxLayout);
@@ -100,6 +100,29 @@ void TalkingWithNPC::setHidden(bool hidden)
     panelText->setHidden(hidden);
 }
 
+Hero TalkingWithNPC::getCat() const
+{
+    return cat;
+}
+
+void TalkingWithNPC::setCat(const Hero &newCat)
+{
+    cat = newCat;
+}
+
+void TalkingWithNPC::setQuest()
+{
+    cat.setIsQuest(true);
+    cat.setMission(cat.getMission()*scale);
+
+}
+
+void TalkingWithNPC::getQuest()
+{
+    cat.setCounterQuest(cat.getCounterQuest() - cat.getMission());
+    cat.setIsQuest(false);
+}
+
 void TalkingWithNPC::onClickedGoodbye()
 {
     emit exitFromTWNPC();
@@ -107,7 +130,14 @@ void TalkingWithNPC::onClickedGoodbye()
 
 void TalkingWithNPC::onClickedQuest()
 {
-    monolog->setText("Пока ничего нет");
+    if (cat.getReadyQuest()){
+        monolog->setText("Молодец, теперь мне нужно " + QString::number(cat.getMission()*scale) + " артефактов");
+        getQuest();
+        setQuest();
+    }
+    else{
+        monolog->setText("Ты ничего не сделал. Мне нужно " + QString::number(cat.getMission()*scale) + " артефактов");
+    }
 }
 
 void TalkingWithNPC::onClickedTrade()

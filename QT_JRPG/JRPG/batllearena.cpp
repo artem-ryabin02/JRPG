@@ -11,8 +11,6 @@ BatlleArena::BatlleArena(QWidget *parent)
     int id = QFontDatabase::addApplicationFont(":/assets/PressStart2P-Regular.ttf");
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
     QFont textFont(family, 36);
-//    statusBar = new QWidget(parent);
-//    statusBar->setGeometry(410, 100, 1100, 40);
     sb = new QStatusBar(parent);
     sb->setStyleSheet("color: white");
 

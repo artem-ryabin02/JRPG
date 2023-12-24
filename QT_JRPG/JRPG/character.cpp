@@ -62,19 +62,19 @@ void Character::receivedDamage(int damage){
             qDebug() << "промах";
         }
         else {
-            if (damage >= health) {
-                health = 0;
+        if (damage >= health) {
+            health = 0;
+            alive = false;
+        } else {
+            health -= damage;
+            if (health <= 0) {
                 alive = false;
-            } else {
-                health -= damage;
-                if (health <= 0) {
-                    alive = false;
-                }
             }
-            qDebug() << name << " получил урон " << " health/maxHealth:" <<
-                        health << "/" << maxHealth << "\n";
         }
+        qDebug() << name << " получил урон " << " health/maxHealth:" <<
+                    health << "/" << maxHealth << "\n";
     }
+}
 
 int Character::causedDamage(int enemyProtection, int enemyDodge){
         int hit = QRandomGenerator::global()->bounded(100);

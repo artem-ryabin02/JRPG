@@ -9,8 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->centralwidget->setContentsMargins(0,0,0,0);
-
-    loadSouns();
+    
+    loadSounds();
     loadDB();
 
     int id = QFontDatabase::addApplicationFont(":/assets/PressStart2P-Regular.ttf");
@@ -151,7 +151,7 @@ void MainWindow::copyFile(QString SND_FILE_NAME, QString SND_FILE )
     }
 }
 
-void MainWindow::loadSouns()
+void MainWindow::loadSounds()
 {
     QDir dirMusic;
     if (!dirMusic.exists("music")){
@@ -247,11 +247,13 @@ void MainWindow::recTalk()
     wg->setHidden(true);
     //_sleep(1000);
     twn->setHidden(false);
+    twn->setCat(wg->getCat());
 }
 
 void MainWindow::recGoodbye()
 {
     wg->setHidden(false);
+    wg->setCat(twn->getCat());
     //_sleep(1000);
     twn->setHidden(true);
 }

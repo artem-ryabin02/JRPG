@@ -61,8 +61,6 @@ private:
     int countArt = 0;
     bool labAct = 0;
 
-    void generateLab();
-
 
 private slots:
     void onPushExitButtonClicked();

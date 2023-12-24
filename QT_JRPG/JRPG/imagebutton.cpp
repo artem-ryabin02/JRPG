@@ -10,9 +10,6 @@ ImageButton::ImageButton(QString namePXM)
     namePixmap = namePXM;
     setPixmap(QPixmap(namePixmap));
     installEventFilter(this);
-
-    // its worked
-    //static const QString SND_FILE_NAME = QDir::currentPath()+ "/music/button_click.wav";
     player = new QMediaPlayer();
     ao = new QAudioOutput();
     ao->setVolume(1);
@@ -42,6 +39,18 @@ QSize ImageButton::sizeHint() const
 void ImageButton::setVolume(float volume)
 {
     ao->setVolume(volume);
+}
+
+void ImageButton::setDisabled(bool disable){
+    if (disable){
+        int pos = namePixmap.lastIndexOf(QChar('.'));
+        QString namePixmapDis = namePixmap.left(pos) + "_dis.png";
+        setPixmap(namePixmapDis);
+    }
+    else{
+        setPixmap(namePixmap);
+    }
+    this->blockSignals(disable);
 }
 
 void ImageButton::paintEvent(QPaintEvent *e)
