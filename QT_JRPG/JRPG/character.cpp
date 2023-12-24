@@ -19,9 +19,9 @@ Character::Character(QString name, int vitality, int strength, int wisdom, int i
 }
 
 void Character::calculationOfSecondaryParametrs(int vitality, int strength, int wisdom, int intelligence, int agility, int perception) {
-    this->maxHealth = vitality * 10;
+    this->maxHealth = vitality * 20;
     this->health = maxHealth;
-    this->maxMana = (int) ((intelligence + wisdom) * 0.5);
+    this->maxMana = (int) ((intelligence + wisdom) * 15);
     this->mana = maxMana;
     this->manaRegen = (int) (wisdom * 0.3);
     this->attack = (int) (strength + agility * 0.25);
@@ -58,10 +58,7 @@ QString Character::getName() {
 }
 
 void Character::receivedDamage(int damage){
-        if(damage == 0){
-            qDebug() << "промах";
-        }
-        else {
+
         if (damage >= health) {
             health = 0;
             alive = false;
@@ -74,12 +71,11 @@ void Character::receivedDamage(int damage){
         qDebug() << name << " получил урон " << " health/maxHealth:" <<
                     health << "/" << maxHealth << "\n";
     }
-}
 
 int Character::causedDamage(int enemyProtection, int enemyDodge){
         int hit = QRandomGenerator::global()->bounded(100);
 
-        if (hit <= enemyDodge ){
+        if (hit <= enemyDodge){
             return 0;
         } else if (hit >= 100 - critChance){
             qDebug() << "oh my God! Crit";
@@ -94,7 +90,7 @@ int Character::causedDamage(int enemyProtection, int enemyDodge){
         }
 }
 
-void Character::Defence(){
+void Character::defence(){
         protection += tempDefence;
         defenceFlag = true;
 }
@@ -145,6 +141,11 @@ int Character::getDodge() const {
 void Character::setDodge(int newDodge)
 {
         dodge = newDodge;
+}
+
+void Character::setAlive(bool newAlive)
+{
+        alive = newAlive;
 }
 int Character::getVitality() const
 {

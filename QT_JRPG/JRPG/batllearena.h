@@ -62,6 +62,8 @@ private:
 
     void enemyMotion();
     void checkWin();
+    bool isDamage(int damage);
+    bool isCritDamage(int damage, int maxHP);
 signals:
     void escape();
     void win();

@@ -14,9 +14,8 @@ BatlleArena::BatlleArena(QWidget *parent)
     sb = new QStatusBar(parent);
     sb->setStyleSheet("color: white");
 
-    sb->setGeometry(410, 100, 1100, 40);
+    sb->setGeometry(5, 100, 1915, 40);
     sb->setFont(textFont);
-
 
     HeroWid = new QWidget(parent);
     HeroWid->setGeometry(362, 203, 400, 471);
@@ -154,13 +153,8 @@ void BatlleArena::startBattle(const Hero _hero)
     EnemyMPPB->setMaximum(enemy.getMaxMana());
     EnemyMPPB->setValue(enemy.getMana());
 
-    bool motionFlag = QRandomGenerator::global()->bounded(1);
 
-    if (motionFlag){
-        sb->showMessage("Ход " + enemy.getName());
-        enemyMotion();
-    }
-    else sb->showMessage("Ход " + hero.getName());
+    sb->showMessage("Ход " + hero.getName());
 }
 
 void BatlleArena::setHidden(bool hidden)
@@ -174,8 +168,14 @@ void BatlleArena::setHidden(bool hidden)
 void BatlleArena::onButtonClickAttack()
 {
     playerAtc->play();
-    sb->showMessage(hero.getName() + " атакует");
-    enemy.receivedDamage(hero.causedDamage(enemy.getProtection(), enemy.getDodge()));
+    int damage = hero.causedDamage(enemy.getProtection(), enemy.getDodge());
+    if (isDamage(damage)){
+        sb->showMessage(hero.getName() + " промахивается");
+    } else if (isCritDamage(damage, enemy.getMaxHealth())){
+        sb->showMessage(hero.getName() + " наносит критический урон");
+    }
+    else sb->showMessage(hero.getName() + " атакует");
+    enemy.receivedDamage(damage);
     EnemyHPPB->setValue(enemy.getHealth());
     checkWin();
     enemyMotion();
@@ -185,7 +185,7 @@ void BatlleArena::onButtonClickDefense()
 {
     playerDef->play();
     sb->showMessage(hero.getName() + " защищается");
-    hero.Defence();
+    hero.defence();
     enemyMotion();
 }
 
@@ -223,24 +223,32 @@ void BatlleArena::enemyMotion()
     enemy.removeDefence();
     int action = enemy.randAction();
     if (action == 1) {
-        playerAtc->play();
-        sb->showMessage(enemy.getName() + " атакует");
-        hero.receivedDamage(enemy.causedDamage(hero.getProtection(), hero.getDodge()));
+        playerAtc->play();      
+        int damage = enemy.causedDamage(hero.getProtection(), hero.getDodge());
+        if (isDamage(damage)){
+            sb->showMessage(enemy.getName() + " промахивается");
+        } else if (isCritDamage(damage, hero.getMaxHealth())){
+            sb->showMessage(enemy.getName() + " наносит критический урон");
+        }
+        else sb->showMessage(enemy.getName() + " атакует");
+        hero.receivedDamage(damage);
         HeroHPPB->setValue(hero.getHealth());
     }
     if (action == 2) {
         playerDef->play();
         sb->showMessage(enemy.getName() + " защищается");
-        enemy.Defence();
+        enemy.defence();
     }
     if (action == 3) {
         playerSkill->play();
-        if (enemy.wastingMana(1)){
+        Skill sk(DBcontroller::randEnemySkill(enemy.getEnemy_skill_id()));
+        qDebug() << sk.getName();
+        if (enemy.wastingMana(sk.getCost())){
             EnemyMPPB->setValue(enemy.getMana());
-            sb->showMessage(enemy.getName() + " лечится");
-            enemy.Heal(5);
+            sk.useSkill(enemy, hero);
+            sb->showMessage(enemy.getName() + " применяет навык ");
         }else{
-            sb->showMessage(enemy.getName() + " не смог(ла) вылечится, из-за не хватки маны");
+            sb->showMessage(enemy.getName() + " не смог(ла) применть навык, из-за не хватки маны");
         }
     }
     checkWin();
@@ -259,4 +267,20 @@ void BatlleArena::checkWin()
         _sleep(1000);
         emit loose();
     }
+}
+
+bool BatlleArena::isDamage(int damage)
+{
+    if (damage == 0){
+        return true;
+    }
+    else return false;
+}
+
+bool BatlleArena::isCritDamage(int damage, int maxHP)
+{
+    if (damage >= maxHP/2){
+        return true;
+    }
+    else return false;
 }

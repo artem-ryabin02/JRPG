@@ -7,6 +7,7 @@
 #include <QSqlError>
 #include <QDir>
 #include "enemy.h"
+#include "skill.h"
 class DBcontroller
 {
 public:
@@ -14,7 +15,6 @@ public:
     ~DBcontroller(){};
     static Enemy randEnemy();
     static Skill randEnemySkill(QString enemy_skill);
-    static Effect makeEffect(int id);
 private:
     static void dbOpener();
 };

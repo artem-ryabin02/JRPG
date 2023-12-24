@@ -1,20 +1,30 @@
 #ifndef SKILL_H
 #define SKILL_H
 
-#include "effect.h"
 
+
+#include "character.h"
 #include <QString>
 
 class Skill
 {
 public:
     Skill();
-    explicit Skill(QString name, int cost, int effect_id, Effect eff);
+    Skill(QString name, int cost, QString type, int tier);
+    void useSkill(Character &user, Character &target);
+    void heal(Character &user);
+    void damage(Character &target);
+
+    QString getName() const;
+
+    int getCost() const;
+
 private:
+    int causedDamage(int dodge);
     QString name;
     int cost;
-    int effect_id;
-    Effect eff;
+    QString type;
+    int tier;
 };
 
 #endif // SKILL_H

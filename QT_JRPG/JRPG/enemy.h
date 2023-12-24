@@ -3,8 +3,6 @@
 
 #include "character.h"
 
-#include "skill.h"
-
 #include <QRandomGenerator>
 
 class Enemy : public Character
@@ -22,12 +20,11 @@ public:
           QString pathName);
     int randAction();
     QString getEnemy_skill_id() const;
-    //void setSk(const Skill &newSk);
 
 private:
     QString pathName;
     QString enemy_skill_id;
-    //Skill sk;
+
 };
 
 #endif // ENEMY_H

@@ -1,4 +1,5 @@
 #include "dbcontroller.h"
+#include "skill.h"
 
 Enemy DBcontroller::randEnemy()
 {
@@ -44,54 +45,32 @@ Enemy DBcontroller::randEnemy()
     return Enemy(name, vitality, strength, wisdom, intelligence, agility, perception, enemy_skill, pathName);
 }
 
-Skill DBcontroller::randEnemySkill(QString _enemy_skill)
+Skill DBcontroller::randEnemySkill(QString enemy_skill)
 {
     dbOpener();
     QString name = "";
     int cost = 0;
-    int effect_id = 0;
-    QString enemy_skill_id = _enemy_skill;
-
-    QSqlQuery query;
-    query.prepare("SELECT name, cost, effect_id FROM effect WHERE ? = enemy_skill_id ORDER BY RANDOM() LIMIT 1");
-    query.addBindValue(enemy_skill_id);
-    if (!query.exec()) {
-        qDebug() << "Error: Unable to execute query";
-        qDebug() << query.lastError().text();
-    }
-    else{
-        while (query.next()) {
-            name = query.value(0).toString();
-            cost = query.value(1).toInt();
-            effect_id = query.value(2).toInt();
-            qDebug() << name <<" "<< cost<<" "<<effect_id;
-        }
-    }
-    return Skill(name, cost, effect_id, makeEffect(effect_id));
-}
-
-Effect DBcontroller::makeEffect(int _id)
-{
-    dbOpener();
-    int id = 0;
     QString type = "";
     int tier = 0;
-    QSqlQuery query;
-    query.prepare("SELECT * FROM effect WHERE ? = id ");
-    query.addBindValue(_id);
-    if (!query.exec()) {
+
+    QSqlQuery query2;
+    query2.prepare("SELECT name, cost, type, tier FROM skill WHERE ? = pool_id ORDER BY RANDOM() LIMIT 1");
+    query2.addBindValue(enemy_skill);
+    if (!query2.exec()) {
         qDebug() << "Error: Unable to execute query";
-        qDebug() << query.lastError().text();
+        qDebug() << query2.lastError().text();
     }
     else{
-        while (query.next()) {
-            id = query.value(0).toInt();
-            type = query.value(1).toString();
-            tier = query.value(2).toInt();
+        while (query2.next()) {
+            name = query2.value(0).toString();
+            cost = query2.value(1).toInt();
+            type = query2.value(2).toString();
+            tier = query2.value(3).toInt();
         }
     }
-    return Effect(id, type, tier);
+    return Skill(name, cost, type, tier);
 }
+
 
 void DBcontroller::dbOpener()
 {

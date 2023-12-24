@@ -21,7 +21,6 @@ SOURCES += \
     createnewcharacter.cpp \
     dbcontroller.cpp \
     dialogforexitfromlab.cpp \
-    effect.cpp \
     enemy.cpp \
     fieldlabyrinth.cpp \
     fieldlocation.cpp \
@@ -29,7 +28,6 @@ SOURCES += \
     generatorlabyrinth.cpp \
     hero.cpp \
     imagebutton.cpp \
-    item.cpp \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
@@ -47,7 +45,6 @@ HEADERS += \
     createnewcharacter.h \
     dbcontroller.h \
     dialogforexitfromlab.h \
-    effect.h \
     enemy.h \
     fieldlabyrinth.h \
     fieldlocation.h \
@@ -56,7 +53,6 @@ HEADERS += \
     hero.h \
     imagebutton.h \
     imagebutton_копия.h \
-    item.h \
     mainmenu.h \
     mainwindow.h \
     myspinbox.h \

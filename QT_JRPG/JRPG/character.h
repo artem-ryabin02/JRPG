@@ -22,7 +22,7 @@ public:
 
     int causedDamage(int enemyProtection, int enemyDodge);
 
-    void Defence();
+    void defence();
 
     void removeDefence();
 
@@ -78,6 +78,8 @@ public:
     void setCritChance(int newCritChance);
 
     void setDodge(int newDodge);
+    void setAlive(bool newAlive);
+
 protected:
     int vitality, strength, wisdom, intelligence, agility, perception, maxHealth, health, maxMana,
         mana, manaRegen, attack, protection, critChance, dodge;
