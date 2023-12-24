@@ -30,13 +30,11 @@ CreateNewCharacter::CreateNewCharacter(QWidget *parent)
     lblVit->setPixmap(QPixmap(":/assets/buttonAndText/newCharacter/vit.png"));
     spinBoxVit = new MySpinBox();
 
-    strNvit->layout()->addWidget(lblStr);
-    strNvit->layout()->addWidget(spinBoxStr);
-
     strNvit->layout()->addWidget(lblVit);
     strNvit->layout()->addWidget(spinBoxVit);
 
-
+    strNvit->layout()->addWidget(lblStr);
+    strNvit->layout()->addWidget(spinBoxStr);
 
     aglNper = new QWidget();
     aglNper->setLayout(new QVBoxLayout);
@@ -191,7 +189,7 @@ void CreateNewCharacter::receivedPlusSig()
 
 void CreateNewCharacter::receivedMinusSig()
 {
-    if (startPoints + 1  == 10){
+    if (startPoints + 1  == 20){
         points->setText(QString::number(++startPoints));
     }
     else {

@@ -15,6 +15,9 @@ public:
     explicit CharListView(QWidget *parent = nullptr);
     ~CharListView();
     void setHidden(bool hidden);
+
+    void setCat(const Hero &newCat);
+
 private:
     QWidget* wArtEquips;
     QLabel* art;
@@ -30,6 +33,35 @@ private:
     QLabel* lblInt;
     QLabel* lblWis;
     QLabel* lblParametrs;
+    QWidget* wHP;
+    QLabel* lHP;
+    QLabel* lblhp;
+
+    QWidget* wMP;
+    QLabel* lMP;
+    QLabel* lblMp;
+
+    QWidget* wCC;
+    QLabel* lcc;
+    QLabel* lblcc;
+
+    QWidget* wLC;
+    QLabel* llc;
+    QLabel* lbllc;
+
+    QWidget* wATC;
+    QLabel* lATC;
+    QLabel* lblATC;
+
+    QWidget* wDEF;
+    QLabel* lDEF;
+    QLabel* lblDEF;
+    QWidget* wDOD;
+    QLabel* llDOD;
+    QLabel* lblDOD;
+
+
+
     QWidget* firstCol;
     QWidget* secondCol;
     QWidget* wHorizon;

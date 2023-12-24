@@ -53,17 +53,18 @@ Game::Game(QWidget *parent)
     lblParametrs->setGeometry(1160, 600, 717, 109);
     lblParametrs->setPixmap(QPixmap(":/assets/buttonAndText/Game/parametrs_table.png"));
     lblStr = new QLabel(parent);
-    lblStr->setGeometry(1319, 600, 54, 51);
-    lblStr->setStyleSheet("background:grey");
-    lblStr->setAlignment(Qt::AlignCenter);
-    lblStr->setFont(textFont);
-    lblStr->setText(QString::number(cat.getStrength()));
     lblVit = new QLabel(parent);
-    lblVit->setGeometry(1319, 659, 54, 51);
+    lblVit->setGeometry(1319, 600, 54, 51);
     lblVit->setStyleSheet("background:grey");
     lblVit->setAlignment(Qt::AlignCenter);
     lblVit->setFont(textFont);
     lblVit->setText(QString::number(cat.getVitality()));
+    lblStr->setGeometry(1319, 659, 54, 51);
+    lblStr->setStyleSheet("background:grey");
+    lblStr->setAlignment(Qt::AlignCenter);
+    lblStr->setFont(textFont);
+    lblStr->setText(QString::number(cat.getStrength()));
+
     lblAgl = new QLabel(parent);
     lblAgl->setGeometry(1570, 600, 54, 51);
     lblAgl->setStyleSheet("background:grey");

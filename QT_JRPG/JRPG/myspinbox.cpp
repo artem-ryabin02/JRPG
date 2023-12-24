@@ -26,6 +26,8 @@ MySpinBox::MySpinBox(QWidget *parent)
     spinBox->layout()->addWidget(lblValue);
     spinBox->layout()->addWidget(plus);
 
+    checkMin(value);
+
     connect(plus, &ImageButton::clicked, this, &MySpinBox::plusClicked);
     connect(minus, &ImageButton::clicked, this, &MySpinBox::minusClicked);
 }
@@ -78,10 +80,31 @@ void MySpinBox::setMinusDisable(bool disable)
 
 bool MySpinBox::checkBorder(int pos)
 {
-    if(value + pos >= minimum && value + pos <= maximum){
+    int val = value + pos;
+    checkMin(val);
+    checkMax(val);
+    if(val >= minimum && val <= maximum){
         return true;
     }
-    else return false;
+    else {
+        return false;
+    }
+}
+
+void MySpinBox::checkMin(int val)
+{
+    if(val == minimum ){
+        minus->setDisabled(true);
+    }
+    else minus->setDisabled(false);
+}
+
+void MySpinBox::checkMax(int val)
+{
+    if(val == maximum ){
+        plus->setDisabled(true);
+    }
+    else plus->setDisabled(false);
 }
 
 void MySpinBox::plusClicked()
@@ -89,6 +112,7 @@ void MySpinBox::plusClicked()
     if (checkBorder(1)){
         value++;
         lblValue->setText(QString::number(value));
+        checkMin(value);
         emit plusSig();
     }
 }
@@ -98,6 +122,7 @@ void MySpinBox::minusClicked()
     if (checkBorder(-1)){
         value--;
         lblValue->setText(QString::number(value));
+        checkMax(value);
         emit minusSig();
     }
 }

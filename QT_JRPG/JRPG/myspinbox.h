@@ -31,10 +31,12 @@ private:
 
 
     int maximum = 10;
-    int minimum = 3;
+    int minimum = 1;
     int value = minimum;
 
     bool checkBorder(int pos);
+    void checkMin(int val);
+    void checkMax(int val);
 private slots:
     void plusClicked();
     void minusClicked();

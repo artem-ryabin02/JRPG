@@ -59,7 +59,7 @@ private:
 
     Hero cat;
 
-    int startPoints = 10;
+    int startPoints = 20;
 
 private slots:
     void onButtonClickedReady();

@@ -43,14 +43,15 @@ void ImageButton::setVolume(float volume)
 
 void ImageButton::setDisabled(bool disable){
     if (disable){
-        int pos = namePixmap.lastIndexOf(QChar('.'));
-        QString namePixmapDis = namePixmap.left(pos) + "_dis.png";
-        setPixmap(namePixmapDis);
+        startDisableAnimation();
+
+
     }
     else{
-        setPixmap(namePixmap);
+        startHoverLeaveAnimation();
     }
     this->blockSignals(disable);
+    disabled = disable;
 }
 
 void ImageButton::paintEvent(QPaintEvent *e)
@@ -63,17 +64,22 @@ void ImageButton::paintEvent(QPaintEvent *e)
 bool ImageButton::eventFilter(QObject *obj, QEvent *e)
 {
     Q_UNUSED(obj);
-    if (e->type() == QEvent::HoverEnter) {
-        StartHoverEnterAnimation();
+    if (disabled){
+
     }
-    if (e->type() == QEvent::HoverLeave) {
-        StartHoverLeaveAnimation();
+    else{
+        if (e->type() == QEvent::HoverEnter) {
+            startHoverEnterAnimation();
+        }
+        if (e->type() == QEvent::HoverLeave) {
+            startHoverLeaveAnimation();
+        }
     }
 
     return false;
 }
 
-void ImageButton::StartHoverEnterAnimation()
+void ImageButton::startHoverEnterAnimation()
 {
     player->play();
     int pos = namePixmap.lastIndexOf(QChar('.'));
@@ -81,9 +87,16 @@ void ImageButton::StartHoverEnterAnimation()
     setPixmap(namePixmapAct);
 }
 
-void ImageButton::StartHoverLeaveAnimation()
+void ImageButton::startHoverLeaveAnimation()
 {
-   setPixmap(namePixmap);
+    setPixmap(namePixmap);
+}
+
+void ImageButton::startDisableAnimation()
+{
+    int pos = namePixmap.lastIndexOf(QChar('.'));
+    QString namePixmapDis = namePixmap.left(pos) + "_dis.png";
+    setPixmap(namePixmapDis);
 }
 
 

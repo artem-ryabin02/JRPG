@@ -26,7 +26,7 @@ private:
 
     bool isQuest;
     bool readyQuest;
-    int mission;
+    int mission = 1;
     int counterQuest;
 
     //Skill skl;

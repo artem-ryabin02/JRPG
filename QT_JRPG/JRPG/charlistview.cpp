@@ -42,13 +42,13 @@ CharListView::CharListView(QWidget *parent)
     wParametrs->layout()->addWidget(lblParametrs);
 
     lblStr = new QLabel(parent);
-    lblStr->setGeometry(933, 195, 54, 51);
+    lblStr->setGeometry(933, 254, 54, 51);
     lblStr->setStyleSheet("background:grey");
     lblStr->setAlignment(Qt::AlignCenter);
     lblStr->setFont(textFont);
     lblStr->setText(QString::number(cat.getStrength()));
     lblVit = new QLabel(parent);
-    lblVit->setGeometry(933, 254, 54, 51);
+    lblVit->setGeometry(933, 195, 54, 51);
     lblVit->setStyleSheet("background:grey");
     lblVit->setAlignment(Qt::AlignCenter);
     lblVit->setFont(textFont);
@@ -78,42 +78,42 @@ CharListView::CharListView(QWidget *parent)
     lblWis->setFont(textFont);
     lblWis->setText(QString::number(cat.getWisdom()));
 
-    QWidget* wHP = new QWidget();
+    wHP = new QWidget();
     wHP->setLayout(new QHBoxLayout);
-    QLabel* lHP = new QLabel();
+    lHP = new QLabel();
     lHP->setPixmap(QPixmap(":/assets/buttonAndText/charList/HP.png"));
-    QLabel* lblhp = new QLabel();
+    lblhp = new QLabel();
     lblhp->setFont(textFont);
     lblhp->setText(QString::number(cat.getHealth()) + "/" + QString::number(cat.getMaxHealth()));
     wHP->layout()->addWidget(lHP);
     wHP->layout()->addWidget(lblhp);
 
 
-    QWidget* wMP = new QWidget();
+    wMP = new QWidget();
     wMP->setLayout(new QHBoxLayout);
-    QLabel* lMP = new QLabel();
+    lMP = new QLabel();
     lMP->setPixmap(QPixmap(":/assets/buttonAndText/charList/MP.png"));
-    QLabel* lblMp = new QLabel();
+    lblMp = new QLabel();
     lblMp->setFont(textFont);
     lblMp->setText(QString::number(cat.getMana()) + "/" + QString::number(cat.getMaxMana()));
     wMP->layout()->addWidget(lMP);
     wMP->layout()->addWidget(lblMp);
 
-    QWidget* wCC = new QWidget();
+    wCC = new QWidget();
     wCC->setLayout(new QHBoxLayout);
-    QLabel* lcc = new QLabel();
+    lcc = new QLabel();
     lcc->setPixmap(QPixmap(":/assets/buttonAndText/charList/critChance.png"));
-    QLabel* lblcc = new QLabel();
+    lblcc = new QLabel();
     lblcc->setText(QString::number(cat.getCritChance())+"%");
     lblcc->setFont(textFont);
     wCC->layout()->addWidget(lcc);
     wCC->layout()->addWidget(lblcc);
 
-    QWidget* wLC = new QWidget();
+    wLC = new QWidget();
     wLC->setLayout(new QHBoxLayout);
-    QLabel* llc = new QLabel();
+    llc = new QLabel();
     llc->setPixmap(QPixmap(":/assets/buttonAndText/charList/loadcapacity.png"));
-    QLabel* lbllc = new QLabel();
+    lbllc = new QLabel();
     lbllc->setText(QString::number(100));
     lbllc->setFont(textFont);
     wLC->layout()->addWidget(llc);
@@ -125,31 +125,31 @@ CharListView::CharListView(QWidget *parent)
     firstCol->layout()->addWidget(wMP);
     firstCol->layout()->addWidget(wCC);
 
-    QWidget* wATC = new QWidget();
+    wATC = new QWidget();
     wATC->setLayout(new QHBoxLayout);
-    QLabel* lATC = new QLabel();
+    lATC = new QLabel();
     lATC->setPixmap(QPixmap(":/assets/buttonAndText/charList/attack.png"));
-    QLabel* lblATC = new QLabel();
+    lblATC = new QLabel();
     lblATC->setFont(textFont);
     lblATC->setText(QString::number(cat.getAttack()));
     wATC->layout()->addWidget(lATC);
     wATC->layout()->addWidget(lblATC);
 
-    QWidget* wDEF = new QWidget();
+    wDEF = new QWidget();
     wDEF->setLayout(new QHBoxLayout);
-    QLabel* lDEF = new QLabel();
+    lDEF = new QLabel();
     lDEF->setPixmap(QPixmap(":/assets/buttonAndText/charList/defence.png"));
-    QLabel* lblDEF = new QLabel();
+    lblDEF = new QLabel();
     lblDEF->setFont(textFont);
-    lblDEF->setText("~");
+    lblDEF->setText(QString::number(cat.getProtection()));
     wDEF->layout()->addWidget(lDEF);
     wDEF->layout()->addWidget(lblDEF);
 
-    QWidget* wDOD = new QWidget();
+    wDOD = new QWidget();
     wDOD->setLayout(new QHBoxLayout);
-    QLabel* llDOD = new QLabel();
+    llDOD = new QLabel();
     llDOD->setPixmap(QPixmap(":/assets/buttonAndText/charList/dodge.png"));
-    QLabel* lblDOD = new QLabel();
+    lblDOD = new QLabel();
     lblDOD->setFont(textFont);
     lblDOD->setText(QString::number(cat.getDodge())+"%");
     wDOD->layout()->addWidget(llDOD);
@@ -176,8 +176,9 @@ CharListView::CharListView(QWidget *parent)
     back->setCursor(Qt::CursorShape::PointingHandCursor);
     wParametrs->layout()->addWidget(back);
     wParametrs->layout()->setAlignment(back, Qt::AlignHCenter);
-    connect(skills, &ImageButton::clicked, this, [this](){emit goSkill();});
-    connect(back, &ImageButton::clicked, this, [this](){emit goBack();});
+
+    connect(skills, &ImageButton::clicked, this, &CharListView::goSkill);
+    connect(back, &ImageButton::clicked, this, &CharListView::goBack);
 }
 
 CharListView::~CharListView()
@@ -205,3 +206,26 @@ void CharListView::setHidden(bool hidden)
     lblInt->setHidden(hidden);
     lblWis->setHidden(hidden);
 }
+
+void CharListView::setCat(const Hero &newCat)
+{
+    cat = newCat;
+    lblStr->setText(QString::number(cat.getStrength()));
+    lblVit->setText(QString::number(cat.getVitality()));
+    lblPer->setText(QString::number(cat.getPerception()));
+    lblAgl->setText(QString::number(cat.getAgility()));
+    lblInt->setText(QString::number(cat.getIntelligence()));
+    lblWis->setText(QString::number(cat.getWisdom()));
+
+    lblhp->setText(QString::number(cat.getHealth()) + "/" + QString::number(cat.getMaxHealth()));
+    lblMp->setText(QString::number(cat.getMana()) + "/" + QString::number(cat.getMaxMana()));
+    lblcc->setText(QString::number(cat.getCritChance())+"%");
+    lbllc->setText(QString::number(100));
+    lblATC->setText(QString::number(cat.getAttack()));
+    lblDEF->setText(QString::number(cat.getProtection()));
+
+
+    lblDOD->setText(QString::number(cat.getDodge())+"%");
+}
+
+

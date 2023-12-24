@@ -29,14 +29,17 @@ private:
     QMediaPlayer *player;
     QAudioOutput* ao;
 
+    bool disabled = false;
+
     QString namePixmap;
     QSize size;
     QPixmap pixmap;
 
 
 
-    void StartHoverEnterAnimation();
-    void StartHoverLeaveAnimation();
+    void startHoverEnterAnimation();
+    void startHoverLeaveAnimation();
+    void startDisableAnimation();
 };
 
 #endif // IMAGEBUTTON_H

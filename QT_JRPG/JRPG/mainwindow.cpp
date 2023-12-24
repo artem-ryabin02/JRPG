@@ -214,8 +214,6 @@ void MainWindow::onButtonNewGameClicked()
         newCharacter();
     }
     wcnc->setHidden(false);
-
-
 }
 
 
@@ -232,6 +230,7 @@ void MainWindow::onButtonInvetoryClicked()
 void MainWindow::onButtonCharListClicked()
 {
     wg->setFHidden(true);
+    clv->setCat(wg->getCat());
     clv->setHidden(false);
 }
 
