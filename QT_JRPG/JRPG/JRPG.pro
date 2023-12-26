@@ -28,6 +28,8 @@ SOURCES += \
     generatorlabyrinth.cpp \
     hero.cpp \
     imagebutton.cpp \
+    lineofmagicbook.cpp \
+    magicbook.cpp \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
@@ -53,6 +55,8 @@ HEADERS += \
     hero.h \
     imagebutton.h \
     imagebutton_копия.h \
+    lineofmagicbook.h \
+    magicbook.h \
     mainmenu.h \
     mainwindow.h \
     myspinbox.h \

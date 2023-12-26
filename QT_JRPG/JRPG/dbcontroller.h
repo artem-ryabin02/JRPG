@@ -15,7 +15,8 @@ public:
     ~DBcontroller(){};
     static Enemy randEnemy();
     static Skill randEnemySkill(QString enemy_skill);
-private:
+    static QVector<Skill> heroSkill();
+private:                                    
     static void dbOpener();
 };
 
