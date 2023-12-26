@@ -113,5 +113,6 @@
         <file>assets/buttonAndText/newCharacter/skip_act.png</file>
         <file>assets/buttonAndText/minus_dis.png</file>
         <file>assets/buttonAndText/plus_dis.png</file>
+        <file>assets/characters/enemy/rat.png</file>
     </qresource>
 </RCC>

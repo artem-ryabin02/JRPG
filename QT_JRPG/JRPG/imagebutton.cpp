@@ -44,8 +44,6 @@ void ImageButton::setVolume(float volume)
 void ImageButton::setDisabled(bool disable){
     if (disable){
         startDisableAnimation();
-
-
     }
     else{
         startHoverLeaveAnimation();

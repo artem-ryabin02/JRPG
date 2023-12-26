@@ -247,6 +247,7 @@ void Game::receivedSignalEntryLab()
 
 void Game::receivedSignalExitLab()
 {
+    emit goUnBlockSig();
     dfefl->setHidden(true);
     blb->regeneration();
     wBoard->setHidden(false);
@@ -254,15 +255,18 @@ void Game::receivedSignalExitLab()
     wBoardLab->setHidden(true);
     blb->setDisable(true);
     labAct = false;
+
 }
 
 void Game::answerForExit()
 {
+    emit goBlockSig();
     dfefl->setHidden(false);
 }
 
 void Game::hideAnswer()
 {
+    emit goUnBlockSig();
     dfefl->setHidden(true);
 }
 
@@ -270,6 +274,7 @@ void Game::receiverChest()
 {
     countArt += QRandomGenerator::global()->bounded(5);
     counter->setText(QString::number(countArt));
+    cat.setCounterQuest(countArt);
 }
 
 void Game::recaivedSouth()
@@ -322,14 +327,18 @@ void Game::setCat(const Hero &newCat)
     cat = newCat;
     pbHP->setMaximum(cat.getMaxHealth());
     pbHP->setValue(cat.getHealth());
-    pbMP->setValue(cat.getMana());
+
     pbMP->setMaximum(cat.getMaxMana());
+    pbMP->setValue(cat.getMana());
     lblAgl->setText(QString::number(cat.getAgility()));
     lblPer->setText(QString::number(cat.getPerception()));
     lblVit->setText(QString::number(cat.getVitality()));
     lblStr->setText(QString::number(cat.getStrength()));
     lblInt->setText(QString::number(cat.getIntelligence()));
     lblWis->setText(QString::number(cat.getWisdom()));
+
+    countArt += cat.getCounterQuest();
+    counter->setText(QString::number(countArt));
 }
 
 void Game::setVolume(float volume)

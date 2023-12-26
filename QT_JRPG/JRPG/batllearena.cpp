@@ -61,7 +61,7 @@ BatlleArena::BatlleArena(QWidget *parent)
     EnemyWid->layout()->addWidget(EnemyMPPB);
 
     EnemyImage = new QLabel();
-    QPixmap e (":/assets/characters/nps_demot.png");
+    QPixmap e (":/assets/characters/enemy/rat.png");
     EnemyImage->setPixmap(e);
     EnemyImage->setFixedSize(400, 400);
     EnemyImage->setScaledContents(true);

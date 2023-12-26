@@ -92,6 +92,8 @@ signals:
     void inventory();
     void loadGame();
     void talkWithNPC();
+    void goBlockSig();
+    void goUnBlockSig();
 
     void transmitEnemyEntry();
 

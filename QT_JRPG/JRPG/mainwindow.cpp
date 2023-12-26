@@ -79,7 +79,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    qDebug() << "MainWindow";
     delete ui;
     delete wmm;
     delete twn;
@@ -130,6 +129,8 @@ void MainWindow::newGame()
     connect(wg, &Game::talkWithNPC, this, &MainWindow::recTalk);
     connect(wg, &Game::transmitEnemyEntry, this, &MainWindow::recEnemy);
 
+    connect(wg, &Game::goBlockSig, this, [this](){blockSignals(true);});
+    connect(wg, &Game::goUnBlockSig, this, [this](){blockSignals(false);});
 
     connect(this, &MainWindow::wPress, wg, &Game::recaivedNorth);
     connect(this, &MainWindow::aPress, wg, &Game::recaivedWest);
@@ -230,6 +231,7 @@ void MainWindow::onButtonInvetoryClicked()
 void MainWindow::onButtonCharListClicked()
 {
     wg->setFHidden(true);
+    blockSignals(true);
     clv->setCat(wg->getCat());
     clv->setHidden(false);
 }
@@ -237,13 +239,14 @@ void MainWindow::onButtonCharListClicked()
 void MainWindow::returnFromCharList()
 {
     wg->setHidden(false);
-
+    blockSignals(false);
     clv->setHidden(true);
 }
 
 void MainWindow::recTalk()
 {
     wg->setHidden(true);
+    blockSignals(true);
     //_sleep(1000);
     twn->setHidden(false);
     twn->setCat(wg->getCat());
@@ -252,6 +255,7 @@ void MainWindow::recTalk()
 void MainWindow::recGoodbye()
 {
     wg->setHidden(false);
+    blockSignals(false);
     wg->setCat(twn->getCat());
     //_sleep(1000);
     twn->setHidden(true);

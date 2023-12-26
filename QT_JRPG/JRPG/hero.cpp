@@ -13,6 +13,7 @@ bool Hero::getIsQuest() const
 void Hero::setIsQuest(bool newIsQuest)
 {
     isQuest = newIsQuest;
+    checkReady();
 }
 
 bool Hero::getReadyQuest() const
@@ -51,4 +52,5 @@ void Hero::checkReady()
     if (counterQuest >= mission){
         readyQuest = true;
     }
+    else readyQuest = false;
 }

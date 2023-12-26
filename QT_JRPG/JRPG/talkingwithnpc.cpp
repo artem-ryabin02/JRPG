@@ -18,8 +18,10 @@ TalkingWithNPC::TalkingWithNPC(QWidget *parent)
 
     h = new QLabel();
     n = new QLabel();
-    h->setPixmap(QPixmap(":/assets/buttonAndText/Talking/hero_text.png"));
-    n->setPixmap(QPixmap(":/assets/buttonAndText/Talking/bunny_text.png"));
+    h->setFont(textFont);
+    h->setText(cat.getName());
+    n->setFont(textFont);
+    n->setText("Кролик");
     h->setFixedHeight(50);
     n->setFixedHeight(50);
 
@@ -30,7 +32,8 @@ TalkingWithNPC::TalkingWithNPC(QWidget *parent)
     monolog->setReadOnly(true);
     monolog->setFont(textFont);
     monolog->setFixedSize(1840, 130);
-    monolog->setText("Привет, герой!");
+    monolog->setText("Короче, Котяра, я тебя спас и в благородство играть не буду: "
+                     "принесешь для меня пару артефактов – и мы в расчете. ");
     monolog->setStyleSheet("border-color: black");
     monolog->setTextInteractionFlags(Qt::NoTextInteraction);
     monolog->setMouseTracking(false);
@@ -53,9 +56,9 @@ TalkingWithNPC::TalkingWithNPC(QWidget *parent)
 
     wNPC =new QWidget(parent);
     wHero =new QWidget(parent);
-    wNPC->setGeometry(40, 405, 500, 250);
+    wNPC->setGeometry(40, 405, 560, 250);
     wNPC->setLayout(new QHBoxLayout);
-    wHero->setGeometry(1430, 405, 450, 250);
+    wHero->setGeometry(1400, 405, 500, 250);
     wHero->setLayout(new QHBoxLayout);
 
 
@@ -87,7 +90,6 @@ TalkingWithNPC::TalkingWithNPC(QWidget *parent)
 
 TalkingWithNPC::~TalkingWithNPC()
 {
-    qDebug() << "TalkingWithNPC";
     delete panelText;
     delete wNPC;
     delete wHero;
@@ -103,11 +105,13 @@ void TalkingWithNPC::setHidden(bool hidden)
 Hero TalkingWithNPC::getCat() const
 {
     return cat;
+
 }
 
 void TalkingWithNPC::setCat(const Hero &newCat)
 {
     cat = newCat;
+    h->setText(cat.getName());
 }
 
 void TalkingWithNPC::setQuest()
@@ -120,23 +124,30 @@ void TalkingWithNPC::setQuest()
 void TalkingWithNPC::getQuest()
 {
     cat.setCounterQuest(cat.getCounterQuest() - cat.getMission());
+
     cat.setIsQuest(false);
 }
 
 void TalkingWithNPC::onClickedGoodbye()
 {
+    monolog->setText("Привет " + cat.getName() + "! Как дела?");
     emit exitFromTWNPC();
 }
 
 void TalkingWithNPC::onClickedQuest()
 {
-    if (cat.getReadyQuest()){
-        monolog->setText("Молодец, теперь мне нужно " + QString::number(cat.getMission()*scale) + " артефактов");
-        getQuest();
+    if (!cat.getIsQuest()){
+        monolog->setText("Сейчас мне нужно - " + QString::number(cat.getMission()*scale) + " артефактов");
         setQuest();
-    }
-    else{
-        monolog->setText("Ты ничего не сделал. Мне нужно " + QString::number(cat.getMission()*scale) + " артефактов");
+    }else{
+        if (cat.getReadyQuest()){
+            monolog->setText("Молодец, теперь мне нужно " + QString::number(cat.getMission()*scale) + " артефактов");
+            getQuest();
+            setQuest();
+        }
+        else{
+            monolog->setText("Ты ничего не сделал. Мне нужно " + QString::number(cat.getMission()) + " артефактов");
+        }
     }
 }
 
