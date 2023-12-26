@@ -113,12 +113,9 @@
         <file>assets/buttonAndText/newCharacter/skip_act.png</file>
         <file>assets/buttonAndText/minus_dis.png</file>
         <file>assets/buttonAndText/plus_dis.png</file>
-<<<<<<< HEAD
         <file>assets/characters/enemy/rat.png</file>
-=======
         <file>assets/buttonAndText/magicBook/use.png</file>
         <file>assets/buttonAndText/magicBook/use_act.png</file>
         <file>assets/buttonAndText/magicBook/use_dis.png</file>
->>>>>>> eb70287e7cae0c3ca43a18c578bcc0acf945ca46
     </qresource>
 </RCC>
