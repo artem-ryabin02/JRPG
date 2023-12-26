@@ -39,6 +39,11 @@ QString Enemy::getEnemy_skill_id() const
     return enemy_skill_id;
 }
 
+QString Enemy::getPathName() const
+{
+    return pathName;
+}
+
 //void Enemy::setSk(const Skill &newSk)
 //{
 //    sk = newSk;

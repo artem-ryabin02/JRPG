@@ -61,8 +61,8 @@ BatlleArena::BatlleArena(QWidget *parent)
     EnemyWid->layout()->addWidget(EnemyMPPB);
 
     EnemyImage = new QLabel();
-    QPixmap e (":/assets/characters/enemy/rat.png");
-    EnemyImage->setPixmap(e);
+    //QPixmap e (":/assets/characters/enemy/rat.png");
+    //EnemyImage->setPixmap(e);
     EnemyImage->setFixedSize(400, 400);
     EnemyImage->setScaledContents(true);
     EnemyWid->layout()->addWidget(EnemyImage);
@@ -142,7 +142,8 @@ void BatlleArena::startBattle(const Hero _hero)
     qDebug() << "--------------------------------------\n";
 
     enemy = DBcontroller::randEnemy();
-    enemy.displayStatus();
+    EnemyImage->setPixmap(QPixmap(enemy.getPathName()));
+    qDebug() << enemy.getPathName();
     HeroHPPB->setMaximum(hero.getMaxHealth());
     HeroHPPB->setValue(hero.getHealth());
     EnemyHPPB->setMaximum(enemy.getMaxHealth());

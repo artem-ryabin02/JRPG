@@ -21,6 +21,8 @@ public:
     int randAction();
     QString getEnemy_skill_id() const;
 
+    QString getPathName() const;
+
 private:
     QString pathName;
     QString enemy_skill_id;
