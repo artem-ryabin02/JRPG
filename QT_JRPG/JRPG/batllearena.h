@@ -4,6 +4,7 @@
 #include "enemy.h"
 #include "hero.h"
 #include "imagebutton.h"
+#include "magicbook.h"
 #include "qlabel.h"
 #include "qprogressbar.h"
 #include "qstatusbar.h"
@@ -23,12 +24,16 @@ public:
     Hero getHero() const;
 
 private slots:
+    void backFromMagicBook();
+    void heroUsedSkill();
     void onButtonClickAttack();
     void onButtonClickDefense();
     void onButtonClickItem();
     void onButtonClickSkill();
     void onButtonClickEscape();
 private:
+    MagicBook *mb;
+
     QWidget* HeroWid;
     QWidget* EnemyWid;
 
@@ -65,10 +70,12 @@ private:
     void checkWin();
     bool isDamage(int damage);
     bool isCritDamage(int damage, int maxHP);
+    void setHPMPall();
 signals:
     void escape();
     void win();
     void loose();
+    void mbOpen();
 };
 
 #endif // BATLLEARENA_H
