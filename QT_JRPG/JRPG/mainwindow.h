@@ -11,6 +11,7 @@
 #include "charlistview.h"
 #include "createnewcharacter.h"
 #include "game.h"
+#include "magicbook.h"
 #include "mainmenu.h"
 #include "talkingwithnpc.h"
 #include "batllearena.h"
@@ -59,6 +60,7 @@ private:
     TalkingWithNPC* twn;
     CharListView* clv;
     BatlleArena* ba;
+    MagicBook *mb;
 
     QWidget *volumeWidget;
     QSlider *slider;

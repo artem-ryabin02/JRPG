@@ -10,6 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->centralwidget->setContentsMargins(0,0,0,0);
     
+    QDir dirSaves;
+    if (!dirSaves.exists("saves")){
+        dirSaves.mkdir("saves");
+    }
+
     loadSounds();
     loadDB();
 
@@ -54,6 +59,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     ba = new BatlleArena(ui->centralwidget);
     ba->setHidden(true);
+
+    mb = new MagicBook(ui->centralwidget);
+    mb->setHidden(true);
 
     QPixmap bkgnd(":/assets/background/menu_demo.png");
     bkgnd = bkgnd.scaled(size(), Qt::IgnoreAspectRatio);

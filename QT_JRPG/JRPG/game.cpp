@@ -283,10 +283,7 @@ void Game::receiverChest()
 
 void Game::receiverSave()
 {
-    QDir dirSaves;
-    if (!dirSaves.exists("saves")){
-        dirSaves.mkdir("saves");
-    }
+
     QMessageBox msgFile;
     msgFile.setFixedSize(500,200);
     QString saveName = QFileDialog::getSaveFileName(this, tr("Куда хотите сохранить?"), QDir::currentPath()+"/saves", tr("Matrix Files (*.txt)"));

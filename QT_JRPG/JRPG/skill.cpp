@@ -1,4 +1,5 @@
 #include "skill.h"
+#include "qdebug.h"
 
 #include <QRandomGenerator>
 
@@ -43,9 +44,11 @@ void Skill::damage(Character &target)
     int health = target.getHealth();
     if (damage >= health) {
         health = 0;
+        target.setHealth(health);
         target.setAlive(false);
     } else {
         health -= damage;
+        target.setHealth(health);
         if (health <= 0) {
             target.setAlive(false);
         }
@@ -56,12 +59,17 @@ int Skill::causedDamage(int dodge)
 {
     int hit = QRandomGenerator::global()->bounded(100);
 
-    if (hit <= dodge * 2){
+    if (hit <= dodge){
         return 0;
     } else {
         int damage = tier * ((hit % 10)+5);
         return damage;
     }
+}
+
+void Skill::setCost(int newCost)
+{
+    cost = newCost;
 }
 
 int Skill::getCost() const

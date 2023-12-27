@@ -19,6 +19,8 @@ public:
 
     int getCost() const;
 
+    void setCost(int newCost);
+
 private:
     int causedDamage(int dodge);
     QString name;
