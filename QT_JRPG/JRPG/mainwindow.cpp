@@ -65,7 +65,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(wmm, &MainMenu::loadGame, this, &MainWindow::onButtonLoadGameClicked);
     connect(wmm, &MainMenu::exit, this, &MainWindow::onButtonExitClicked);
 
-    connect(slider, &QSlider::sliderMoved, this, &MainWindow::valueChanged);
+    connect(slider, &QSlider::sliderReleased, this, &MainWindow::valueChanged);
 
     connect(twn, &TalkingWithNPC::exitFromTWNPC, this, &MainWindow::recGoodbye);
 
@@ -330,6 +330,13 @@ void MainWindow::valueChanged(){
     label->setText(QString::number(slider->value()));
     float v = (float)slider->value() / 100;
     wg->setVolume(v);
+    wmm->setVolume(v);
+    clv->setVolume(v);
+    wcnc->setVolume(v);
+    twn->setVolume(v);
+    ba->setVolume(v);
+
+
 }
 
 

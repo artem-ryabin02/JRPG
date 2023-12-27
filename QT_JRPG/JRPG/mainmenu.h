@@ -14,6 +14,7 @@ public:
     ~MainMenu();
 
     void setHidden(bool hidden);
+    void setVolume(float volume);
 protected:
 private:
     QWidget* wButtons;

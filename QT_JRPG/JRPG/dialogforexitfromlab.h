@@ -11,6 +11,7 @@ class DialogForExitFromLab : public QWidget
 public:
     explicit DialogForExitFromLab(QWidget *parent = nullptr);// конструктор с входными данными родителя
     void setHidden(bool hidden);// метод для того что бы спрятать виджет
+    void setVolume(float volume);
 private:
     QWidget* wid;// "тело" виджета. Поверхность на которой он отображается
     QWidget* buttomPanel;// панель с кнопками

@@ -426,6 +426,9 @@ void Game::setVolume(float volume)
     invb->setVolume(volume);
     lgb->setVolume(volume);
     egb->setVolume(volume);
+    bl->setVolume(volume);
+    blb->setVolume(volume);
+    dfefl->setVolume(volume);
 
 }
 

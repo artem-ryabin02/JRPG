@@ -171,6 +171,19 @@ void BatlleArena::setHidden(bool hidden)
     sb->setHidden(hidden);
 }
 
+void BatlleArena::setVolume(float volume)
+{
+    buttonAtc->setVolume(volume);
+    buttonDef->setVolume(volume);
+    buttonItem->setVolume(volume);
+    buttonSkill->setVolume(volume);
+    buttonEcp->setVolume(volume);
+    aoA->setVolume(volume);
+    aoD->setVolume(volume);
+    aoS->setVolume(volume);
+
+}
+
 void BatlleArena::onButtonClickAttack()
 {
     playerAtc->play();

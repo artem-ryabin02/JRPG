@@ -151,7 +151,7 @@ void BoardLabyrinth::setDisable(bool disable)
     this->blockSignals(disable);
 }
 
-void BoardLabyrinth::setVolume(int volume)
+void BoardLabyrinth::setVolume(float volume)
 {
     ao->setVolume(volume);
 }

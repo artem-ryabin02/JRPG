@@ -122,6 +122,13 @@ void TalkingWithNPC::setCat(const Hero &newCat)
     h->setText(cat.getName());
 }
 
+void TalkingWithNPC::setVolume(float volume)
+{
+    gbb->setVolume(volume);
+    qb->setVolume(volume);
+    tb->setVolume(volume);
+}
+
 void TalkingWithNPC::setQuest()
 {
     cat.setIsQuest(true);

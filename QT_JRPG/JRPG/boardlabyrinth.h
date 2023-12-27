@@ -22,7 +22,7 @@ public:
 
     void setDisable(bool disable);
 
-    void setVolume(int volume);
+    void setVolume(float volume);
 
     void regeneration();
 

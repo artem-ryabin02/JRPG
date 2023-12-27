@@ -157,6 +157,20 @@ void CreateNewCharacter::setHidden(bool hidden)
     parametrs->setHidden(hidden);
 }
 
+void CreateNewCharacter::setVolume(float volume)
+{
+    backButton->setVolume(volume);
+    skipButton->setVolume(volume);
+    readyButton->setVolume(volume);
+    spinBoxStr->setVolume(volume);
+    spinBoxVit->setVolume(volume);
+    spinBoxAgl->setVolume(volume);
+    spinBoxPer->setVolume(volume);
+    spinBoxInt->setVolume(volume);
+    spinBoxWis->setVolume(volume);
+
+}
+
 Hero CreateNewCharacter::getCat() const
 {
     return cat;

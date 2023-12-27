@@ -115,11 +115,6 @@ void BoardLocation::setDisable(bool disable)
     this->blockSignals(disable);
 }
 
-void BoardLocation::setVolume(int volume)
-{
-    ao->setVolume(volume);
-}
-
 int BoardLocation::getXHero() const
 {
     return xHero;
@@ -154,6 +149,11 @@ void BoardLocation::deleteHero()
             fl[i][j]->setHero(false);
         }
     }
+}
+
+void BoardLocation::setVolume(float volume)
+{
+    ao->setVolume(volume);
 }
 
 void BoardLocation::rescale(int _size){

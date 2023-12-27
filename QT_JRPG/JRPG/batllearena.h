@@ -19,6 +19,7 @@ public:
     ~BatlleArena();
     void startBattle(const Hero _hero, bool BF);
     void setHidden(bool hidden);
+    void setVolume(float volume);
     Hero getHero() const;
 
 private slots:

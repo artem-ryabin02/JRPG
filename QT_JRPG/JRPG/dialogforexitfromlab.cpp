@@ -32,3 +32,9 @@ void DialogForExitFromLab::setHidden(bool hidden)
 {
     wid->setHidden(hidden);//прячем виджет
 }
+
+void DialogForExitFromLab::setVolume(float volume)
+{
+    yesButton->setVolume(volume);
+    noButton->setVolume(volume);
+}
