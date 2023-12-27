@@ -39,7 +39,7 @@ BatlleArena::BatlleArena(QWidget *parent)
     QPixmap h(":/assets/characters/hero.png");
     HeroImage->setPixmap(h);
     HeroImage->setFixedSize(400, 400);
-    HeroImage->setScaledContents(true);
+    HeroImage->setAlignment(Qt::AlignCenter);
     HeroWid->layout()->addWidget(HeroImage);
 
     EnemyWid = new QWidget(parent);
@@ -61,10 +61,10 @@ BatlleArena::BatlleArena(QWidget *parent)
     EnemyWid->layout()->addWidget(EnemyMPPB);
 
     EnemyImage = new QLabel();
-    //QPixmap e (":/assets/characters/enemy/rat.png");
-    //EnemyImage->setPixmap(e);
+    QPixmap e (":/assets/characters/enemy/skeleton.png");
+    EnemyImage->setPixmap(e);
     EnemyImage->setFixedSize(400, 400);
-    EnemyImage->setScaledContents(true);
+    EnemyImage->setAlignment(Qt::AlignCenter);
     EnemyWid->layout()->addWidget(EnemyImage);
 
 
@@ -127,7 +127,6 @@ BatlleArena::BatlleArena(QWidget *parent)
 
 BatlleArena::~BatlleArena()
 {
-    qDebug() << "des BattlArena";
     delete HeroWid;
     delete EnemyWid;
     delete panelButtons;
@@ -135,7 +134,7 @@ BatlleArena::~BatlleArena()
 
 }
 
-void BatlleArena::startBattle(const Hero _hero)
+void BatlleArena::startBattle(const Hero _hero, bool BF)
 {
     hero = _hero;
     hero.displayStatus();
@@ -144,6 +143,12 @@ void BatlleArena::startBattle(const Hero _hero)
     enemy = DBcontroller::randEnemy();
     EnemyImage->setPixmap(QPixmap(enemy.getPathName()));
     qDebug() << enemy.getPathName();
+    if (BF){
+        enemy.setMaxHealth(enemy.getMaxHealth()*10);
+        enemy.setHealth(enemy.getMaxHealth());
+        enemy.setMaxMana(enemy.getMaxMana()*10);
+        enemy.setMana(enemy.getMaxMana());
+    }
     HeroHPPB->setMaximum(hero.getMaxHealth());
     HeroHPPB->setValue(hero.getHealth());
     EnemyHPPB->setMaximum(enemy.getMaxHealth());

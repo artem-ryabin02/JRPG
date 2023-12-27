@@ -24,8 +24,8 @@ public:
 private:
     int loadCapacity;
 
-    bool isQuest;
-    bool readyQuest;
+    bool isQuest = false;
+    bool readyQuest = false;
     int mission = 1;
     int counterQuest = 0;
 

@@ -97,6 +97,15 @@ TalkingWithNPC::~TalkingWithNPC()
 
 void TalkingWithNPC::setHidden(bool hidden)
 {
+    if (hidden){
+        if (!cat.getIsQuest()){
+            monolog->setText("Короче, Котяра, я тебя спас и в благородство играть не буду: "
+                             "принесешь для меня пару артефактов – и мы в расчете. ");
+        }
+        else{
+            monolog->setText("Привет " + cat.getName() + "! Как дела?");
+        }
+    }
     wNPC->setHidden(hidden);
     wHero->setHidden(hidden);
     panelText->setHidden(hidden);
@@ -105,7 +114,6 @@ void TalkingWithNPC::setHidden(bool hidden)
 Hero TalkingWithNPC::getCat() const
 {
     return cat;
-
 }
 
 void TalkingWithNPC::setCat(const Hero &newCat)
@@ -130,7 +138,6 @@ void TalkingWithNPC::getQuest()
 
 void TalkingWithNPC::onClickedGoodbye()
 {
-    monolog->setText("Привет " + cat.getName() + "! Как дела?");
     emit exitFromTWNPC();
 }
 

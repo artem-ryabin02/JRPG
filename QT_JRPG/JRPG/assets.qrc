@@ -117,5 +117,7 @@
         <file>assets/buttonAndText/magicBook/use.png</file>
         <file>assets/buttonAndText/magicBook/use_act.png</file>
         <file>assets/buttonAndText/magicBook/use_dis.png</file>
+        <file>assets/characters/enemy/skeleton.png</file>
+        <file>assets/characters/enemy/slime.png</file>
     </qresource>
 </RCC>

@@ -1,6 +1,8 @@
 #include "game.h"
 
+#include <QFileDialog>
 #include <QFontDatabase>
+#include <QMessageBox>
 #include <QRandomGenerator>
 
 Game::Game(QWidget *parent)
@@ -139,8 +141,10 @@ Game::Game(QWidget *parent)
     connect(blb, &BoardLabyrinth::enemy, this, &Game::transmitEnemyEntry);
     connect(blb, &BoardLabyrinth::chest, this, &Game::receiverChest);
     connect(blb, &BoardLabyrinth::entry, this, &Game::answerForExit);
-    connect(blb, &BoardLabyrinth::boss, this, &Game::transmitEnemyEntry);
-
+    connect(blb, &BoardLabyrinth::boss, this, [this](){
+        bossF = true;
+        emit transmitEnemyEntry();
+    });
 
     connect(chlb, &ImageButton::clicked, this, &Game::onPushCharListButtonClicked);
     connect(invb, &ImageButton::clicked, this, &Game::onPushInventoryButtonClicked);
@@ -150,6 +154,7 @@ Game::Game(QWidget *parent)
 
     connect(bl, &BoardLocation::signalDialogWithNPC, this, &Game::receivedSignalDialogWithNPC);
     connect(bl, &BoardLocation::signalEntryLabyrinth, this, &Game::receivedSignalEntryLab);
+    connect(bl, &BoardLocation::signalSave, this, &Game::receiverSave);
 
 
     connect(dfefl, &DialogForExitFromLab::yesSig, this, &Game::receivedSignalExitLab);
@@ -158,7 +163,6 @@ Game::Game(QWidget *parent)
 
 Game::~Game()
 {
-    qDebug() << "des Game";
     delete wBoard;
     delete wHPMP;
     delete wButtoms;
@@ -277,6 +281,81 @@ void Game::receiverChest()
     cat.setCounterQuest(countArt);
 }
 
+void Game::receiverSave()
+{
+    QDir dirSaves;
+    if (!dirSaves.exists("saves")){
+        dirSaves.mkdir("saves");
+    }
+    QMessageBox msgFile;
+    msgFile.setFixedSize(500,200);
+    QString saveName = QFileDialog::getSaveFileName(this, tr("Куда хотите сохранить?"), QDir::currentPath()+"/saves", tr("Matrix Files (*.txt)"));
+    QFile saveFile(saveName);
+    if(!saveFile.open(QIODevice::WriteOnly | QIODevice::Text)){
+        msgFile.critical(0, "Error", "Невозможно открыть файл");
+        return;
+    }
+    QTextStream out(&saveFile);
+    out << bl->getXHero()<< "|" << bl->getYHero()<<"|\n";
+    out << cat.getName()<< "|\n";
+    out << cat.getVitality() << "|" <<cat.getStrength() << "|" <<cat.getWisdom() << "|" <<cat.getIntelligence()
+        << "|" <<cat.getAgility() << "|" <<cat.getPerception() << "|\n";
+    out << cat.getIsQuest() << "|" << cat.getReadyQuest() << "|\n";
+    out << cat.getMission() << "|" << cat.getCounterQuest() << "|\n";
+    saveFile.close();
+
+    cat.setHealth(cat.getMaxHealth());
+    cat.setMana(cat.getMaxMana());
+    pbHP->setMaximum(cat.getMaxHealth());
+    pbHP->setValue(cat.getMaxHealth());
+    pbMP->setMaximum(cat.getMaxMana());
+    pbMP->setValue(cat.getMaxMana());
+
+}
+
+void Game::receiverLoad()
+{
+    QString inputName = QFileDialog::getOpenFileName(this, tr("Что хотите загрузить?"), QDir::currentPath()+"/saves", tr("Matrix Files (*.dat *.txt)"));
+    QFile inputFile(inputName);
+    QMessageBox msgFile;
+    msgFile.setFixedSize(500,200);
+    if(!inputFile.open(QIODevice::ReadOnly | QIODevice::Text)){
+        msgFile.critical(0, "Error", "Невозможно открыть файл");
+        return;
+    }
+    bl->deleteHero();
+    QString xy = inputFile.readLine();
+    QStringList xyList = xy.split("|");
+    bl->setHero(xyList[0].toInt(), xyList[1].toInt());
+    QString name = inputFile.readLine();
+    name = name.left(name.lastIndexOf("|"));
+    QString parametrs = inputFile.readLine();
+    QStringList paramList = parametrs.split("|");
+    setCat(Hero(name, paramList[0].toInt(), paramList[1].toInt(), paramList[2].toInt(),
+                paramList[3].toInt(), paramList[4].toInt(), paramList[5].toInt()));
+    QString boolean = inputFile.readLine();
+    QStringList boolList = boolean.split("|");
+
+    cat.setIsQuest(boolList[0].toInt());
+    cat.setReadyQuest(boolList[1].toInt());
+
+    QString mnc = inputFile.readLine();
+    QStringList mncList = mnc.split("|");
+
+    cat.setMission(mncList[0].toInt());
+    cat.setCounterQuest(mncList[1].toInt());
+
+
+    pbHP->setMaximum(cat.getMaxHealth());
+    pbHP->setValue(cat.getMaxHealth());
+    pbMP->setMaximum(cat.getMaxMana());
+    pbHP->setValue(cat.getMaxMana());
+
+    countArt = cat.getCounterQuest();
+    counter->setText(QString::number(countArt));
+    inputFile.close();
+}
+
 void Game::recaivedSouth()
 {
     if (!wBoard->isHidden()){
@@ -337,7 +416,7 @@ void Game::setCat(const Hero &newCat)
     lblInt->setText(QString::number(cat.getIntelligence()));
     lblWis->setText(QString::number(cat.getWisdom()));
 
-    countArt += cat.getCounterQuest();
+    countArt = cat.getCounterQuest();
     counter->setText(QString::number(countArt));
 }
 
@@ -348,6 +427,16 @@ void Game::setVolume(float volume)
     lgb->setVolume(volume);
     egb->setVolume(volume);
 
+}
+
+bool Game::getBossF() const
+{
+    return bossF;
+}
+
+void Game::setBossF(bool newBossF)
+{
+    bossF = newBossF;
 }
 
 

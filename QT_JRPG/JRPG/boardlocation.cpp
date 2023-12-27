@@ -22,7 +22,6 @@ BoardLocation::BoardLocation(QWidget* parent)
 
 }
 BoardLocation::~BoardLocation(){
-    qDebug() << "des BoardLocation";
     delete player;
     delete ao;
     delete grid;
@@ -48,25 +47,28 @@ void BoardLocation::loadBoardVillage(QFile& file){
                 fl[j][i]->setHero(true);
             }
             if (tmpList[i] == "N"){
-                fl[j][i]->fullSet(false, true, false, fieldName[NAME_FIELD::GRASS]);
+                fl[j][i]->fullSet(false, true, false, false, fieldName[NAME_FIELD::GRASS]);
             }
             if (tmpList[i] == "L"){
-                fl[j][i]->fullSet(false, false, true, fieldName[NAME_FIELD::LABYRINTH_ENTRY]);
+                fl[j][i]->fullSet(false, false, true, false, fieldName[NAME_FIELD::LABYRINTH_ENTRY]);
             }
             if (tmpList[i] == "G"){
-                fl[j][i]->fullSet(true, false, false, fieldName[NAME_FIELD::GRASS]);
+                fl[j][i]->fullSet(true, false, false, false, fieldName[NAME_FIELD::GRASS]);
             }
             if (tmpList[i] == "GWCB"){
-                fl[j][i]->fullSet(false, false, false, fieldName[NAME_FIELD::GRASS_WATER_C_B]);
+                fl[j][i]->fullSet(false, false, false, false, fieldName[NAME_FIELD::GRASS_WATER_C_B]);
             }
             if (tmpList[i] == "GWB"){
-                fl[j][i]->fullSet(false, false, false, fieldName[NAME_FIELD::GRASS_WATER_B]);
+                fl[j][i]->fullSet(false, false, false, false, fieldName[NAME_FIELD::GRASS_WATER_B]);
             }
             if (tmpList[i] == "GWS"){
-                fl[j][i]->fullSet(false, false, false, fieldName[NAME_FIELD::GRASS_WATER_S]);
+                fl[j][i]->fullSet(false, false, false, false, fieldName[NAME_FIELD::GRASS_WATER_S]);
             }
             if (tmpList[i] == "W"){
-                fl[j][i]->fullSet(false, false, false, fieldName[NAME_FIELD::WATER]);
+                fl[j][i]->fullSet(false, false, false, false, fieldName[NAME_FIELD::WATER]);
+            }
+            if (tmpList[i] == "S"){
+                fl[j][i]->fullSet(false, false, false, true, fieldName[NAME_FIELD::SAVEPOINT]);//save
             }
         }
 
@@ -101,6 +103,9 @@ void BoardLocation::updatePostion(int r, int c){
         if (fl[xNew][yNew]->getIsLabyrinth()){
             emit signalEntryLabyrinth();
         }
+        if (fl[xNew][yNew]->getIsSave()){
+            emit signalSave();
+        }
     }
 
 }
@@ -113,6 +118,42 @@ void BoardLocation::setDisable(bool disable)
 void BoardLocation::setVolume(int volume)
 {
     ao->setVolume(volume);
+}
+
+int BoardLocation::getXHero() const
+{
+    return xHero;
+}
+
+void BoardLocation::setXHero(int newXHero)
+{
+    xHero = newXHero;
+}
+
+int BoardLocation::getYHero() const
+{
+    return yHero;
+}
+
+void BoardLocation::setYHero(int newYHero)
+{
+    yHero = newYHero;
+}
+
+void BoardLocation::setHero(int x, int y)
+{
+    xHero = x;
+    yHero = y;
+    fl[x][y]->setHero(true);
+}
+
+void BoardLocation::deleteHero()
+{
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            fl[i][j]->setHero(false);
+        }
+    }
 }
 
 void BoardLocation::rescale(int _size){

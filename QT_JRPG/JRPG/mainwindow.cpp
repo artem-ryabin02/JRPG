@@ -136,6 +136,7 @@ void MainWindow::newGame()
     connect(this, &MainWindow::aPress, wg, &Game::recaivedWest);
     connect(this, &MainWindow::sPress, wg, &Game::recaivedSouth);
     connect(this, &MainWindow::dPress, wg, &Game::recaivedEast);
+    connect(this, &MainWindow::readyToLoad, wg, &Game::receiverLoad);
 }
 
 void MainWindow::copyFile(QString SND_FILE_NAME, QString SND_FILE )
@@ -220,7 +221,20 @@ void MainWindow::onButtonNewGameClicked()
 
 void MainWindow::onButtonLoadGameClicked()
 {
-    ui->statusbar->showMessage("ПОКА НЕ РАБОТАЕТ", 2000);
+    wmm->setHidden(true);
+    clv->setHidden(true);
+    twn->setHidden(true);
+    ba->setHidden(true);
+    if (wcnc != nullptr){
+        wcnc->setHidden(true);
+    }
+    if (wg == nullptr){
+        newGame();
+    }
+    wg->setLabAct(false);
+    wg->setHidden(false);
+    emit readyToLoad();
+
 }
 
 void MainWindow::onButtonInvetoryClicked()
@@ -245,11 +259,12 @@ void MainWindow::returnFromCharList()
 
 void MainWindow::recTalk()
 {
-    wg->setHidden(true);
+    wg->setFHidden(true);
     blockSignals(true);
     //_sleep(1000);
-    twn->setHidden(false);
     twn->setCat(wg->getCat());
+    twn->setHidden(false);
+
 }
 
 void MainWindow::recGoodbye()
@@ -264,7 +279,8 @@ void MainWindow::recGoodbye()
 void MainWindow::recEnemy()
 {
     wg->setFHidden(true);
-    ba->startBattle(wg->getCat());
+    ba->startBattle(wg->getCat(), wg->getBossF());
+    if (wg->getBossF()) wg->setBossF(false);
     ba->setHidden(false);
 }
 

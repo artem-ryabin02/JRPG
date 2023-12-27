@@ -71,11 +71,13 @@ private:
     void copyFile(QString SND_FILE_NAME, QString SND_FILE);
     void loadSounds();
     void loadDB();
+
 signals:
     void wPress();
     void aPress();
     void sPress();
     void dPress();
+    void readyToLoad();
 
 
 };

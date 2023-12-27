@@ -165,8 +165,8 @@ Hero CreateNewCharacter::getCat() const
 void CreateNewCharacter::onButtonClickedReady()
 {
     cat = Hero(editName->displayText(), spinBoxVit->getValue(), spinBoxStr->getValue(),
-                                        spinBoxAgl->getValue(), spinBoxPer->getValue(),
-                                        spinBoxInt->getValue(), spinBoxWis->getValue()
+                                        spinBoxWis->getValue(), spinBoxInt->getValue(),
+                                        spinBoxAgl->getValue(), spinBoxPer->getValue()
                );
     emit ready();
 }

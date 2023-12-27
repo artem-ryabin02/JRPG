@@ -17,7 +17,7 @@ class BatlleArena : public QWidget
 public:
     explicit BatlleArena(QWidget *parent = nullptr);
     ~BatlleArena();
-    void startBattle(const Hero _hero);
+    void startBattle(const Hero _hero, bool BF);
     void setHidden(bool hidden);
     Hero getHero() const;
 

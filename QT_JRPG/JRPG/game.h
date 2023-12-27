@@ -27,6 +27,9 @@ public:
 
 
 
+    bool getBossF() const;
+    void setBossF(bool newBossF);
+
 private:
     DialogForExitFromLab* dfefl;
     BoardLocation* bl;
@@ -60,7 +63,7 @@ private:
     Hero cat;
     int countArt = 0;
     bool labAct = 0;
-
+    bool bossF = false;
 
 private slots:
     void onPushExitButtonClicked();
@@ -77,12 +80,15 @@ private slots:
 
     void receiverChest();
 
+    void receiverSave();
+
+
 public slots:
     void recaivedSouth();
     void recaivedNorth();
     void recaivedEast();
     void recaivedWest();
-
+    void receiverLoad();
 
 
 

@@ -25,7 +25,7 @@ BoardLabyrinth::BoardLabyrinth(QWidget *parent)
 }
 
 BoardLabyrinth::~BoardLabyrinth(){
-    qDebug() << "des BoardLabyrinth";
+
     delete player;
     delete ao;
     delete grid;

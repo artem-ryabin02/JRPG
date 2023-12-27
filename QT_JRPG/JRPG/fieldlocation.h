@@ -15,6 +15,7 @@ enum class NAME_FIELD {
     GRASS_WATER_C_B,
     GRASS_WATER_C_T,
     LABYRINTH_ENTRY,
+    SAVEPOINT,
     NONE
 };
 
@@ -29,13 +30,16 @@ public:
     void setNPC(bool f);
     void setLabyrinth(bool f);
     void setFieldName(QString fn);
-    void fullSet(bool isFree, bool isNPC, bool isLab, QString flName);
+    void fullSet(bool isFree, bool isNPC, bool isLab, bool isSave, QString flName);
     void setHero(bool f);
 
     bool getFree();
     bool getNPC();
 
     bool getIsLabyrinth() const;
+
+    bool getIsSave() const;
+    void setIsSave(bool newIsSave);
 
 protected:
     void paintEvent(QPaintEvent * pE) override;
@@ -47,6 +51,8 @@ private:
     bool isLabyrinth;
     bool isNPC;
     bool isHero;
+    bool isSave;
+
 
     QString fieldName;
 

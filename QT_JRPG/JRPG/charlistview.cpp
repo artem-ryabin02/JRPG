@@ -37,7 +37,6 @@ CharListView::CharListView(QWidget *parent)
     lblParametrs = new QLabel();
     lblParametrs->setFixedSize(1000, 150);
     QPixmap pt(":/assets/buttonAndText/Game/parametrs_table.png");
-    //pt.scaled(1000, 150);
     lblParametrs->setPixmap(pt);
     wParametrs->layout()->addWidget(lblParametrs);
 
@@ -183,7 +182,6 @@ CharListView::CharListView(QWidget *parent)
 
 CharListView::~CharListView()
 {
-    qDebug() << "des CharListView";
     delete wArtEquips;
     delete wParametrs;
     delete lblStr;

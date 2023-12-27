@@ -13,11 +13,6 @@
 
 #include "fieldlocation.h"
 
-enum class NAME_OBJECT{
-    HERO,
-    NPC,
-    NONE
-};
 
 class BoardLocation: public QWidget
 {
@@ -31,6 +26,14 @@ public:
     void setDisable(bool disable);
 
     void setVolume(int volume);
+    int getXHero() const;
+    void setXHero(int newXHero);
+
+    int getYHero() const;
+    void setYHero(int newYHero);
+
+    void setHero(int x, int y);
+    void deleteHero();
 protected:
 
 private:
@@ -56,6 +59,7 @@ private:
         {NAME_FIELD::GRASS_WATER_C_B, "grass_water_corner_bottom.png"},
         {NAME_FIELD::GRASS_WATER_C_T, "grass_water_corner_top.png"},
         {NAME_FIELD::LABYRINTH_ENTRY, "vkhod.png"},
+        {NAME_FIELD::SAVEPOINT, "vkhod.png"},
         {NAME_FIELD::NONE, ""}
     };
 
@@ -66,6 +70,7 @@ private:
 signals:
     void signalDialogWithNPC();
     void signalEntryLabyrinth();
+    void signalSave();
 };
 
 #endif // BOARDLOCATION_H

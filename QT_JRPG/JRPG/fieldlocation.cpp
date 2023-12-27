@@ -32,6 +32,16 @@ void FieldLocation::paintEvent(QPaintEvent * pE){
 
 }
 
+bool FieldLocation::getIsSave() const
+{
+    return isSave;
+}
+
+void FieldLocation::setIsSave(bool newIsSave)
+{
+    isSave = newIsSave;
+}
+
 bool FieldLocation::getIsLabyrinth() const
 {
     return isLabyrinth;
@@ -58,10 +68,11 @@ void FieldLocation::setFieldName(QString fn){
     fieldName = fn;
 }
 
-void FieldLocation::fullSet(bool isFree, bool isNPC, bool isLab, QString flName){
+void FieldLocation::fullSet(bool isFree, bool isNPC, bool isLab, bool isSave, QString flName){
     this->setFree(isFree);
     this->setNPC(isNPC);
     this->setLabyrinth(isLab);
+    this->setIsSave(isSave);
     this->setFieldName(flName);
 }
 
