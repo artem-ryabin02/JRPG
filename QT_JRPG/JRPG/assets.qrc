@@ -118,11 +118,8 @@
         <file>assets/buttonAndText/magicBook/use_dis.png</file>
         <file>assets/characters/enemy/skeleton.png</file>
         <file>assets/characters/enemy/slime.png</file>
-<<<<<<< HEAD
         <file>assets/music/skill_sound.wav</file>
-=======
         <file>assets/characters/enemy/gnome.png</file>
         <file>assets/characters/enemy/goblin.png</file>
->>>>>>> d289425adebe274838cabc26bd044ab08995734c
     </qresource>
 </RCC>

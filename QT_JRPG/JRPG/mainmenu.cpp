@@ -44,7 +44,6 @@ MainMenu::MainMenu(QWidget *parent)
 
 MainMenu::~MainMenu()
 {
-    qDebug() << "MainMenu";
     delete wButtons;
     delete wTitle;
 }

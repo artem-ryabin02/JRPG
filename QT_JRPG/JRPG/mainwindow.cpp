@@ -220,9 +220,7 @@ void MainWindow::onButtonExitClicked()
 void MainWindow::onButtonNewGameClicked()
 {
     wmm->setHidden(true);
-    if (wcnc == nullptr){
-        newCharacter();
-    }
+
     wcnc->setHidden(false);
 }
 
@@ -239,7 +237,7 @@ void MainWindow::onButtonLoadGameClicked()
     if (wg == nullptr){
         newGame();
     }
-    wg->setLabAct(false);
+    //wg->setLabAct(false);
     wg->setHidden(false);
     emit readyToLoad();
 
@@ -315,9 +313,7 @@ void MainWindow::returnMainMenu()
 void MainWindow::startNewGame()
 {
     wcnc->setHidden(true);
-    if (wg == nullptr){
-        newGame();
-    }
+
     wg->setCat(wcnc->getCat());
     wg->setHidden(false);
 }
@@ -332,6 +328,12 @@ void MainWindow::gameOver()
         wcnc = nullptr;
     }
     ba->setHidden(true);
+    if (wg == nullptr){
+        newGame();
+    }
+    if (wcnc == nullptr){
+        newCharacter();
+    }
 }
 
 void MainWindow::valueChanged(){
@@ -343,7 +345,6 @@ void MainWindow::valueChanged(){
     wcnc->setVolume(v);
     twn->setVolume(v);
     ba->setVolume(v);
-
 
 }
 

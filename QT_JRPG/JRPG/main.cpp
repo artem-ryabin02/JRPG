@@ -7,7 +7,7 @@
 #include <QString>
 #include <QFontDatabase>
 
-static const int LOAD_TIME_MSEC = 5 * 1000;
+static const int LOAD_TIME_MSEC = 2 * 1000;
 
 int main(int argc, char *argv[])
 {
@@ -28,8 +28,7 @@ int main(int argc, char *argv[])
     QElapsedTimer timer;
     timer.start();
     while(timer.elapsed() < LOAD_TIME_MSEC){
-        const int progress = static_cast<double>(timer.elapsed())/LOAD_TIME_MSEC * 100.0;
-        splash.showMessage(QString("Mustachioed \n      Guard").arg(progress), Qt::AlignCenter, Qt::lightGray);
+        splash.showMessage(QString("Mustachioed \n      Guard"), Qt::AlignCenter, Qt::lightGray);
         splash.setPixmap(pix);
         a.processEvents();
     }

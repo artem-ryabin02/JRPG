@@ -26,7 +26,7 @@ MagicBook::MagicBook(QWidget *parent)
     back->setParent(parent);
     background->layout()->addWidget(back);
 
-    background->layout()->setAlignment(back, Qt::AlignBottom);
+    background->layout()->setAlignment(back, Qt::AlignBottom|Qt::AlignHCenter);
 
     connect(pageMagicBook[0],&LineOfMagicBook::used, this, [this](){useMagicBook(0); emit used();});
     connect(pageMagicBook[1],&LineOfMagicBook::used, this, [this](){useMagicBook(1); emit used();});
@@ -61,6 +61,21 @@ void MagicBook::setRat(const Enemy &newRat)
 void MagicBook::setHidden(bool hidden)
 {
     background->setHidden(hidden);
+}
+
+void MagicBook::setHiddenButtons(bool hidden)
+{
+    for (int i = 0; i < compendium.size(); i++){
+        pageMagicBook[i]->setHiddenButton(hidden);
+    }
+}
+
+void MagicBook::setVolume(float volume)
+{
+    for (int i = 0; i < compendium.size(); i++){
+        pageMagicBook[i]->setVolume(volume);
+    }
+    back->setVolume(volume);
 }
 
 void MagicBook::useMagicBook(int index)

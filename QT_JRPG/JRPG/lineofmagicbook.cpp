@@ -27,6 +27,7 @@ LineOfMagicBook::LineOfMagicBook(QWidget *parent)
     layoutWidget->layout()->addWidget(costSkill);
     layoutWidget->layout()->addWidget(useButton);
     layoutWidget->layout()->setAlignment(useButton, Qt::AlignRight);
+    layoutWidget->layout()->setAlignment(costSkill, Qt::AlignRight);
     layoutWidget->layout()->setAlignment(nameSkill, Qt::AlignLeft);
 
     connect(useButton, &ImageButton::clicked, this, &LineOfMagicBook::used);
@@ -56,6 +57,11 @@ void LineOfMagicBook::setHiddenButton(bool hidden)
 void LineOfMagicBook::setFixedSize(int w, int h)
 {
     layoutWidget->setFixedSize(w, h);
+}
+
+void LineOfMagicBook::setVolume(float volume)
+{
+    useButton->setVolume(volume);
 }
 
 

@@ -20,6 +20,9 @@ public:
     void setRat(const Enemy &newRat);
 
     void setHidden(bool hidden);
+    void setHiddenButtons(bool hidden);
+
+    void setVolume(float volume);
 
 
 private:

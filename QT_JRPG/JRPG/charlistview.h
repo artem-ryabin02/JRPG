@@ -3,6 +3,7 @@
 
 #include "hero.h"
 #include "imagebutton.h"
+#include "magicbook.h"
 #include <QLabel>
 #include <QObject>
 #include <QWidget>
@@ -20,6 +21,8 @@ public:
     void setVolume(float volume);
 
 private:
+    MagicBook* MB;
+
     QWidget* wArtEquips;
     QLabel* art;
     QWidget* wEquips;
@@ -73,7 +76,9 @@ private:
 
     Hero cat;
 
-
+private slots:
+    void skillView();
+    void skillBack();
 signals:
     void goSkill();
     void goBack();

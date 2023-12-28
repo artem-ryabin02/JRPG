@@ -15,6 +15,7 @@ public:
     void setHidden(bool hidden);
     void setHiddenButton(bool hidden);
     void setFixedSize(int w, int h);
+    void setVolume(float volume);
 private:
     QWidget* layoutWidget;
     QLabel* nameSkill;

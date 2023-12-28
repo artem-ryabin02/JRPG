@@ -243,9 +243,7 @@ void Game::receivedSignalDialogWithNPC()
 void Game::receivedSignalEntryLab()
 {
     wBoard->setHidden(true);
-    bl->setDisable(true);
     wBoardLab->setHidden(false);
-    blb->setDisable(false);
     labAct = true;
 }
 
@@ -255,9 +253,7 @@ void Game::receivedSignalExitLab()
     dfefl->setHidden(true);
     blb->regeneration();
     wBoard->setHidden(false);
-    bl->setDisable(false);
     wBoardLab->setHidden(true);
-    blb->setDisable(true);
     labAct = false;
 
 }
@@ -320,6 +316,8 @@ void Game::receiverLoad()
         msgFile.critical(0, "Error", "Невозможно открыть файл");
         return;
     }
+    labAct = false;
+    receivedSignalExitLab();
     bl->deleteHero();
     QString xy = inputFile.readLine();
     QStringList xyList = xy.split("|");

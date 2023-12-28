@@ -176,7 +176,14 @@ CharListView::CharListView(QWidget *parent)
     wParametrs->layout()->addWidget(back);
     wParametrs->layout()->setAlignment(back, Qt::AlignHCenter);
 
-    connect(skills, &ImageButton::clicked, this, &CharListView::goSkill);
+    MB = new MagicBook(parent);
+    MB->setHidden(true);
+    MB->setHiddenButtons(true);
+
+
+    connect(MB, &MagicBook::backSignal, this, &CharListView::skillBack);
+
+    connect(skills, &ImageButton::clicked, this, &CharListView::skillView);
     connect(back, &ImageButton::clicked, this, &CharListView::goBack);
 }
 
@@ -224,12 +231,25 @@ void CharListView::setCat(const Hero &newCat)
 
 
     lblDOD->setText(QString::number(cat.getDodge())+"%");
+    MB->setCat(cat);
 }
 
 void CharListView::setVolume(float volume)
 {
     back->setVolume(volume);
     skills->setVolume(volume);
+}
+
+void CharListView::skillView()
+{
+    this->setHidden(true);
+    MB->setHidden(false);
+}
+
+void CharListView::skillBack()
+{
+    this->setHidden(false);
+    MB->setHidden(true);
 }
 
 
