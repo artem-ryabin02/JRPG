@@ -94,7 +94,6 @@
         <file>assets/buttonAndText/YesOrNot/yes_act.png</file>
         <file>assets/music/attack_sound.wav</file>
         <file>assets/music/defence_sound.wav</file>
-        <file>assets/music/skill_sound.wav</file>
         <file>assets/buttonAndText/newCharacter/agl.png</file>
         <file>assets/buttonAndText/newCharacter/intl.png</file>
         <file>assets/buttonAndText/newCharacter/name.png</file>
@@ -119,5 +118,6 @@
         <file>assets/buttonAndText/magicBook/use_dis.png</file>
         <file>assets/characters/enemy/skeleton.png</file>
         <file>assets/characters/enemy/slime.png</file>
+        <file>assets/music/skill_sound.wav</file>
     </qresource>
 </RCC>
