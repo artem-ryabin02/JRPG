@@ -17,6 +17,7 @@ public:
     void setHidden(bool hidden);
 
     void setCat(const Hero &newCat);
+    void setVolume(float volume);
 
 private:
     QWidget* wArtEquips;

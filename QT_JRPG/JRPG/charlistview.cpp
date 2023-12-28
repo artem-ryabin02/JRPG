@@ -226,4 +226,10 @@ void CharListView::setCat(const Hero &newCat)
     lblDOD->setText(QString::number(cat.getDodge())+"%");
 }
 
+void CharListView::setVolume(float volume)
+{
+    back->setVolume(volume);
+    skills->setVolume(volume);
+}
+
 

@@ -17,6 +17,7 @@ public:
     void setHidden(bool hidden);
     Hero getCat() const;
     void setCat(const Hero &newCat);
+    void setVolume(float volume);
 
 private:
     QWidget* panelText;

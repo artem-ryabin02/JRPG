@@ -14,6 +14,7 @@ public:
     explicit CreateNewCharacter(QWidget *parent = nullptr);
 
     void setHidden(bool hidden);
+    void setVolume(float volume);
 
     Hero getCat() const;
 

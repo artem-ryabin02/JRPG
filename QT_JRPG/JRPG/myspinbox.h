@@ -23,6 +23,7 @@ public:
 
     void setPlusDisable(bool disable);
     void setMinusDisable(bool disable);
+    void setVolume(float volume);
 private:
     QWidget* spinBox;
     ImageButton* plus;

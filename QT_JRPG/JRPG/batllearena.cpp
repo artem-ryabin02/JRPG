@@ -17,6 +17,7 @@ BatlleArena::BatlleArena(QWidget *parent)
     sb->setGeometry(5, 100, 1915, 40);
     sb->setFont(textFont);
 
+
     HeroWid = new QWidget(parent);
     HeroWid->setGeometry(362, 203, 400, 471);
     HeroWid->setLayout(new QVBoxLayout());
@@ -113,6 +114,12 @@ BatlleArena::BatlleArena(QWidget *parent)
     playerDef->setAudioOutput(aoD);
     playerSkill->setAudioOutput(aoS);
 
+    mb = new MagicBook(parent);
+    mb->setHidden(true);
+
+    connect(mb, &MagicBook::backSignal, this, &BatlleArena::backFromMagicBook);
+
+    connect(mb, &MagicBook::used, this, &BatlleArena::heroUsedSkill);
 
     connect(buttonAtc, &ImageButton::clicked, this, &BatlleArena::onButtonClickAttack);
 
@@ -149,16 +156,8 @@ void BatlleArena::startBattle(const Hero _hero, bool BF)
         enemy.setMaxMana(enemy.getMaxMana()*10);
         enemy.setMana(enemy.getMaxMana());
     }
-    HeroHPPB->setMaximum(hero.getMaxHealth());
-    HeroHPPB->setValue(hero.getHealth());
-    EnemyHPPB->setMaximum(enemy.getMaxHealth());
-    EnemyHPPB->setValue(enemy.getHealth());
 
-    HeroMPPB->setMaximum(hero.getMaxMana());
-    HeroMPPB->setValue(hero.getMana());
-    EnemyMPPB->setMaximum(enemy.getMaxMana());
-    EnemyMPPB->setValue(enemy.getMana());
-
+    setHPMPall();
 
     sb->showMessage("Ход " + hero.getName());
 }
@@ -169,6 +168,19 @@ void BatlleArena::setHidden(bool hidden)
     EnemyWid->setHidden(hidden);
     panelButtons->setHidden(hidden);
     sb->setHidden(hidden);
+}
+
+void BatlleArena::setVolume(float volume)
+{
+    buttonAtc->setVolume(volume);
+    buttonDef->setVolume(volume);
+    buttonItem->setVolume(volume);
+    buttonSkill->setVolume(volume);
+    buttonEcp->setVolume(volume);
+    aoA->setVolume(volume);
+    aoD->setVolume(volume);
+    aoS->setVolume(volume);
+
 }
 
 void BatlleArena::onButtonClickAttack()
@@ -202,8 +214,9 @@ void BatlleArena::onButtonClickItem()
 
 void BatlleArena::onButtonClickSkill()
 {
-    playerSkill->play();
-    sb->showMessage("coming soon", 4000);
+    mb->setHidden(false);
+    mb->setCat(hero);
+    mb->setRat(enemy);
 }
 
 void BatlleArena::onButtonClickEscape()
@@ -221,6 +234,21 @@ void BatlleArena::onButtonClickEscape()
 Hero BatlleArena::getHero() const
 {
     return hero;
+}
+
+void BatlleArena::backFromMagicBook()
+{
+    mb->setHidden(true);
+}
+
+void BatlleArena::heroUsedSkill()
+{
+    playerSkill->play();
+    hero = mb->getCat();
+    enemy = mb->getRat();
+    backFromMagicBook();
+    setHPMPall();
+    enemyMotion();
 }
 
 void BatlleArena::enemyMotion()
@@ -289,4 +317,17 @@ bool BatlleArena::isCritDamage(int damage, int maxHP)
         return true;
     }
     else return false;
+}
+
+void BatlleArena::setHPMPall()
+{
+    HeroHPPB->setMaximum(hero.getMaxHealth());
+    HeroHPPB->setValue(hero.getHealth());
+    EnemyHPPB->setMaximum(enemy.getMaxHealth());
+    EnemyHPPB->setValue(enemy.getHealth());
+
+    HeroMPPB->setMaximum(hero.getMaxMana());
+    HeroMPPB->setValue(hero.getMana());
+    EnemyMPPB->setMaximum(enemy.getMaxMana());
+    EnemyMPPB->setValue(enemy.getMana());
 }

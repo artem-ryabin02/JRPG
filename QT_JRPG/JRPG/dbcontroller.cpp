@@ -81,7 +81,7 @@ QVector<Skill> DBcontroller::heroSkill()
     int tier = 0;
 
     QSqlQuery query2;
-    query2.prepare("SELECT name, cost, type, tier FROM skill WHERE ? = pool_id");
+    query2.prepare("SELECT name, cost, type, tier FROM skill WHERE ? = pool_id ");
     query2.addBindValue("hero_skill");
     if (!query2.exec()) {
         qDebug() << "Error: Unable to execute query";

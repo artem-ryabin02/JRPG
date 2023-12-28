@@ -10,6 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->centralwidget->setContentsMargins(0,0,0,0);
     
+    QDir dirSaves;
+    if (!dirSaves.exists("saves")){
+        dirSaves.mkdir("saves");
+    }
+
     loadSounds();
     loadDB();
 
@@ -55,6 +60,9 @@ MainWindow::MainWindow(QWidget *parent)
     ba = new BatlleArena(ui->centralwidget);
     ba->setHidden(true);
 
+    mb = new MagicBook(ui->centralwidget);
+    mb->setHidden(true);
+
     QPixmap bkgnd(":/assets/background/menu_demo.png");
     bkgnd = bkgnd.scaled(size(), Qt::IgnoreAspectRatio);
     QPalette p = palette();
@@ -65,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(wmm, &MainMenu::loadGame, this, &MainWindow::onButtonLoadGameClicked);
     connect(wmm, &MainMenu::exit, this, &MainWindow::onButtonExitClicked);
 
-    connect(slider, &QSlider::sliderMoved, this, &MainWindow::valueChanged);
+    connect(slider, &QSlider::sliderReleased, this, &MainWindow::valueChanged);
 
     connect(twn, &TalkingWithNPC::exitFromTWNPC, this, &MainWindow::recGoodbye);
 
@@ -330,6 +338,13 @@ void MainWindow::valueChanged(){
     label->setText(QString::number(slider->value()));
     float v = (float)slider->value() / 100;
     wg->setVolume(v);
+    wmm->setVolume(v);
+    clv->setVolume(v);
+    wcnc->setVolume(v);
+    twn->setVolume(v);
+    ba->setVolume(v);
+
+
 }
 
 

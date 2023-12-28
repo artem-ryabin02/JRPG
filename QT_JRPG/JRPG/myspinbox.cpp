@@ -78,6 +78,12 @@ void MySpinBox::setMinusDisable(bool disable)
     minus->setDisabled(disable);
 }
 
+void MySpinBox::setVolume(float volume)
+{
+    plus->setVolume(volume);
+    minus->setVolume(volume);
+}
+
 bool MySpinBox::checkBorder(int pos)
 {
     int val = value + pos;

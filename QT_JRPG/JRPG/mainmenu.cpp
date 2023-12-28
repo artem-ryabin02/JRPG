@@ -55,6 +55,13 @@ void MainMenu::setHidden(bool hidden)
     wTitle->setHidden(hidden);
 }
 
+void MainMenu::setVolume(float volume)
+{
+    ebg->setVolume(volume);
+    lbg->setVolume(volume);
+    nbg->setVolume(volume);
+}
+
 void MainMenu::onButtonExitClicked()
 {
     emit exit();

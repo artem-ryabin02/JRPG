@@ -34,6 +34,8 @@ public:
 
     void setHero(int x, int y);
     void deleteHero();
+
+    void setVolume(float volume);
 protected:
 
 private:
