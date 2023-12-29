@@ -74,6 +74,8 @@ private:
     void loadSounds();
     void loadDB();
 
+    void setBackground(QString name);
+
 signals:
     void wPress();
     void aPress();

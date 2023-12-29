@@ -12,6 +12,10 @@ Game::Game(QWidget *parent)
     QString family = QFontDatabase::applicationFontFamilies(id).at(0);
     QFont textFont(family, 36);
 
+    background = new QWidget(parent);
+    background->setStyleSheet("background: grey");
+    background->setGeometry(1120, 55, 770, 1010);
+
     wBoard = new QWidget(parent);
     wBoard->setObjectName("boardWidget");
     wBoard->setLayout(new QVBoxLayout);
@@ -22,8 +26,6 @@ Game::Game(QWidget *parent)
     wBoardLab->setObjectName("boardLabWidget");
     wBoardLab->setLayout(new QGridLayout);
     wBoardLab->setGeometry(0, 0, 1080, 1080);
-
-
 
     wButtoms = new QWidget(parent);
     wButtoms->setObjectName("buttomsWidget");
@@ -100,20 +102,21 @@ Game::Game(QWidget *parent)
     pbHP = new QProgressBar();
     pbMP = new QProgressBar();
     pbHP->setOrientation(Qt::Vertical);
-    pbHP->setStyleSheet("QProgressBar::chunk {background:QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FF0350,stop: 0.4999 #FF0020,stop: 0.5 #FF0019,stop: 1 #FF0000 );border-radius: 5px;border: .px solid black;}QProgressBar{border-radius: 5px;background:grey}");
+    pbHP->setStyleSheet("QProgressBar::chunk {background:rgb(168, 41, 40); border-radius: 5px;border: .px solid black;}QProgressBar{border-radius: 5px;background:white}");
     pbHP->setFixedSize(100, 450);
     pbHP->setTextVisible(false);
     pbHP->setMaximum(cat.getMaxHealth());
     pbHP->setValue(cat.getMaxHealth());
     pbMP->setOrientation(Qt::Vertical);
-    pbMP->setStyleSheet("QProgressBar::chunk {background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #78d,stop: 0.4999 #46a,stop: 0.5 #45a,stop: 1 #238 );border-radius: 5px;border: px solid black;}QProgressBar{border-radius: 5px;background:grey}");
+    pbMP->setStyleSheet("QProgressBar::chunk {background: rgb(38, 72, 109) ;border-radius: 5px;border: px solid black;}QProgressBar{border-radius: 5px;background:white}");
     pbMP->setFixedSize(100, 450);
     pbMP->setTextVisible(false);
     pbMP->setMaximum(cat.getMaxMana());
     pbMP->setValue(cat.getMaxMana());
     lblHero = new QLabel();
     lblHero->setFixedSize(430, 500);
-    QPixmap hero(":/assets/characters/hero.png");
+    QPixmap hero(":/assets/characters/gg_temp.jpg");
+    hero.scaled(hero.height()*2, hero.width()*2);
     lblHero->setPixmap(hero);
     lblHero->setScaledContents(true);
     wHPMP->layout()->addWidget(pbHP);
@@ -187,6 +190,7 @@ void Game::setHidden(bool hidden)
         wBoardLab->setHidden(false);
         wBoard->setHidden(true);
     }
+    background->setHidden(hidden);
     wHPMP->setHidden(hidden);
     wButtoms->setHidden(hidden);
     lblAgl->setHidden(hidden);
@@ -201,6 +205,7 @@ void Game::setHidden(bool hidden)
 
 void Game::setFHidden(bool hidden)
 {
+    background->setHidden(hidden);
     wBoardLab->setHidden(hidden);
     wBoard->setHidden(hidden);
     wHPMP->setHidden(hidden);
@@ -436,8 +441,6 @@ void Game::setBossF(bool newBossF)
 {
     bossF = newBossF;
 }
-
-
 
 void Game::setLabAct(bool newLabAct)
 {

@@ -61,7 +61,7 @@ private:
         {NAME_FIELD::GRASS_WATER_C_B, "grass_water_corner_bottom.png"},
         {NAME_FIELD::GRASS_WATER_C_T, "grass_water_corner_top.png"},
         {NAME_FIELD::LABYRINTH_ENTRY, "vkhod.png"},
-        {NAME_FIELD::SAVEPOINT, "vkhod.png"},
+        {NAME_FIELD::SAVEPOINT, "grass_middle.png"},
         {NAME_FIELD::NONE, ""}
     };
 

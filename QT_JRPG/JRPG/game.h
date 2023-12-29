@@ -34,6 +34,9 @@ private:
     DialogForExitFromLab* dfefl;
     BoardLocation* bl;
     BoardLabyrinth* blb;
+
+    QWidget* background;
+
     QWidget* wBoard;
     QWidget* wBoardLab;
     QWidget* wHPMP;

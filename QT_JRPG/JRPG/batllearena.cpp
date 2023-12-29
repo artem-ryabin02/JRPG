@@ -22,14 +22,14 @@ BatlleArena::BatlleArena(QWidget *parent)
     HeroWid->setGeometry(362, 203, 400, 471);
     HeroWid->setLayout(new QVBoxLayout());
     HeroHPPB = new QProgressBar();
-    HeroHPPB->setStyleSheet("QProgressBar::chunk {background:QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FF0350,stop: 0.4999 #FF0020,stop: 0.5 #FF0019,stop: 1 #FF0000 );border-radius: 5px;border: .px solid black;}QProgressBar{border-radius: 5px;background:grey}");
+    HeroHPPB->setStyleSheet("QProgressBar::chunk {background: rgb(168, 41, 40);border-radius: 5px;border: .px solid black;}QProgressBar{border-radius: 5px;background:grey}");
     HeroHPPB->setFixedSize(400, 30);
     HeroHPPB->setTextVisible(false);
     HeroHPPB->setMaximum(100);
     HeroHPPB->setValue(100);
     HeroWid->layout()->addWidget(HeroHPPB);
     HeroMPPB = new QProgressBar();
-    HeroMPPB->setStyleSheet("QProgressBar::chunk {background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #78d,stop: 0.4999 #46a,stop: 0.5 #45a,stop: 1 #238 );border-radius: 5px;border: px solid black;}QProgressBar{border-radius: 5px;background:grey}");
+    HeroMPPB->setStyleSheet("QProgressBar::chunk {background:rgb(38, 72, 109);border-radius: 5px;border: px solid black;}QProgressBar{border-radius: 5px;background:grey}");
     HeroMPPB->setFixedSize(400, 30);
     HeroMPPB->setTextVisible(false);
     HeroMPPB->setMaximum(100);
@@ -37,8 +37,10 @@ BatlleArena::BatlleArena(QWidget *parent)
     HeroWid->layout()->addWidget(HeroMPPB);
 
     HeroImage = new QLabel();
-    QPixmap h(":/assets/characters/hero.png");
+    QPixmap h(":/assets/characters/boy_gg.png");
+
     HeroImage->setPixmap(h);
+    HeroImage->setScaledContents(true);
     HeroImage->setFixedSize(400, 400);
     HeroImage->setAlignment(Qt::AlignCenter);
     HeroWid->layout()->addWidget(HeroImage);
@@ -47,14 +49,14 @@ BatlleArena::BatlleArena(QWidget *parent)
     EnemyWid->setGeometry(1133, 203, 400, 471);
     EnemyWid->setLayout(new QVBoxLayout());
     EnemyHPPB = new QProgressBar();
-    EnemyHPPB->setStyleSheet("QProgressBar::chunk {background:QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #FF0350,stop: 0.4999 #FF0020,stop: 0.5 #FF0019,stop: 1 #FF0000 );border-radius: 5px;border: .px solid black;}QProgressBar{border-radius: 5px;background:grey}");
+    EnemyHPPB->setStyleSheet("QProgressBar::chunk {background: rgb(168, 41, 40);border-radius: 5px;border: .px solid black;}QProgressBar{border-radius: 5px;background:grey}");
     EnemyHPPB->setFixedSize(400, 30);
     EnemyHPPB->setTextVisible(false);
     EnemyHPPB->setMaximum(100);
     EnemyHPPB->setValue(100);
     EnemyWid->layout()->addWidget(EnemyHPPB);
     EnemyMPPB = new QProgressBar();
-    EnemyMPPB->setStyleSheet("QProgressBar::chunk {background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #78d,stop: 0.4999 #46a,stop: 0.5 #45a,stop: 1 #238 );border-radius: 5px;border: px solid black;}QProgressBar{border-radius: 5px;background:grey}");
+    EnemyMPPB->setStyleSheet("QProgressBar::chunk {background: rgb(38, 72, 109);border-radius: 5px;border: px solid black;}QProgressBar{border-radius: 5px;background:grey}");
     EnemyMPPB->setFixedSize(400, 30);
     EnemyMPPB->setTextVisible(false);
     EnemyMPPB->setMaximum(100);
@@ -62,8 +64,8 @@ BatlleArena::BatlleArena(QWidget *parent)
     EnemyWid->layout()->addWidget(EnemyMPPB);
 
     EnemyImage = new QLabel();
-    QPixmap e (":/assets/characters/enemy/skeleton.png");
-    EnemyImage->setPixmap(e);
+    //QPixmap e (":/assets/characters/enemy/skeleton.png");
+    //EnemyImage->setPixmap(e);
     EnemyImage->setFixedSize(400, 400);
     EnemyImage->setAlignment(Qt::AlignCenter);
     EnemyWid->layout()->addWidget(EnemyImage);
@@ -253,7 +255,6 @@ void BatlleArena::heroUsedSkill()
 
 void BatlleArena::enemyMotion()
 {
-    qDebug() << "enemy motion \n";
     enemy.removeDefence();
     int action = enemy.randAction();
     if (action == 1) {
@@ -293,12 +294,10 @@ void BatlleArena::checkWin()
 {
     if (!enemy.getAlive()){
         sb->showMessage(hero.getName() + " winner");
-        _sleep(1000);
         emit win();
     }
     else if (!hero.getAlive()){
         sb->showMessage(enemy.getName() + " winner");
-        _sleep(1000);
         emit loose();
     }
 }

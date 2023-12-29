@@ -4,7 +4,6 @@
     <qresource prefix="/">
         <file>assets/background/menu_demo.png</file>
         <file>assets/characters/hero.png</file>
-        <file>assets/characters/nps_demot.png</file>
         <file>assets/fieldsVillage/grass_water_corner_bottom.png</file>
         <file>assets/fieldsVillage/grass_water_corner_top.png</file>
         <file>assets/fieldsVillage/grass_water_side.png</file>
@@ -121,5 +120,13 @@
         <file>assets/music/skill_sound.wav</file>
         <file>assets/characters/enemy/gnome.png</file>
         <file>assets/characters/enemy/goblin.png</file>
+        <file>assets/background/boy_fon.png</file>
+        <file>assets/background/fon.jpg</file>
+        <file>assets/characters/boy_gg.png</file>
+        <file>assets/characters/gg_dialog.png</file>
+        <file>assets/characters/nps_dialog.png</file>
+        <file>assets/characters/nps_map.png</file>
+        <file>assets/fieldsVillage/save.png</file>
+        <file>assets/characters/gg_temp.jpg</file>
     </qresource>
 </RCC>

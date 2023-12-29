@@ -13,7 +13,7 @@ CreateNewCharacter::CreateNewCharacter(QWidget *parent)
 
     background = new QWidget(parent);
     background->setGeometry(60, 150, 1800, 800);
-    background->setStyleSheet("background: darkgrey");
+    background->setStyleSheet("background: grey");
 
     parametrs = new QWidget(parent);
     parametrs->setLayout(new QHBoxLayout);
@@ -92,7 +92,7 @@ CreateNewCharacter::CreateNewCharacter(QWidget *parent)
     widHero->setGeometry(1297, 205, 480, 540);
     widHero->setLayout(new QVBoxLayout);
     picHero = new QLabel();
-    picHero->setPixmap(QPixmap(":/assets/characters/hero.png"));
+    picHero->setPixmap(QPixmap(":/assets/characters/gg_temp.jpg"));
     picHero->setFixedSize(480, 480);
     picHero->setScaledContents(true);
     namePanel = new QWidget();

@@ -3,6 +3,10 @@
 
 #include <QFontDatabase>
 
+const static QString MAIN_FON = ":/assets/background/menu_demo.png";
+const static QString FIGHT_FON = ":/assets/background/boy_fon.png";
+const static QString FON = ":/assets/background/fon.jpg";
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -24,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     volumeWidget = new QWidget(ui->centralwidget);
     volumeWidget->setLayout(new QHBoxLayout);
-    volumeWidget->setGeometry(1600, 10, 305, 60);
+    volumeWidget->setGeometry(1600, 0, 305, 55);
 
 
     slider = new QSlider(Qt::Horizontal);
@@ -63,11 +67,8 @@ MainWindow::MainWindow(QWidget *parent)
     mb = new MagicBook(ui->centralwidget);
     mb->setHidden(true);
 
-    QPixmap bkgnd(":/assets/background/menu_demo.png");
-    bkgnd = bkgnd.scaled(size(), Qt::IgnoreAspectRatio);
-    QPalette p = palette();
-    p.setBrush(QPalette::Window, bkgnd);
-    setPalette(p);
+
+    setBackground(MAIN_FON);
 
     connect(wmm, &MainMenu::newGame, this, &MainWindow::onButtonNewGameClicked);
     connect(wmm, &MainMenu::loadGame, this, &MainWindow::onButtonLoadGameClicked);
@@ -211,6 +212,15 @@ void MainWindow::loadDB()
     }
 }
 
+void MainWindow::setBackground(QString name)
+{
+    QPixmap bkgnd(name);
+    bkgnd = bkgnd.scaled(size(), Qt::IgnoreAspectRatio);
+    QPalette p = palette();
+    p.setBrush(QPalette::Window, bkgnd);
+    setPalette(p);
+}
+
 void MainWindow::onButtonExitClicked()
 {
     this->close();
@@ -220,13 +230,14 @@ void MainWindow::onButtonExitClicked()
 void MainWindow::onButtonNewGameClicked()
 {
     wmm->setHidden(true);
-
+    setBackground(FON);
     wcnc->setHidden(false);
 }
 
 
 void MainWindow::onButtonLoadGameClicked()
 {
+    setBackground(FON);
     wmm->setHidden(true);
     clv->setHidden(true);
     twn->setHidden(true);
@@ -237,7 +248,6 @@ void MainWindow::onButtonLoadGameClicked()
     if (wg == nullptr){
         newGame();
     }
-    //wg->setLabAct(false);
     wg->setHidden(false);
     emit readyToLoad();
 
@@ -267,7 +277,6 @@ void MainWindow::recTalk()
 {
     wg->setFHidden(true);
     blockSignals(true);
-    //_sleep(1000);
     twn->setCat(wg->getCat());
     twn->setHidden(false);
 
@@ -278,12 +287,12 @@ void MainWindow::recGoodbye()
     wg->setHidden(false);
     blockSignals(false);
     wg->setCat(twn->getCat());
-    //_sleep(1000);
     twn->setHidden(true);
 }
 
 void MainWindow::recEnemy()
 {
+    setBackground(FIGHT_FON);
     wg->setFHidden(true);
     ba->startBattle(wg->getCat(), wg->getBossF());
     if (wg->getBossF()) wg->setBossF(false);
@@ -292,6 +301,7 @@ void MainWindow::recEnemy()
 
 void MainWindow::returnFromBattleArena()
 {
+    setBackground(FON);
     wg->setHidden(false);
     wg->setCat(ba->getHero());
     ba->setHidden(true);
@@ -299,6 +309,7 @@ void MainWindow::returnFromBattleArena()
 
 void MainWindow::escapeFromBattleArena()
 {
+    setBackground(FON);
     wg->setHidden(false);
     wg->setCat(ba->getHero());
     ba->setHidden(true);
@@ -306,6 +317,7 @@ void MainWindow::escapeFromBattleArena()
 
 void MainWindow::returnMainMenu()
 {
+    setBackground(MAIN_FON);
     wcnc->setHidden(true);
     wmm->setHidden(false);
 }
@@ -321,6 +333,7 @@ void MainWindow::startNewGame()
 void MainWindow::gameOver()
 {
     wmm->setHidden(false);
+    setBackground(MAIN_FON);
     if (wg != nullptr && wcnc != nullptr){
         delete wg;
         wg = nullptr;
@@ -345,7 +358,6 @@ void MainWindow::valueChanged(){
     wcnc->setVolume(v);
     twn->setVolume(v);
     ba->setVolume(v);
-
 }
 
 

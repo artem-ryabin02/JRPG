@@ -3,8 +3,6 @@
 #include <QSoundEffect>
 
 
-
-
 ImageButton::ImageButton(QString namePXM)
 {
     namePixmap = namePXM;

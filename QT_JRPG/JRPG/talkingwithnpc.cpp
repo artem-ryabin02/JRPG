@@ -63,11 +63,11 @@ TalkingWithNPC::TalkingWithNPC(QWidget *parent)
 
 
     lblHero = new QLabel();
-    lblHero->setPixmap(QPixmap(":/assets/characters/hero.png"));
+    lblHero->setPixmap(QPixmap(":/assets/characters/gg_dialog.png"));
     lblHero->setScaledContents(true);
     lblHero->setFixedSize(250, 250);
     lblNPC = new QLabel();
-    lblNPC->setPixmap(QPixmap(":/assets/characters/nps_demot.png"));
+    lblNPC->setPixmap(QPixmap(":/assets/characters/nps_dialog.png"));
     lblNPC->setScaledContents(true);
     lblNPC->setFixedSize(250, 250);
 

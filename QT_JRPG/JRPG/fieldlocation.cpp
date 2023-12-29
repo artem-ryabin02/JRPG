@@ -20,7 +20,7 @@ void FieldLocation::paintEvent(QPaintEvent * pE){
     if (isNPC){
         int shift = 0.05*size;
         int sz = size - 2*shift;
-        QPixmap pMap(":/assets/characters/nps_demot.png");
+        QPixmap pMap(":/assets/characters/nps_map.png");
         p.drawPixmap(shift, shift, sz, sz, pMap);
     }
     if (isHero){
@@ -29,6 +29,13 @@ void FieldLocation::paintEvent(QPaintEvent * pE){
         QPixmap pMap(":/assets/characters/hero.png");
         p.drawPixmap(shift, shift, sz, sz, pMap);
     }
+    if (isSave){
+        int shift = 0.05*size;
+        int sz = size - 2*shift;
+        QPixmap pMap(":/assets/fieldsVillage/save.png");
+        p.drawPixmap(shift, shift, sz, sz, pMap);
+    }
+
 
 }
 
